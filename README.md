@@ -84,5 +84,5 @@ Before you begin, ensure that the following are installed on your machine:
      Finally, start the 5G session (just 1 IMSI or 10 IMSIs)
      ```bash
      cd scripts
-    ./start_5g_cups_10IMSI.sh
-	./start_5g_cups.sh
+     ./start_5g_cups_10IMSI.sh
+     ./start_5g_cups.sh
