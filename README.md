@@ -82,6 +82,7 @@ Before you begin, ensure that the following are installed on your machine:
      ./start_pppoe.sh   # To start session with traffic
 6.   **Start the 5G Session**:
      Finally, start the 5G session (just 1 IMSI or 10 IMSIs)
+![Network Topology](/root/github/images/5G-cups.png)
      ```bash
      cd scripts
      ./start_5g_cups_10IMSI.sh
