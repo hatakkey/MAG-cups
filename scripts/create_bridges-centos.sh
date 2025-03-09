@@ -1,13 +1,6 @@
 #!/bin/bash
 
 ## Create Bridges
-    br-dsf1:
-    br-dsf2:
-    br-gtpu:
-    br-ngap:
-    br-sbi:
-    br-enb:
-    br-metric:
 
 
 brctl addbr br-dsf1
