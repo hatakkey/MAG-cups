@@ -77,6 +77,7 @@ Before you begin, ensure that the following are installed on your machine:
 
 5.   **Start PPPoE/IPoE Session using BNGBlaster**:
      Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session management:
+![Network Topology](images/fixed-cups.png)
      ```bash
      ./start_dhcp_red.sh
      ./start_pppoe.sh   # To start session with traffic
