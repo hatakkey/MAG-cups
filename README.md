@@ -12,7 +12,7 @@ The entire network is simulated in a containerized environment using **Container
 
 - **5G CUPS Simulation**: Simulates 5G with separated Control Plane and User Plane architecture.
 - **Containerized Setup**: Utilizes **ContainerLab** for orchestrating and managing the container-based network simulation.
-- **Open5GS**: Implements the 5G core network including AMF, SMF, UPF, and other components.
+- **Open5GS**: Implements the 5G core network including AMF,NRF,UDM,AUSF, and other components.
 - **UERANSIM**: Simulates the **gNB** and **UE** for 5G RAN (Radio Access Network).
 - **PPPoE/IPoE Simulation**: Simulates broadband access with **BNGBlaster** for managing PPPoE and IPoE sessions.
 - **Flexible Setup**: Customizable network topologies and components to suit various testing scenarios.
