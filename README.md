@@ -26,7 +26,7 @@ The entire network is simulated in a containerized environment using **Container
    - The key network components (**Open5GS**, **UERANSIM**, and **BNGBlaster**) are containerized.
 
 ### 2. **Open5GS**
-   - **Open5GS** provides the **5G core network** including essential components like **AMF** (Access and Mobility Management Function), **SMF** (Session Management Function), **UPF** (User Plane Function), and **AUSF** (Authentication Server Function).
+   - **Open5GS** provides the **5G core network** including essential components like **AMF** (Access and Mobility Management Function), **NRF** (NF Repository Function), **UDM** (Unified Data Management), and **AUSF** (Authentication Server Function).
    - Open5GS is configured for a **CUPS** architecture, where the **Control Plane** (AMF, SMF, etc.) is separated from the **User Plane** (UPF).
    
 ### 3. **UERANSIM**
@@ -49,7 +49,7 @@ Before you begin, ensure that the following are installed on your machine:
 - **Docker**: Required for running the containerized components.
 - **ContainerLab**: To create and manage container-based network simulations.
 - **Git**: For cloning the repository.
-- **Python** (optional): Some scripts may require Python.
+
 
 ### Steps
 
