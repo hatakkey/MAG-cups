@@ -1,0 +1,20 @@
+echo
+echo
+#echo "AUTHENTICATION : show  mobile-gateway pdn ref-point-stats radius"
+#echo "-------------------------------------------------------------------------------"
+#/show mobile-gateway pdn ref-point-stats radius-group radius-group1 radius peer 10.20.43.[10..11] | match exp ---|Peer|Access
+#echo
+#echo "ACCOUNTING : show  mobile-gateway pdn ref-point-stats radius"
+#echo "-------------------------------------------------------------------------------"
+#/show mobile-gateway pdn ref-point-stats radius-group radius-group1 radius peer 10.20.43.[10..11] | match exp ---|Peer|Acct
+#echo
+#echo "clear command:"
+#echo "clear mobile-gateway pdn 1 ref-point-stats radius-group radius-group1 radius"
+#show  mobile-gateway pdn ref-point-stats radius | match expression Time|Acct invert-match
+#show  mobile-gateway pdn ref-point-stats radius | match Unsupported invert-match
+show  mobile-gateway pdn ref-point-stats radius
+echo
+echo "command:"
+echo "clear mobile-gateway pdn 1 ref-point-stats radius"
+echo
+

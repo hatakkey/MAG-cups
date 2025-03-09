@@ -1,0 +1,8 @@
+echo
+echo "show mobile-gateway system"
+echo "show mobile-gateway pdn ref-point-peers cdbx"
+/show mobile-gateway system | match PFCP post-lines 9 | match PFCP invert-match
+/show mobile-gateway pdn ref-point-peers cdbx | match expression Last|Create|cloud-db-prof|Interface invert-
+echo "clear mobile-gateway pdn 1 ref-point-stats cdbx"
+echo
+show time

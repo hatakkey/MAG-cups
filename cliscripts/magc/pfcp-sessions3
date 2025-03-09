@@ -1,0 +1,25 @@
+echo
+echo "show mobile-gateway pdn ref-point-stats"
+echo "==========================================="
+echo "-------------------------------------------"
+echo "MAGC Total"
+/show mobile-gateway pdn ref-point-stats aggregate sx-n4 | match Sessions
+echo "-------------------------------------------"
+echo
+echo "Loadbalancing info : "
+echo "==========================================="
+echo "SMVM-2"
+/show mobile-gateway pdn ref-point-stats aggregate sx-n4 card 2 | match Sessions
+echo "-------------------------------------------"
+echo
+echo "Distributed on :"
+echo "==========================================="
+echo "up1"
+/show mobile-gateway pdn ref-point-stats sx-n4 peer 1.1.1.101 | match  exp "Sessions"
+echo "-------------------------------------------"
+#echo "up2"
+#/show mobile-gateway pdn ref-point-stats sx-n4 peer 1.1.1.102 | match  exp "Sessions"
+echo "-------------------------------------------"
+echo "==========================================="
+echo
+echo

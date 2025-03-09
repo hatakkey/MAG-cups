@@ -1,0 +1,64 @@
+{
+    "libcool": {
+        "daemon": 0,
+        "logging": {
+            "verbose": 2,
+            "syslog": "DB_PROXY",
+            "color": 0,
+            "ctxsys": 1,
+            "ctxusr": 1
+        },
+        "core": {
+            "bufamnt": 1000000
+        }
+    },
+    "db_proxy": {
+        "listen_servers": [
+            {
+                "addr": "0.0.0.0",
+                "port": 5678,
+                "amount": 100
+            }
+        ],
+        "redis_servers": [
+            {
+                "addr": "0.0.0.0",
+                "port": 6379
+            },
+            {
+                "addr": "0.0.0.0",
+                "port": 6380
+            },
+            {
+                "addr": "0.0.0.0",
+                "port": 6381
+            },
+            {
+                "addr": "0.0.0.0",
+                "port": 6382
+            },
+            {
+                "addr": "0.0.0.0",
+                "port": 6383
+            },
+            {
+                "addr": "0.0.0.0",
+                "port": 6384
+            },
+            {
+                "addr": "0.0.0.0",
+                "port": 6385
+            },
+            {
+                "addr": "0.0.0.0",
+                "port": 6386
+            }
+        ],
+        "user_workers": 18,
+        "ctrl_workers": 5,
+        "keep_alive_time": 60,
+        "keep_alive_intvl": 30,
+        "keep_alive_probes": 5
+    }
+}
+

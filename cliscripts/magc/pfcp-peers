@@ -1,0 +1,9 @@
+echo
+echo "show mobile-gateway pdn ref-point-peers sx-n4 peer"
+echo "================================================================================"
+echo "MAGC (me)     : 1.1.1.1"
+echo "================================================================================"
+show mobile-gateway pdn ref-point-peers sx-n4
+echo
+echo
+

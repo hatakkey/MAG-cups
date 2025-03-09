@@ -1,0 +1,30 @@
+echo
+echo
+echo "--> show redundancy multi-chassis mc-mobile peer 10.10.10.2"
+/show redundancy multi-chassis mc-mobile peer 10.10.10.2
+echo
+#echo
+#echo -->"show redundancy multi-chassis mc-mobile mc-red-tcp-stats"
+#/show redundancy multi-chassis mc-mobile mc-red-tcp-stats
+#echo
+echo
+echo "--> show mobile-gateway bng  session count"
+/show mobile-gateway bng  session count
+echo "TOTAL BNG sessions"
+echo "==============================================================================="
+echo
+echo
+echo "--> ICR summary"
+echo
+echo "==============================================================================="
+/show redundancy multi-chassis mc-mobile peer 10.10.10.2 | match Secondary
+echo
+/show redundancy multi-chassis mc-mobile peer 10.10.10.2 | match Primary | match detection invert-match
+echo
+/show redundancy multi-chassis mc-mobile peer 10.10.10.2 | match Geo-Redundancy
+echo
+/show redundancy multi-chassis mc-mobile peer 10.10.10.2 | match "Role Change"
+echo "==============================================================================="
+echo
+echo
+

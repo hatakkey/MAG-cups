@@ -1,0 +1,36 @@
+Jan 28 12:50:53.491177 Warning: Interfaces must not have an IP address configured in the host OS!
+Jan 28 12:50:53.491210 Warning: IP address fe80::a8c1:abff:fed3:277b on interface eth1 is conflicting!
+Jan 28 12:50:53.586767 Warning: IP address fe80::a8c1:abff:fe0a:4039 on interface eth2 is conflicting!
+Jan 28 12:50:54.686040 Resolve network interfaces
+Jan 28 12:50:54.686107 All network interfaces resolved
+Jan 28 12:50:55.685448 ALL SESSIONS ESTABLISHED
+Jan 28 12:50:55.908033 ALL STREAM TRAFFIC FLOWS VERIFIED
+Jan 28 12:50:58.708170 Received signal Interrupt (2), initiating teardown
+Jan 28 12:50:59.358193 Received signal Interrupt (2), initiating teardown
+Jan 28 12:51:01.813418 Received signal Interrupt (2), initiating teardown
+Jan 28 12:51:02.248421 Received signal Interrupt (2), initiating teardown
+Jan 28 12:51:02.740468 ALL SESSIONS TERMINATED
+Mar 06 13:40:00.375309 Warning: Interfaces must not have an IP address configured in the host OS!
+Mar 06 13:40:00.375375 Warning: IP address fe80::a8c1:abff:fe27:5453 on interface eth1 is conflicting!
+Mar 06 13:40:00.432567 Warning: IP address fe80::a8c1:abff:fe30:39a9 on interface eth2 is conflicting!
+Mar 06 13:40:01.500849 Resolve network interfaces
+Mar 06 13:40:01.500911 All network interfaces resolved
+Mar 06 13:40:02.145976 ALL SESSIONS ESTABLISHED
+Mar 06 13:40:02.725899 ALL STREAM TRAFFIC FLOWS VERIFIED
+Mar 06 13:42:17.943086 Received signal Interrupt (2), initiating teardown
+Mar 06 13:42:20.243672 Received signal Interrupt (2), initiating teardown
+Mar 06 13:42:21.146265 Received signal Interrupt (2), initiating teardown
+Mar 06 13:42:21.615984 Received signal Interrupt (2), initiating teardown
+Mar 06 13:42:21.786166 ALL SESSIONS TERMINATED
+Mar 09 10:22:03.159376 Warning: Interfaces must not have an IP address configured in the host OS!
+Mar 09 10:22:03.159495 Warning: IP address fe80::a8c1:abff:fe3a:1bd3 on interface eth1 is conflicting!
+Mar 09 10:22:03.202717 Warning: IP address fe80::a8c1:abff:fec6:8693 on interface eth2 is conflicting!
+Mar 09 10:22:04.239544 Resolve network interfaces
+Mar 09 10:22:04.239745 All network interfaces resolved
+Mar 09 10:22:04.731137 ALL SESSIONS ESTABLISHED
+Mar 09 10:22:05.453931 ALL STREAM TRAFFIC FLOWS VERIFIED
+Mar 09 10:22:57.486793 Received signal Interrupt (2), initiating teardown
+Mar 09 10:22:59.090075 Received signal Interrupt (2), initiating teardown
+Mar 09 10:23:00.090088 Received signal Interrupt (2), initiating teardown
+Mar 09 10:23:01.890134 Received signal Interrupt (2), initiating teardown
+Mar 09 10:23:03.245086 ALL SESSIONS TERMINATED

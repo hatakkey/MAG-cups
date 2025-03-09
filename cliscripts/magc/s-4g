@@ -1,0 +1,34 @@
+echo
+echo
+#clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
+#
+/show mobile-gateway pdn ref-point-peers s11
+echo
+echo
+/show mobile-gateway pdn ref-point-stats s11
+#
+/show mobile-gateway pdn pdn-context
+echo
+/show mobile-gateway pdn pdn-context imsi 206010000000001
+#
+/show  mobile-gateway pdn statistics
+echo
+/show  mobile-gateway pdn statistics attach-failure-statistics
+echo
+/show mobile-gateway pdn apn "internet" statistics
+echo
+/show mobile-gateway pdn apn "internet" delete-session-statistics
+echo
+/show mobile-gateway pdn apn "internet" attach-failure-statistics
+#
+echo
+echo
+/show mobile-gateway bng session imsi 206010000000001
+echo
+/show mobile-gateway bng session imsi 206010000000001 charging aggregate-stats
+echo
+echo
+echo "command :"
+echo "clear mobile-gateway pdn  1 bearer-context imsi 206010000000001"
+echo
+

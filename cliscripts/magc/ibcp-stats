@@ -1,0 +1,11 @@
+echo
+echo "show mobile-gateway pdn ref-point-stats ibcp "
+/show mobile-gateway pdn ref-point-stats ibcp | match MSCP pre-lines 70 | match ": 0" invert-match
+echo
+/show mobile-gateway pdn ref-point-stats ibcp | match MSCP post-lines 130
+echo
+echo "Command:"
+echo "/clear mobile-gateway pdn 1 ref-point-stats ibcp"
+echo "/show mobile-gateway pdn ref-point-stats ibcp"
+echo
+

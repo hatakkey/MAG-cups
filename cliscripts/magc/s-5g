@@ -1,0 +1,29 @@
+echo
+echo
+#clear mobile-gateway pdn  1 bearer-context imsi 206010000000002
+#
+/show mobile-gateway pdn pdn-context
+echo
+/show mobile-gateway pdn pdn-context imsi 206010000000002
+#
+/show  mobile-gateway pdn statistics
+echo
+/show  mobile-gateway pdn statistics attach-failure-statistics
+echo
+/show mobile-gateway pdn apn "demo.nokia.mnc001.mcc206.gprs" statistics
+echo
+/show mobile-gateway pdn apn "demo.nokia.mnc001.mcc206.gprs" delete-session-statistics
+echo
+/show mobile-gateway pdn apn "demo.nokia.mnc001.mcc206.gprs" attach-failure-statistics
+#
+echo
+echo
+/show mobile-gateway bng session imsi 206010000000002
+echo
+/show mobile-gateway bng session imsi 206010000000002 charging aggregate-stats
+echo
+echo
+echo "command :"
+echo "clear mobile-gateway pdn  1 bearer-context imsi 206010000000002"
+echo
+

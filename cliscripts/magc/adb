@@ -1,0 +1,23 @@
+echo
+/show mobile-gateway  profile  authentication-database "adb1"
+echo
+/show mobile-gateway  profile  authentication-database "adb2"
+echo
+/show mobile-gateway  profile  authentication-database "adb1-group"
+echo
+/show mobile-gateway  profile  authentication-database "adb2-group"
+echo
+/show mobile-gateway  profile  authentication-database "adbfwa"
+echo
+echo "command: to clear stats"
+echo "/configure mobile-gateway profile authentication-database adb1 shutdown"
+echo "/configure mobile-gateway profile authentication-database adb1 no shutdown"
+echo "/configure mobile-gateway profile authentication-database adb2 shutdown"
+echo "/configure mobile-gateway profile authentication-database adb2 no shutdown"
+echo "/configure mobile-gateway profile authentication-database adb1-group shutdown"
+echo "/configure mobile-gateway profile authentication-database adb1-group no shutdown"
+echo "/configure mobile-gateway profile authentication-database adb2-group shutdown"
+echo "/configure mobile-gateway profile authentication-database adb2-group no shutdown"
+echo "/configure mobile-gateway profile authentication-database adbfwa shutdown"
+echo "/configure mobile-gateway profile authentication-database adbfwa no shutdown"
+echo

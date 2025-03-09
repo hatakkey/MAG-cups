@@ -1,0 +1,3 @@
+echo
+/admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1
+echo

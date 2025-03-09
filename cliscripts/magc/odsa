@@ -1,0 +1,40 @@
+echo
+/show mobile-gateway pdn local-address-assignment pools
+echo
+echo "--------------------"
+echo "(1) fwa"
+echo "--------------------"
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "fwa" prefixes
+echo
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "fwa" prefix 43.0.0.0/15 micro-nets
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "fwa" prefix 4343::/47  micro-nets
+echo
+echo "--------------------"
+echo "(2) ipoe-pool1"
+echo "--------------------"
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "ipoe-pool1" prefixes
+echo
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "ipoe-pool1" prefix 111.250.0.0/16 micro-nets
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "ipoe-pool1" prefix 111.251.0.0/16 micro-nets
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "ipoe-pool1" prefix c01d:1::/111 micro-nets
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "ipoe-pool1" prefix c01d:2::/39 micro-nets
+echo
+echo
+echo "--------------------"
+echo "(3)pool3"
+echo "--------------------"
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "pool3" prefixes
+echo
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "pool3" prefix 172.16.11.0/24 micro-nets
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "pool3" prefix 172.16.11.0/24 micro-nets
+echo
+echo "--------------------"
+echo "(4)pppoe-pool1"
+echo "--------------------"
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "pppoe-pool1" prefixes
+echo
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "pppoe-pool1" prefix 110.250.0.0/16 micro-nets
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "pppoe-pool1" prefix 110.251.0.0/16 micro-nets
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "pppoe-pool1" prefix  c00d:3::/47 micro-nets
+/show mobile-gateway pdn local-address-assignment pool gateway 1 network-realm "bngvrf" name "pppoe-pool1" prefix c00d:2::/39 micro-nets
+echo

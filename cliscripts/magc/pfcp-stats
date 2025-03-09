@@ -1,0 +1,13 @@
+echo
+echo "show mobile-gateway pdn ref-point-stats sx-n4 peer"
+/show mobile-gateway pdn ref-point-stats sx-n4
+echo
+echo
+echo "show mobile-gateway pdn path-mgmt-stats sx-n4 peer"
+/show mobile-gateway pdn path-mgmt-stats sx-n4
+echo
+echo "clear command:"
+echo "clear mobile-gateway pdn 1 ref-point-stats sx-n4"
+echo "clear mobile-gateway pdn 1 path-mgmt-stats sx-n4"
+echo
+

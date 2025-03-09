@@ -1,0 +1,76 @@
+#echo "==============================================================================="
+#echo "          nf-type sepp"
+#echo "==============================================================================="
+#echo "show mobile-gateway pdn service-stats nf-type sepp"
+#show mobile-gateway pdn service-stats nf-type sepp instance
+#echo
+#echo
+#echo
+#echo "==============================================================================="
+#echo "          nf-type bsf"
+#echo "==============================================================================="
+#echo "show mobile-gateway pdn service-stats nf-type bsf"
+#show mobile-gateway pdn service-stats nf-type bsf instance
+#echo
+#echo
+#echo
+#echo "==============================================================================="
+#echo "          nf-type chf"
+#echo "==============================================================================="
+#echo "show mobile-gateway pdn service-stats nf-type chf"
+#show mobile-gateway pdn service-stats nf-type chf instance
+#echo
+#echo
+#echo
+echo "==============================================================================="
+echo "          nf-type pcf"
+echo "==============================================================================="
+echo "show mobile-gateway pdn service-stats nf-type pcf"
+show mobile-gateway pdn service-stats nf-type pcf instance
+echo
+echo
+#echo
+#echo "==============================================================================="
+#echo "          nf-type smf"
+#echo "==============================================================================="
+#echo "show mobile-gateway pdn service-stats nf-type smf"
+#/show mobile-gateway pdn service-stats nf-type smf
+#echo
+echo
+echo
+echo "==============================================================================="
+echo "          nf-type nrf"
+echo "==============================================================================="
+echo "show mobile-gateway pdn service-stats nf-type nrf"
+/show mobile-gateway pdn service-stats nf-type nrf
+echo
+echo
+echo
+echo "==============================================================================="
+echo "          nf-type amf"
+echo "==============================================================================="
+echo "show mobile-gateway pdn service-stats nf-type amf"
+show mobile-gateway pdn service-stats nf-type amf
+echo
+echo
+echo
+echo "==============================================================================="
+echo "          nf-type udm"
+echo "==============================================================================="
+echo "show mobile-gateway pdn service-stats nf-type udm"
+/show mobile-gateway pdn service-stats nf-type udm
+echo
+echo
+echo
+echo "command:"
+#echo "/clear mobile-gateway pdn  1 service-stats nf-type pcf"
+echo "/clear mobile-gateway pdn  1 service-stats nf-type amf"
+echo "/clear mobile-gateway pdn  1 service-stats nf-type nrf"
+echo "/clear mobile-gateway pdn  1 service-stats nf-type udm"
+echo "/clear mobile-gateway pdn  1 service-stats nf-type smf"
+echo "/clear mobile-gateway pdn  1 service-stats nf-type pcf"
+echo
+echo "/clear mobile-gateway pdn 1 nrf-client-cache"
+echo
+
+

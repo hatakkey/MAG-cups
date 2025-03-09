@@ -1,0 +1,19 @@
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/ausf.log
+  # level: info   # fatal|error|warn|info(default)|debug|trace
+
+
+global:
+  max:
+    ue: 1024  # The number of UE can be increased depending on memory size.
+#    peer: 64
+
+ausf:
+  sbi:
+    server:
+      - dev: eth1
+        port: 8080
+    client:
+      nrf:
+        - uri: http://10.40.1.2:8080
