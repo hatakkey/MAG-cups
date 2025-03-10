@@ -79,9 +79,9 @@ Before you begin, ensure that the following are installed on your machine:
 
      Deploy the containerized network environment using the ContainerLab configuration:
      ```bash     
-	 [root@compute-1 MAG-cups]# clab dep -t cups.clab.yml
-	 19:05:18 INFO Containerlab started version=0.66.0
-  	 19:05:18 INFO Parsing & checking topology file=cups.clab.yml
+	    [root@compute-1 MAG-cups]# clab dep -t cups.clab.yml
+	    19:05:18 INFO Containerlab started version=0.66.0
+  	  19:05:18 INFO Parsing & checking topology file=cups.clab.yml
      19:05:18 INFO Creating docker network name=cups IPv4 subnet=192.168.40.0/24 IPv6 subnet="" MTU=0
      19:05:18 INFO Creating lab directory path=/root/MAG-cups/clab-cups
      19:05:18 INFO Creating container name=pcf
