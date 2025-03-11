@@ -1,6 +1,24 @@
+1. some requiremnt before starting
+   For this CLAB its important that SELinux is disabled on your server. Example Centos os-release
+   If status is disabled, then nothing to do.
+		```bash
+  [root@compute-1 ~]# sestatus
+  SELinux status:      disabled
+		```
+		
+		If status is different then  disabled, change it to disabled in /etc/selinux/config and reboot your server
+		```bash
+  [root@compute-1 ~]# more /etc/selinux/config
+  SELINUX=disabled
+  SELINUXTYPE=targeted
+		```
+
+If status is different then  disabled, change it to disabled in /etc/selinux/config and reboot your server
+
+1. firewalld should be en 
 **create the needed bridges**:
-   create the brideges 
-   ```bash
+   create the brideges
+   ```bash   
    [root@compute-1 scripts]# ./create_bridges-centos.sh
    Warning: ALREADY_ENABLED: br-s1ap
    success
@@ -13,6 +31,7 @@
    Warning: ALREADY_ENABLED: br-enb
    success
    success
+			```
   
 3. **Deploy the ContainerLab Environment**:
 
