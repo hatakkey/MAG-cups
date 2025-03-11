@@ -358,7 +358,7 @@ Before you begin, ensure that the following are installed on your machine:
   ```
 
 #### **3.4 MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
-    ```bash 
+   ```bash 
    *A:SMF2# admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1 now
    Switchover will be executed but new Master node may have incomplete UE records, proceed (y/n)?y   
    *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
