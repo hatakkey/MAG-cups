@@ -284,8 +284,8 @@ Before you begin, ensure that the following are installed on your machine:
    UP Association   : up                   Last Change Time : 03/10/2025 20:59:53
    UP Selection     : True
    Enforced PFCP association list : Yes
-   -------------------------------------------------------------------------------
-	### **3.2 check the database communication with the MAG-C ,it should be in HOT satus**
+	
+	### **3.2 check the database communication with the MAG-C,it should be in HOT satus**
 	  ```bash 
    *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
    ===============================================================================
