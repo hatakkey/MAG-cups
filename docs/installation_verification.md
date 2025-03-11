@@ -224,29 +224,29 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    │                 │ gradiant/open5gs-webui:2.7.1               │         │ N/A            │
    ╰─────────────────┴────────────────────────────────────────────┴─────────┴────────────────╯
    ```
-### 2.1 **access the container nodes**
-    The nodes are accessable via the IP address or the node name
+ ### 2.1 **access the container nodes**
+     The nodes are accessable via the IP address or the node name
     
-    ```bash  
-    docker exec -it cups-amf        bash
-    docker exec -it cups-ausf       bash
-    docker exec -it cups-bsf        bash   
-    docker exec -it cups-gnb        bash
-    docker exec -it cups-ue1        bash   
-    docker exec -it cups-nrf        bash
-    docker exec -it cups-nssf       bash
-    docker exec -it cups-pcf        bash   
-    docker exec -it cups-udm        bash
-    docker exec -it cups-udr        bash
-    docker exec -it cups-db-1       bash
-    docker exec -it cups-db-2       bash
-    docker exec -it cups-radius     sh
-    ssh admin@cups-TRA    ## password=admin    
-    ssh admin@cups-up-1   ## password=admin     
-    ssh admin@cups-up-1   ## password=admin     
-    ssh admin@cups-mag-c1 ## password=admin
-    ssh admin@cups-mag-c2 ## password=admin
-    ```  
+     ```bash  
+     docker exec -it cups-amf        bash
+     docker exec -it cups-ausf       bash
+     docker exec -it cups-bsf        bash   
+     docker exec -it cups-gnb        bash
+     docker exec -it cups-ue1        bash   
+     docker exec -it cups-nrf        bash
+     docker exec -it cups-nssf       bash
+     docker exec -it cups-pcf        bash   
+     docker exec -it cups-udm        bash
+     docker exec -it cups-udr        bash
+     docker exec -it cups-db-1       bash
+     docker exec -it cups-db-2       bash
+     docker exec -it cups-radius     sh
+     ssh admin@cups-TRA    ## password=admin    
+     ssh admin@cups-up-1   ## password=admin     
+     ssh admin@cups-up-1   ## password=admin     
+     ssh admin@cups-mag-c1 ## password=admin
+     ssh admin@cups-mag-c2 ## password=admin
+     ```  
 
 ## 3. **check the MAG-C ,DB and UP**:
    check the multi-chassis redundancy between the MAG-C , the communcation with the DB and the sx satus with UP-1 and UP-2
