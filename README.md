@@ -408,7 +408,7 @@ Before you begin, ensure that the following are installed on your machine:
    MG Group : 1    Geo Redundancy : Hot         0%           100%
    ------------------------------------------------------------------------------
    ```  
-###4 ** Register the 5G Subscriber**:
+###**4 Register the 5G Subscriber**:
     you can subscriber the needed imsi using the below script,it contains the IMSI,APN ,Slice info....etc
      ```bash
      [root@compute-1 scripts]# ./register_subscriber.sh
@@ -474,7 +474,7 @@ Before you begin, ensure that the following are installed on your machine:
      Added IMSI: 206010000000019
      All subscribers added successfully!
       ```
- ####4.1 ** GUI access to the database **
+ ####**4.1  GUI access to the database **
 	You can check the users are created in the database via http://x.x.x.x:10000/   username/password: admin/1423
 	![Network Topology](images/Database.png)
 	
