@@ -283,7 +283,7 @@ Before you begin, ensure that the following are installed on your machine:
      Enforced PFCP association list : Yes
      -------------------------------------------------------------------------------
 
-     check the database communication with the MAG-C ,it should be in HOT satus
+3.1 **check the database communication with the MAG-C ,it should be in HOT satus**
      ```bash 
      *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
      ===============================================================================
@@ -301,7 +301,7 @@ Before you begin, ensure that the following are installed on your machine:
      -------------------------------------------------------------------------------
      Number of peers : 1
 
-     **check that the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**
+3.2 **check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**
      ```bash
      *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
      ===============================================================================
@@ -351,7 +351,7 @@ Before you begin, ensure that the following are installed on your machine:
      -------------------------------------------------------------------------------
      ===============================================================================
 
-     **MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
+3.3 **MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
      
      ```bash
      *A:SMF2# admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1 now
