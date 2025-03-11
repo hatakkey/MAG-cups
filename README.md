@@ -477,12 +477,7 @@ Before you begin, ensure that the following are installed on your machine:
       ```
  ####  **4.1  GUI access to the database **
 	      You can check the users are created in the database via http://x.x.x.x:10000/   username/password: admin/1423
-	      ![Network Topology](images/Database.png)
-	
-	
-	
-	
- 
+![Network Topology](images/Database.png) 
  
 ###5 **Start the Open5GS Core Network (AMF,NRF...)**:
      ```bash
