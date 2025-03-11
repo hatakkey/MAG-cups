@@ -284,7 +284,7 @@ Before you begin, ensure that the following are installed on your machine:
    UP Association   : up                   Last Change Time : 03/10/2025 20:59:53
    UP Selection     : True
    Enforced PFCP association list : Yes
-			```bash
+			```
 			
  
 #### **3.2 check the database communication with the MAG-C,it should be in HOT satus**
@@ -304,7 +304,7 @@ Before you begin, ensure that the following are installed on your machine:
    Last status chng: 03/10/2025 18:13:30
    -------------------------------------------------------------------------------
    Number of peers : 1
-			```bash  
+			```  
 #### **3.3 check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**
    ```bash
    *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
@@ -354,6 +354,7 @@ Before you begin, ensure that the following are installed on your machine:
    MG Group : 1    Geo Redundancy : Hot         0%           100%
    -------------------------------------------------------------------------------
    ===============================================================================
+			```
 
 #### **3.4 MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
    ```bash
@@ -405,7 +406,7 @@ Before you begin, ensure that the following are installed on your machine:
    CPM      : 0    Geo Redundancy : Hot         0%           100%
    MG Group : 1    Geo Redundancy : Hot         0%           100%
    ------------------------------------------------------------------------------
-   ```bash  
+   ```  
 3.   **Register the 5G Subscriber**:
      Navigate to the scripts directory and register the 5G subscriber:
      ```bash
