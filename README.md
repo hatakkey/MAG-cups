@@ -256,7 +256,7 @@ Before you begin, ensure that the following are installed on your machine:
 
 
 #### **3.1 Check the PFCP Reference Point Peers**
-   text          
+   ```bash          
    *A:SMF1# show mobile-gateway pdn ref-point-peers sx-n4
    ===============================================================================
    PFCP reference point peers
@@ -284,11 +284,11 @@ Before you begin, ensure that the following are installed on your machine:
    UP Association   : up                   Last Change Time : 03/10/2025 20:59:53
    UP Selection     : True
    Enforced PFCP association list : Yes
-			
+			```
 			
  
 #### **3.2 check the database communication with the MAG-C,it should be in HOT satus**
-   text 
+   ```bash 
    *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
    ===============================================================================
    PDN Cdbx reference point peers
@@ -304,9 +304,10 @@ Before you begin, ensure that the following are installed on your machine:
    Last status chng: 03/10/2025 18:13:30
    -------------------------------------------------------------------------------
    Number of peers : 1
+			```
 			 
 #### **3.3 check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**
-   text
+   ```bash 
    *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
    ===============================================================================
    Multi-chassis Peer Mc-Mobile Table
@@ -354,10 +355,10 @@ Before you begin, ensure that the following are installed on your machine:
    MG Group : 1    Geo Redundancy : Hot         0%           100%
    -------------------------------------------------------------------------------
    ===============================================================================
-		
+		```
 
 #### **3.4 MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
-   text
+    ```bash 
    *A:SMF2# admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1 now
    Switchover will be executed but new Master node may have incomplete UE records, proceed (y/n)?y   
    *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
@@ -406,7 +407,7 @@ Before you begin, ensure that the following are installed on your machine:
    CPM      : 0    Geo Redundancy : Hot         0%           100%
    MG Group : 1    Geo Redundancy : Hot         0%           100%
    ------------------------------------------------------------------------------
-    
+   ```  
 3.   **Register the 5G Subscriber**:
      Navigate to the scripts directory and register the 5G subscriber:
      ```bash
