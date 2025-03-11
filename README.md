@@ -40,6 +40,11 @@ The entire network is simulated in a containerized environment using **Container
 ### 5. **BNGBlaster**
    - **BNGBlaster** provides **PPPoE** and **IPoE** session management capabilities, simulating broadband access using BNGBlaster to create fixed sessions for end users.
 
+### 6.  ** FreeRadius**
+    - **FreeRadius** is a widely used open-source RADIUS server for authentication, authorization, and accounting (AAA). 
+				- It supports various authentication methods, including EAP, PAP, CHAP, and integrates with databases like MySQL, PostgreSQL, and LDAP.
+				- FreeRADIUS is commonly used in ISPs, enterprises, and telecom networks for managing network access control			
+
 ## Installation
 
 ### Prerequisites
@@ -102,4 +107,9 @@ Before you begin, ensure that the following are installed on your machine:
      ```bash
      cd scripts
      ./start_5g_cups_10IMSI.sh
-     ./start_5g_cups.sh
+     ./start_5g_cups.sh			
+
+8. License
+clab image for MAG-C ,VSR are provided by nokia team,Commercial licenses are also available from Nokia team
+other clab images (open5GS,radius and UERANSIM) are available via public sites
+	
