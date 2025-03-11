@@ -284,8 +284,8 @@ Before you begin, ensure that the following are installed on your machine:
    UP Association   : up                   Last Change Time : 03/10/2025 20:59:53
    UP Selection     : True
    Enforced PFCP association list : Yes
-			```
-			
+   ```
+   
  
 #### **3.2 check the database communication with the MAG-C,it should be in HOT satus**
    ```bash 
@@ -304,8 +304,8 @@ Before you begin, ensure that the following are installed on your machine:
    Last status chng: 03/10/2025 18:13:30
    -------------------------------------------------------------------------------
    Number of peers : 1
-			```
-			 
+   ```
+    
 #### **3.3 check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**
    ```bash 
    *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
@@ -355,7 +355,7 @@ Before you begin, ensure that the following are installed on your machine:
    MG Group : 1    Geo Redundancy : Hot         0%           100%
    -------------------------------------------------------------------------------
    ===============================================================================
-		```
+  ```
 
 #### **3.4 MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
     ```bash 
