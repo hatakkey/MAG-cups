@@ -15,7 +15,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 ```
 
-##2. firewalld configuration 
+## 2. firewalld configuration 
 The firewall should be enabled ,If the firewall is not enabled or inactive, start the firewalld service:
 ```bash
 [root@compute-1 MAG-cups]# systemctl status firewalld
@@ -32,7 +32,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
 
 
 
-3.**create the needed bridges**:
+## 3.**create the needed bridges**:
    create the brideges
    ```bash   
    [root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -49,7 +49,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    success
    ```
   
-3. **Deploy the ContainerLab Environment**:
+## 4. **Deploy the ContainerLab Environment**:
 
    Deploy the containerized network environment using the ContainerLab configuration:
    ```bash     
@@ -224,11 +224,11 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    │ cups-webui      │ linux                                      │ running │ 192.168.40.51  │
    │                 │ gradiant/open5gs-webui:2.7.1               │         │ N/A            │
    ╰─────────────────┴────────────────────────────────────────────┴─────────┴────────────────╯
-### **3   check the MAG-C ,DB and UP**:
+### 5.   **check the MAG-C ,DB and UP**:
    check the multi-chassis redundancy between the MAG-C , the communcation with the DB and the sx satus with UP-1 and UP-2
 
 
-#### **3.1 Check the PFCP Reference Point Peers**
+#### 5.1 **Check the PFCP Reference Point Peers**
    ```bash          
    *A:SMF1# show mobile-gateway pdn ref-point-peers sx-n4
    ===============================================================================
