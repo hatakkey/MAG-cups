@@ -409,9 +409,75 @@ Before you begin, ensure that the following are installed on your machine:
    ------------------------------------------------------------------------------
    ```  
 3.   **Register the 5G Subscriber**:
-     Navigate to the scripts directory and register the 5G subscriber:
+    you can subscriber the needed imsi using the below script,it contains the IMSI,AP ,Slice info....etc
      ```bash
-     ./register_subscriber.sh
+     [root@compute-1 scripts]# ./register_subscriber.sh
+					./register_subscriber.sh: line 27: :open5gs-dbctl: Open5GS Database Configuration Tool (0.10.3)
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ad08fb9e1025e5e739c')
+					}
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ad4d50fa261355e739c')
+					}
+					Added IMSI: 206010000000009
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ad67dfdb7ffec5e739c')
+					}
+					Added IMSI: 206010000000010
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ad8e4705054a45e739c')
+					}
+					Added IMSI: 206010000000011
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ada2996ef54765e739c')
+					}
+					Added IMSI: 206010000000012
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2adc1029d469d35e739c')
+					}
+					Added IMSI: 206010000000013
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ade5d4508f66b5e739c')
+					}
+					Added IMSI: 206010000000014
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ae13daf71e7a15e739c')
+					}
+					Added IMSI: 206010000000015
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ae260a7d1b5b35e739c')
+					}
+					Added IMSI: 206010000000016
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ae453d59aa9545e739c')
+					}
+					Added IMSI: 206010000000017
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ae51e7cd00eb65e739c')
+					}
+					Added IMSI: 206010000000018
+					{
+							acknowledged: true,
+							insertedId: ObjectId('67cf2ae7bf25e2851e5e739c')
+					}
+					Added IMSI: 206010000000019
+					All subscribers added successfully!
+ ```
+ You can check the users are created in the database via http://x.x.x.x:10000/  admin/1423
+	![Network Topology](images/Database.png)
+	
+	
 4.   **Start the Open5GS Core Network (AMF,NRF...)**:
      ```bash
      cd scripts
