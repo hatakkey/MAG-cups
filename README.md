@@ -286,8 +286,8 @@ Before you begin, ensure that the following are installed on your machine:
    Enforced PFCP association list : Yes
  
 #### **3.2 check the database communication with the MAG-C,it should be in HOT satus**
-    ```bash 
-    *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
+   ```bash 
+   *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
    ===============================================================================
    PDN Cdbx reference point peers
    ===============================================================================
