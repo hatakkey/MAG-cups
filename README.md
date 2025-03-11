@@ -52,7 +52,7 @@ Before you begin, ensure that the following are installed on your machine:
 
 ### Getting Started
 
-    please follow the [documetation](docs/installation_verification.md)
+   Please follow the [documentation](docs/installation_verification.md) for setup instructions.
 
 ### Steps
 
