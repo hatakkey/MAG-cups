@@ -795,7 +795,7 @@ Active Subscribers Hierarchy
            |   Imsi                 : 206010000000002
            |   Apn                  : demo.nokia.mnc001.mcc206.gprs
            |
-           +-- 43.0.32.1 - PFCP	   
+           +-- 43.0.32.1 - PFCP    
 -------------------------------------------------------------------------------
 Number of active subscribers : 1
 Flags: (N) = the host or the managed route is in non-forwarding state
@@ -835,18 +835,20 @@ bash-5.1# ip a
        valid_lft forever preferred_lft forever
     inet6 fe80::a8c1:abff:fe1a:7c7b/64 scope link
        valid_lft forever preferred_lft forever
-	   
+    
 ```
-### 7.3 **check the logs**:	   
+### 7.3 **check the logs**:    
 you can check the logs for the open5GS and UERANSIM
+```bash
 [root@compute-1 logs]# ls
 amf.log   bsf.log  nrf.log   pcf.log   udm.log  ue1.log
 ausf.log  gnb.log  nssf.log  pcrf.log  udr.log
+```
 
-the NRF showing that elements are register to it i.e. MAG-C,AMF,UDM.....
+the NRF showing that elements are registered to it i.e. MAG-C,AMF,UDM.....
+```bash
 [root@compute-1 logs]# more nrf.log
 Open5GS daemon v2.7.1
-
 03/10 18:11:23.058: [app] INFO: Configuration: '/opt/open5gs/etc/open5gs/nrf.yaml' (../lib/app/o
 gs-init.c:133)
 03/10 18:11:23.058: [app] INFO: File Logging: '/opt/open5gs/var/log/open5gs/nrf.log' (../lib/app
@@ -882,9 +884,10 @@ l 2025-03-11T18:11:23.076712+00:00 [validity_duration:86400] (../src/nrf/nnrf-ha
 l 2025-03-11T18:11:23.351190+00:00 [validity_duration:86400] (../src/nrf/nnrf-handler.c:446)
 03/10 18:11:23.351: [nrf] INFO: [13327214-fddb-41ef-8fd6-fb368622a690] Subscription created unti
 l 2025-03-11T18:11:23.351313+00:00 [validity_duration:86400] (../src/nrf/nnrf-handler.c:446)
+```
 
-the GNB log showing that NGAP is ok with the AMF
-
+The GNB log showing that NGAP is ok with the AMF
+```bash
 [root@compute-1 logs]# more gnb.log
 UERANSIM v3.2.6
 [2025-03-10 18:25:19.611] [sctp] [info] Trying to establish SCTP connection... (10.50.1.2:38412)
@@ -898,22 +901,20 @@ UERANSIM v3.2.6
 [2025-03-10 18:25:20.097] [ngap] [debug] Initial NAS message received from UE[1]
 [2025-03-10 18:25:20.245] [ngap] [debug] Initial Context Setup Request received
 [2025-03-10 18:25:22.069] [ngap] [info] PDU session resource(s) setup for UE[1] count[1]
-
+```
 
 
 UE1 log showing that the session is created with uesimtun0, 43.0.32.1
-
+```bash
 [root@compute-1 logs]# more ue1.log
 UERANSIM v3.2.6
 [2025-03-10 18:25:20.022] [nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
-[2025-03-10 18:25:20.035] [rrc] [debug] New signal detected for cell[1], total [1] cells in cove
-rage
+[2025-03-10 18:25:20.035] [rrc] [debug] New signal detected for cell[1], total [1] cells in coverage
 [2025-03-10 18:25:20.046] [nas] [info] Selected plmn[206/01]
 [2025-03-10 18:25:20.053] [rrc] [info] Selected cell plmn[206/01] tac[1] category[SUITABLE]
 [2025-03-10 18:25:20.053] [nas] [info] UE switches to state [MM-DEREGISTERED/PS]
 [2025-03-10 18:25:20.053] [nas] [info] UE switches to state [MM-DEREGISTERED/NORMAL-SERVICE]
-[2025-03-10 18:25:20.053] [nas] [debug] Initial registration required due to [MM-DEREG-NORMAL-SE
-RVICE]
+[2025-03-10 18:25:20.053] [nas] [debug] Initial registration required due to [MM-DEREG-NORMAL-SERVICE]
 [2025-03-10 18:25:20.075] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
 [2025-03-10 18:25:20.075] [nas] [debug] Sending Initial Registration
 [2025-03-10 18:25:20.075] [nas] [info] UE switches to state [MM-REGISTER-INITIATED]
@@ -931,8 +932,7 @@ RVICE]
 [2025-03-10 18:25:20.246] [nas] [debug] Sending Registration Complete
 [2025-03-10 18:25:20.246] [nas] [info] Initial Registration is successful
 [2025-03-10 18:25:20.246] [nas] [debug] Sending PDU Session Establishment Request
-[2025-03-10 18:25:20.258] [nas] [debug] UAC access attempt is allowed for identity[0], category[
-MO_sig]
+[2025-03-10 18:25:20.258] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
 [2025-03-10 18:25:20.469] [nas] [debug] Configuration Update Command received
 [2025-03-10 18:25:22.069] [nas] [debug] PDU Session Establishment Accept received
 [2025-03-10 18:25:22.069] [nas] [info] PDU Session establishment is successful PSI[1]
@@ -944,127 +944,87 @@ AMF log showing that the session is created
 [root@compute-1 logs]# more amf.log
 Open5GS daemon v2.7.1
 
-03/10 18:11:23.054: [app] INFO: Configuration: '/opt/open5gs/etc/open5gs/amf.yaml' (../lib/app/o
-gs-init.c:133)
-03/10 18:11:23.054: [app] INFO: File Logging: '/opt/open5gs/var/log/open5gs/amf.log' (../lib/app
-/ogs-init.c:136)
-03/10 18:11:23.065: [metrics] INFO: metrics_server() [http://10.110.1.6]:9090 (../lib/metrics/pr
-ometheus/context.c:299)
+03/10 18:11:23.054: [app] INFO: Configuration: '/opt/open5gs/etc/open5gs/amf.yaml' (../lib/app/ogs-init.c:133)
+03/10 18:11:23.054: [app] INFO: File Logging: '/opt/open5gs/var/log/open5gs/amf.log' (../lib/app/ogs-init.c:136)
+03/10 18:11:23.065: [metrics] INFO: metrics_server() [http://10.110.1.6]:9090 (../lib/metrics/prometheus/context.c:299)
 03/10 18:11:23.065: [sbi] INFO: NF Service [namf-comm] (../lib/sbi/context.c:1841)
-03/10 18:11:23.066: [sbi] INFO: nghttp2_server() [http://10.40.1.5]:8080 (../lib/sbi/nghttp2-ser
-ver.c:414)
+03/10 18:11:23.066: [sbi] INFO: nghttp2_server() [http://10.40.1.5]:8080 (../lib/sbi/nghttp2-server.c:414)
 03/10 18:11:23.066: [amf] INFO: ngap_server() [10.50.1.2]:38412 (../src/amf/ngap-sctp.c:61)
 03/10 18:11:23.067: [sctp] INFO: AMF initialize...done (../src/amf/app.c:33)
-03/10 18:11:23.074: [sbi] INFO: [13064c34-fddb-41ef-a24a-95054fdc4815] NF registered [Heartbeat:
-10s] (../lib/sbi/nf-sm.c:221)
+03/10 18:11:23.074: [sbi] INFO: [13064c34-fddb-41ef-a24a-95054fdc4815] NF registered [Heartbeat:10s] (../lib/sbi/nf-sm.c:221)
 03/10 18:11:23.079: [sbi] INFO: [13086262-fddb-41ef-8fd6-fb368622a690] Subscription created unti
-l 2025-03-11T18:11:23.075680+00:00 [duration:86400,validity:86399.996515,patch:43199.998257] (..
-/lib/sbi/nnrf-handler.c:813)
+l 2025-03-11T18:11:23.075680+00:00 [duration:86400,validity:86399.996515,patch:43199.998257] (../lib/sbi/nnrf-handler.c:813)
 03/10 18:11:23.079: [sbi] INFO: [13086938-fddb-41ef-8fd6-fb368622a690] Subscription created unti
-l 2025-03-11T18:11:23.075830+00:00 [duration:86400,validity:86399.996078,patch:43199.998039] (..
-/lib/sbi/nnrf-handler.c:813)
+l 2025-03-11T18:11:23.075830+00:00 [duration:86400,validity:86399.996078,patch:43199.998039] (../lib/sbi/nnrf-handler.c:813)
 03/10 18:11:23.079: [sbi] INFO: [13086d34-fddb-41ef-8fd6-fb368622a690] Subscription created unti
-l 2025-03-11T18:11:23.075931+00:00 [duration:86400,validity:86399.996074,patch:43199.998037] (..
-/lib/sbi/nnrf-handler.c:813)
+l 2025-03-11T18:11:23.075931+00:00 [duration:86400,validity:86399.996074,patch:43199.998037] (../lib/sbi/nnrf-handler.c:813)
 03/10 18:11:23.079: [sbi] INFO: [1308713a-fddb-41ef-8fd6-fb368622a690] Subscription created unti
-l 2025-03-11T18:11:23.076034+00:00 [duration:86400,validity:86399.996096,patch:43199.998048] (..
-/lib/sbi/nnrf-handler.c:813)
+l 2025-03-11T18:11:23.076034+00:00 [duration:86400,validity:86399.996096,patch:43199.998048] (../lib/sbi/nnrf-handler.c:813)
 03/10 18:11:23.080: [sbi] INFO: [13087504-fddb-41ef-8fd6-fb368622a690] Subscription created unti
-l 2025-03-11T18:11:23.076130+00:00 [duration:86400,validity:86399.996117,patch:43199.998058] (..
-/lib/sbi/nnrf-handler.c:813)
+l 2025-03-11T18:11:23.076130+00:00 [duration:86400,validity:86399.996117,patch:43199.998058] (../lib/sbi/nnrf-handler.c:813)
 03/10 18:11:23.080: [sbi] INFO: [1308793c-fddb-41ef-8fd6-fb368622a690] Subscription created unti
-l 2025-03-11T18:11:23.076240+00:00 [duration:86400,validity:86399.996153,patch:43199.998076] (..
-/lib/sbi/nnrf-handler.c:813)
+l 2025-03-11T18:11:23.076240+00:00 [duration:86400,validity:86399.996153,patch:43199.998076] (../lib/sbi/nnrf-handler.c:813)
 03/10 18:11:23.080: [sbi] INFO: [13087d6a-fddb-41ef-8fd6-fb368622a690] Subscription created unti
-l 2025-03-11T18:11:23.076345+00:00 [duration:86400,validity:86399.996139,patch:43199.998069] (..
-/lib/sbi/nnrf-handler.c:813)
-03/10 18:11:23.349: [sbi] INFO: (NRF-notify) NF registered [132bf86c-fddb-41ef-8277-2b544ba6f1ba
-:1] (../lib/sbi/nnrf-handler.c:1058)
-03/10 18:11:23.349: [sbi] INFO: [UDM] (NRF-notify) NF Profile updated [132bf86c-fddb-41ef-8277-2
-b544ba6f1ba:1] (../lib/sbi/nnrf-handler.c:1072)
-03/10 18:11:23.350: [sbi] WARNING: [UDM] (NRF-notify) NF has already been added [132bf86c-fddb-4
-1ef-8277-2b544ba6f1ba:1] (../lib/sbi/nnrf-handler.c:1061)
-03/10 18:11:23.350: [sbi] INFO: [UDM] (NRF-notify) NF Profile updated [132bf86c-fddb-41ef-8277-2
-b544ba6f1ba:1] (../lib/sbi/nnrf-handler.c:1072)
-03/10 18:11:23.350: [sbi] WARNING: NF EndPoint(addr) updated [10.40.1.4:80] (../lib/sbi/context.
-c:2210)
-03/10 18:11:23.350: [sbi] WARNING: NF EndPoint(addr) updated [10.40.1.4:8080] (../lib/sbi/contex
-t.c:1946)
-03/10 18:11:24.206: [sbi] INFO: (NRF-notify) NF registered [13b3f802-fddb-41ef-86db-c9fba5b52990
-:1] (../lib/sbi/nnrf-handler.c:1058)
-03/10 18:11:24.206: [sbi] INFO: [NSSF] (NRF-notify) NF Profile updated [13b3f802-fddb-41ef-86db-
-c9fba5b52990:1] (../lib/sbi/nnrf-handler.c:1072)
-03/10 18:11:24.442: [sbi] INFO: (NRF-notify) NF registered [13c9b4a8-fddb-41ef-95b6-69f4d9a36783
-:1] (../lib/sbi/nnrf-handler.c:1058)
-03/10 18:11:24.442: [sbi] INFO: [PCF] (NRF-notify) NF Profile updated [13c9b4a8-fddb-41ef-95b6-6
-9f4d9a36783:1] (../lib/sbi/nnrf-handler.c:1072)
-03/10 18:11:45.381: [sbi] INFO: (NRF-notify) NF registered [20a0a0a0-4043-4000-8864-30000ce4b5c7
-:1] (../lib/sbi/nnrf-handler.c:1058)
-03/10 18:11:45.381: [sbi] INFO: [SMF] (NRF-notify) NF Profile updated [20a0a0a0-4043-4000-8864-3
-0000ce4b5c7:1] (../lib/sbi/nnrf-handler.c:1072)
-03/10 18:22:49.754: [sbi] INFO: [SMF] (NRF-notify) NF_DEREGISTERED event [20a0a0a0-4043-4000-886
-4-30000ce4b5c7:1] (../lib/sbi/nnrf-handler.c:1104)
-03/10 18:22:52.659: [sbi] INFO: (NRF-notify) NF registered [10a0a0a0-8441-4000-8280-30000ac4b5c7
-:1] (../lib/sbi/nnrf-handler.c:1058)
-03/10 18:22:52.659: [sbi] INFO: [SMF] (NRF-notify) NF Profile updated [10a0a0a0-8441-4000-8280-3
-0000ac4b5c7:1] (../lib/sbi/nnrf-handler.c:1072)
-03/10 18:25:19.620: [amf] INFO: gNB-N2 accepted[10.50.1.10]:48477 in ng-path module (../src/amf/
-ngap-sctp.c:113)
-03/10 18:25:19.620: [amf] INFO: gNB-N2 accepted[10.50.1.10] in master_sm module (../src/amf/amf-
-sm.c:757)
+l 2025-03-11T18:11:23.076345+00:00 [duration:86400,validity:86399.996139,patch:43199.998069] (../lib/sbi/nnrf-handler.c:813)
+03/10 18:11:23.349: [sbi] INFO: (NRF-notify) NF registered [132bf86c-fddb-41ef-8277-2b544ba6f1ba:1] (../lib/sbi/nnrf-handler.c:1058)
+03/10 18:11:23.349: [sbi] INFO: [UDM] (NRF-notify) NF Profile updated [132bf86c-fddb-41ef-8277-2b544ba6f1ba:1] (../lib/sbi/nnrf-handler.c:1072)
+03/10 18:11:23.350: [sbi] WARNING: [UDM] (NRF-notify) NF has already been added [132bf86c-fddb-41ef-8277-2b544ba6f1ba:1] (../lib/sbi/nnrf-handler.c:1061)
+03/10 18:11:23.350: [sbi] INFO: [UDM] (NRF-notify) NF Profile updated [132bf86c-fddb-41ef-8277-2b544ba6f1ba:1] (../lib/sbi/nnrf-handler.c:1072)
+03/10 18:11:23.350: [sbi] WARNING: NF EndPoint(addr) updated [10.40.1.4:80] (../lib/sbi/context.c:2210)
+03/10 18:11:23.350: [sbi] WARNING: NF EndPoint(addr) updated [10.40.1.4:8080] (../lib/sbi/context.c:1946)
+03/10 18:11:24.206: [sbi] INFO: (NRF-notify) NF registered [13b3f802-fddb-41ef-86db-c9fba5b52990:1] (../lib/sbi/nnrf-handler.c:1058)
+03/10 18:11:24.206: [sbi] INFO: [NSSF] (NRF-notify) NF Profile updated [13b3f802-fddb-41ef-86db-c9fba5b52990:1] (../lib/sbi/nnrf-handler.c:1072)
+03/10 18:11:24.442: [sbi] INFO: (NRF-notify) NF registered [13c9b4a8-fddb-41ef-95b6-69f4d9a36783:1] (../lib/sbi/nnrf-handler.c:1058)
+03/10 18:11:24.442: [sbi] INFO: [PCF] (NRF-notify) NF Profile updated [13c9b4a8-fddb-41ef-95b6-69f4d9a36783:1] (../lib/sbi/nnrf-handler.c:1072)
+03/10 18:11:45.381: [sbi] INFO: (NRF-notify) NF registered [20a0a0a0-4043-4000-8864-30000ce4b5c7:1] (../lib/sbi/nnrf-handler.c:1058)
+03/10 18:11:45.381: [sbi] INFO: [SMF] (NRF-notify) NF Profile updated [20a0a0a0-4043-4000-8864-30000ce4b5c7:1] (../lib/sbi/nnrf-handler.c:1072)
+03/10 18:22:49.754: [sbi] INFO: [SMF] (NRF-notify) NF_DEREGISTERED event [20a0a0a0-4043-4000-8864-30000ce4b5c7:1] (../lib/sbi/nnrf-handler.c:1104)
+03/10 18:22:52.659: [sbi] INFO: (NRF-notify) NF registered [10a0a0a0-8441-4000-8280-30000ac4b5c7:1] (../lib/sbi/nnrf-handler.c:1058)
+03/10 18:22:52.659: [sbi] INFO: [SMF] (NRF-notify) NF Profile updated [10a0a0a0-8441-4000-8280-30000ac4b5c7:1] (../lib/sbi/nnrf-handler.c:1072)
+03/10 18:25:19.620: [amf] INFO: gNB-N2 accepted[10.50.1.10]:48477 in ng-path module (../src/amf/ngap-sctp.c:113)
+03/10 18:25:19.620: [amf] INFO: gNB-N2 accepted[10.50.1.10] in master_sm module (../src/amf/amf-sm.c:757)
 03/10 18:25:19.628: [amf] INFO: [Added] Number of gNBs is now 1 (../src/amf/context.c:1236)
-03/10 18:25:19.628: [amf] INFO: gNB-N2[10.50.1.10] max_num_of_ostreams : 10 (../src/amf/amf-sm.c
-:796)
+03/10 18:25:19.628: [amf] INFO: gNB-N2[10.50.1.10] max_num_of_ostreams : 10 (../src/amf/amf-sm.c:796)
 03/10 18:25:20.097: [amf] INFO: InitialUEMessage (../src/amf/ngap-handler.c:401)
 03/10 18:25:20.097: [amf] INFO: [Added] Number of gNB-UEs is now 1 (../src/amf/context.c:2662)
-03/10 18:25:20.097: [amf] INFO:     RAN_UE_NGAP_ID[1] AMF_UE_NGAP_ID[1] TAC[1] CellID[0x100] (..
-/src/amf/ngap-handler.c:562)
-03/10 18:25:20.097: [amf] INFO: [suci-0-206-01-0000-0-0-0000000002] Unknown UE by SUCI (../src/a
-mf/context.c:1844)
+03/10 18:25:20.097: [amf] INFO:     RAN_UE_NGAP_ID[1] AMF_UE_NGAP_ID[1] TAC[1] CellID[0x100] (../src/amf/ngap-handler.c:562)
+03/10 18:25:20.097: [amf] INFO: [suci-0-206-01-0000-0-0-0000000002] Unknown UE by SUCI (../src/amf/context.c:1844)
 03/10 18:25:20.097: [amf] INFO: [Added] Number of AMF-UEs is now 1 (../src/amf/context.c:1621)
 03/10 18:25:20.097: [gmm] INFO: Registration request (../src/amf/gmm-sm.c:1214)
-03/10 18:25:20.097: [gmm] INFO: [suci-0-206-01-0000-0-0-0000000002]    SUCI (../src/amf/gmm-hand
-ler.c:172)
+03/10 18:25:20.097: [gmm] INFO: [suci-0-206-01-0000-0-0-0000000002]    SUCI (../src/amf/gmm-handler.c:172)
 03/10 18:25:20.097: [sbi] WARNING: Try to discover [nausf-auth] (../lib/sbi/path.c:528)
-03/10 18:25:20.099: [sbi] INFO: [NULL] (NRF-discover) NF registered [13050e28-fddb-41ef-8060-f1f
-318ecdc6f:1] (../lib/sbi/nnrf-handler.c:1187)
-03/10 18:25:20.099: [sbi] INFO: [AUSF] (NF-discover) NF Profile updated [13050e28-fddb-41ef-8060
--f1f318ecdc6f:1] (../lib/sbi/nnrf-handler.c:1230)
-03/10 18:25:20.143: [gmm] WARNING: Authentication failure(Synch failure) (../src/amf/gmm-sm.c:17
-19)
-03/10 18:25:20.158: [amf] WARNING: NF EndPoint(addr) updated [10.40.1.3:8080] (../src/amf/nausf-
-handler.c:130)
-03/10 18:25:20.245: [amf] WARNING: NF EndPoint(addr) updated [10.40.1.4:8080] (../src/amf/npcf-h
-andler.c:143)
-03/10 18:25:20.453: [gmm] INFO: [imsi-206010000000002] Registration complete (../src/amf/gmm-sm.
-c:2313)
-03/10 18:25:20.453: [amf] INFO: [imsi-206010000000002] Configuration update command (../src/amf/
-nas-path.c:591)
-03/10 18:25:20.453: [gmm] INFO:     UTC [2025-03-10T18:25:20] Timezone[0]/DST[0] (../src/amf/gmm
--build.c:558)
-03/10 18:25:20.453: [gmm] INFO:     LOCAL [2025-03-10T18:25:20] Timezone[0]/DST[0] (../src/amf/g
-mm-build.c:563)
-03/10 18:25:20.453: [amf] INFO: [Added] Number of AMF-Sessions is now 1 (../src/amf/context.c:26
-83)
+03/10 18:25:20.099: [sbi] INFO: [NULL] (NRF-discover) NF registered [13050e28-fddb-41ef-8060-f1f318ecdc6f:1] (../lib/sbi/nnrf-handler.c:1187)
+03/10 18:25:20.099: [sbi] INFO: [AUSF] (NF-discover) NF Profile updated [13050e28-fddb-41ef-8060-f1f318ecdc6f:1] (../lib/sbi/nnrf-handler.c:1230)
+03/10 18:25:20.143: [gmm] WARNING: Authentication failure(Synch failure) (../src/amf/gmm-sm.c:1719)
+03/10 18:25:20.158: [amf] WARNING: NF EndPoint(addr) updated [10.40.1.3:8080] (../src/amf/nausf-handler.c:130)
+03/10 18:25:20.245: [amf] WARNING: NF EndPoint(addr) updated [10.40.1.4:8080] (../src/amf/npcf-handler.c:143)
+03/10 18:25:20.453: [gmm] INFO: [imsi-206010000000002] Registration complete (../src/amf/gmm-sm.c:2313)
+03/10 18:25:20.453: [amf] INFO: [imsi-206010000000002] Configuration update command (../src/amf/nas-path.c:591)
+03/10 18:25:20.453: [gmm] INFO:     UTC [2025-03-10T18:25:20] Timezone[0]/DST[0] (../src/amf/gmm-build.c:558)
+03/10 18:25:20.453: [gmm] INFO:     LOCAL [2025-03-10T18:25:20] Timezone[0]/DST[0] (../src/amf/gmm-build.c:563)
+03/10 18:25:20.453: [amf] INFO: [Added] Number of AMF-Sessions is now 1 (../src/amf/context.c:2683)
 03/10 18:25:20.453: [gmm] INFO: UE SUPI[imsi-206010000000002] DNN[demo.nokia.mnc001.mcc206.gprs]
- S_NSSAI[SST:1 SD:0xabcdef] smContextRef[NULL] smContextResourceURI[NULL] (../src/amf/gmm-handle
-r.c:1285)
-03/10 18:25:20.453: [gmm] INFO: SMF Instance [10a0a0a0-8441-4000-8280-30000ac4b5c7] (../src/amf/
-gmm-handler.c:1326)
-03/10 18:25:22.412: [amf] INFO: [imsi-206010000000002:1:11][0:0:NULL] /nsmf-pdusession/v1/sm-con
-texts/{smContextRef}/modify (../src/amf/nsmf-handler.c:915)
-	   
-	   
+ S_NSSAI[SST:1 SD:0xabcdef] smContextRef[NULL] smContextResourceURI[NULL] (../src/amf/gmm-handler.c:1285)
+03/10 18:25:20.453: [gmm] INFO: SMF Instance [10a0a0a0-8441-4000-8280-30000ac4b5c7] (../src/amf/gmm-handler.c:1326)
+03/10 18:25:22.412: [amf] INFO: [imsi-206010000000002:1:11][0:0:NULL] /nsmf-pdusession/v1/sm-contexts/{smContextRef}/modify (../src/amf/nsmf-handler.c:915)
+    
+    
 
 
 clear the logs before starting 5 IMSIs
+```bash
 [root@compute-1 scripts]# ./clear_logs.sh
-[root@compute-1 scripts]#
+```
 
+```bash
 [root@compute-1 scripts]# ./start_5g_cups_10IMSI.sh
 Waiting for uesimtun interfaces to appear...
 All uesimtun interfaces are ready. Adding routes...
 Routes added successfully: ip route add 1.1.1.0/24 nexthop dev uesimtun0 nexthop dev uesimtun1 nexthop dev uesimtun2 nexthop dev uesimtun3 nexthop dev uesimtun4 nexthop dev uesimtun5 nexthop dev uesimtun6 nexthop dev uesimtun7 nexthop dev uesimtun8 nexthop dev uesimtun9
+```
+
+check the session on MAG-C-2
+```bash
 [root@compute-1 scripts]#
 
 *A:SMF1# show mobile-gateway pdn pdn-context
@@ -1085,7 +1045,10 @@ IMSI/IMEI(#)        APN       Type    Beare* UE Address (IPv4/IPv6)  Ref-pt/Si*
 206010000000009     demo.nok* IPv4    1      43.0.96.4/-             N11/http2
 -------------------------------------------------------------------------------
 Number of PDN instances : 10
+```
 
+check the session on the 2nd MAG-C
+```bash
 *A:SMF2# show mobile-gateway pdn pdn-context
 ===============================================================================
 IMSI/IMEI(#)        APN       Type    Beare* UE Address (IPv4/IPv6)  Ref-pt/Si*
@@ -1104,8 +1067,11 @@ IMSI/IMEI(#)        APN       Type    Beare* UE Address (IPv4/IPv6)  Ref-pt/Si*
 206010000000009     demo.nok* IPv4    1      43.0.96.4/-             N11/http2
 -------------------------------------------------------------------------------
 Number of PDN instances : 10
+```
 
+Check the UE to verify that 10 IMSI are attached i.e.uesimtun0 to uesimtun9 are created
 
+```bash
 bash-5.1# ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -1185,8 +1151,12 @@ bash-5.1# ip a
        valid_lft forever preferred_lft forever
     inet6 fe80::a8c1:abff:fe1a:7c7b/64 scope link
        valid_lft forever preferred_lft forever
+	
+```						
 
-the UP are reached via the uesimtunx
+The UP are reached via the uesimtunx
+
+```bash
 bash-5.1# ip r
 default via 192.168.40.1 dev eth0
 1.1.1.0/24
@@ -1202,10 +1172,14 @@ default via 192.168.40.1 dev eth0
         nexthop dev uesimtun9 weight 1
 10.90.1.0/24 dev eth1 proto kernel scope link src 10.90.1.2
 192.168.40.0/24 dev eth0 proto kernel scope link src 192.168.40.67
+```
 
-the 10 IMSIs are load balanced over the 2 UP-1
+```
+
+the 10 IMSIs are load balanced over the 2 UPs
+
+```bash
 *A:UP-1# show service active-subscribers hierarchy
-
 ===============================================================================
 Active Subscribers Hierarchy
 ===============================================================================
@@ -1276,8 +1250,11 @@ Active Subscribers Hierarchy
 
 -------------------------------------------------------------------------------
 Number of active subscribers : 5
+```
 
+The other 5 IMSIs are created on UP2
 
+```bash
 
 *A:UP2# show service active-subscribers
 ===============================================================================
@@ -1356,10 +1333,12 @@ IP Address
 -------------------------------------------------------------------------------
 Number of active subscribers : 5
 
+```
 
 
-you can reach the UP-1 and UP2 from the UE, the odd UE are deployed on UP-1 1.1.1.101 and even UEs are deployed on UP-2 1.1.1.102
+You can reach the UP-1 and UP2 from the UE, the odd UE are deployed on UP-1 1.1.1.101 and even UEs are deployed on UP-2 1.1.1.102
 
+```bash
 
 bash-5.1# ping 1.1.1.102 -I uesimtun0
 PING 1.1.1.102 (1.1.1.102): 56 data bytes
@@ -1385,10 +1364,11 @@ PING 1.1.1.102 (1.1.1.102): 56 data bytes
 --- 1.1.1.102 ping statistics ---
 1 packets transmitted, 0 packets received, 100% packet loss
 
-
+```
 logs can be checked as before
 
-GNB
+the GNB logs 
+```bash
 [root@compute-1 logs]# more gnb.log
 UERANSIM v3.2.6
 [2025-03-10 18:50:39.262] [sctp] [info] Trying to establish SCTP connection... (10.50.1.2:38412)
@@ -1450,9 +1430,9 @@ UERANSIM v3.2.6
 
 
 
-UE1
+the UE logs shows the 10 IMSIs are attached
 
-
+```bash
 [root@compute-1 logs]# more ue1.log
 UERANSIM v3.2.6
 [2025-03-10 18:50:39.527] [206010000000018|nas] [info] UE switches to state [MM-DEREGISTERED/PLMN-SEARCH]
@@ -1690,8 +1670,7 @@ UERANSIM v3.2.6
 [2025-03-10 18:50:39.760] [206010000000018|nas] [info] Initial Registration is successful
 [2025-03-10 18:50:39.760] [206010000000018|nas] [debug] Sending PDU Session Establishment Request
 [2025-03-10 18:50:39.761] [206010000000016|nas] [debug] Configuration Update Command received
-[2025-03-10 18:50:39.772] [206010000000018|nas] [debug] UAC access attempt is allowed for identi
-ty[0], category[MO_sig]
+[2025-03-10 18:50:39.772] [206010000000018|nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
 [2025-03-10 18:50:39.990] [206010000000013|nas] [debug] Configuration Update Command received
 [2025-03-10 18:50:39.991] [206010000000018|nas] [debug] Configuration Update Command received
 [2025-03-10 18:50:40.001] [206010000000009|nas] [debug] Configuration Update Command received
@@ -1726,9 +1705,11 @@ ty[0], category[MO_sig]
 [2025-03-10 18:50:40.646] [206010000000017|app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun7, 43.0.32.11] is up.
 [2025-03-10 18:50:40.672] [206010000000009|app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun8, 43.0.96.4] is up.
 [2025-03-10 18:50:40.710] [206010000000013|app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun9, 43.0.32.10] is up.
+```
 
+the AMF log for the 10 IMSIs
 
-AMF log
+```bash
 [root@compute-1 logs]# more amf.log
 [root@compute-1 logs]# more amf.log
 03/10 19:35:09.192: [amf] INFO: gNB-N2 accepted[10.50.1.10]:39844 in ng-path module (../src/amf/ngap-sctp.c:113)
@@ -1895,11 +1876,14 @@ AMF log
 03/10 19:35:10.842: [amf] INFO: [imsi-206010000000009:1:11][0:0:NULL] /nsmf-pdusession/v1/sm-contexts/{smContextRef}/modify (../src/amf/nsmf-handler.c:915)
 03/10 19:35:10.862: [amf] INFO: [imsi-206010000000014:1:11][0:0:NULL] /nsmf-pdusession/v1/sm-contexts/{smContextRef}/modify (../src/amf/nsmf-handler.c:915)
 03/10 19:35:10.892: [amf] INFO: [imsi-206010000000017:1:11][0:0:NULL] /nsmf-pdusession/v1/sm-contexts/{smContextRef}/modify (../src/amf/nsmf-handler.c:915)
+```
 
+General show commands to check the  MAG-c communciation with other elements i.e. UDM,AMF and NRF
 
-also the MAG-c communciation with other elements can be checked via belw show commands
+the UDM info 
+
+```bash
 A:SMF1# show mobile-gateway pdn service-stats nf-type udm
-
 ===============================================================================
 UDM peer service statistics
 ===============================================================================
@@ -1985,10 +1969,11 @@ SMF Deregistration
 -------------------------------------------------------------------------------
 Number of instances    : 1
 ===============================================================================
-*A:SMF1# show mobile-gateway pdn service-stats nf-type
-<nf-type>
- amf  nrf  pcf  udm  chf  smf  scp
+```
 
+The AMF Information
+
+```bash
 *A:SMF1# show mobile-gateway pdn service-stats nf-type amf
 
 ===============================================================================
@@ -2164,14 +2149,11 @@ Number Of Sessions     : 10
 -------------------------------------------------------------------------------
 Number of instances    : 2
 ===============================================================================
-*A:SMF1# show mobile-gateway pdn service-stats nf-type
-<nf-type>
- amf  nrf  pcf  udm  chf  smf  scp
+```
 
-*A:SMF1# show mobile-gateway pdn service-stats nf-type
-<nf-type>
- amf  nrf  pcf  udm  chf  smf  scp
+the NRF Information
 
+```bash
 *A:SMF1# show mobile-gateway pdn service-stats nf-type nrf
 
 ===============================================================================
@@ -2248,6 +2230,8 @@ CHF Discovery Failures : 0
 Number of instances    : 1
 ===============================================================================
 
+```
+
 
 
 
@@ -2256,6 +2240,7 @@ Number of instances    : 1
 
 you can stop the 5G session using this script
 
+```bash
 [root@compute-1 scripts]# ./stop_5g_cups.sh
 PID   USER     TIME  COMMAND
     1 root      0:00 /bin/bash
@@ -2264,6 +2249,11 @@ PID   USER     TIME  COMMAND
     1 root      0:00 /bin/bash
    63 root      0:00 bash
   213 root      0:00 ps -ef
+		
+```
+
+also a clear command from MAG-C can be used
+
   
   
   
@@ -3406,9 +3396,9 @@ pppoe session are created on UP-1
                         no shutdown
                     exit
                     no shutdown
-					
-					
-					
+     
+     
+     
 *A:UP-1#   /show subscriber-mgmt statistics host system non-zero-value-only | match Peak invert-match
 
 ===============================================================================
@@ -3432,8 +3422,8 @@ Total  PPP Hosts                                30       30 03/10/2025 21:31:08
        PFCP Hosts                               35       35 03/10/2025 21:31:08
        System Hosts Scale                       35       35 03/10/2025 21:31:08
 -------------------------------------------------------------------------------
-					
-					
+     
+     
 *A:UP-1# show service active-subscribers hierarchy
 
 ===============================================================================
