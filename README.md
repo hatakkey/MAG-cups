@@ -251,11 +251,11 @@ Before you begin, ensure that the following are installed on your machine:
    │ cups-webui      │ linux                                      │ running │ 192.168.40.51  │
    │                 │ gradiant/open5gs-webui:2.7.1               │         │ N/A            │
    ╰─────────────────┴────────────────────────────────────────────┴─────────┴────────────────╯
-#### **3   check the MAG-C ,DB and UP**:
+### **3   check the MAG-C ,DB and UP**:
    check the multi-chassis redundancy between the MAG-C , the communcation with the DB and the sx satus with UP-1 and UP-2
 
 
-### **3.1 Check the PFCP Reference Point Peers**
+#### **3.1 Check the PFCP Reference Point Peers**
    ```bash          
    *A:SMF1# show mobile-gateway pdn ref-point-peers sx-n4
    ===============================================================================
@@ -284,10 +284,10 @@ Before you begin, ensure that the following are installed on your machine:
    UP Association   : up                   Last Change Time : 03/10/2025 20:59:53
    UP Selection     : True
    Enforced PFCP association list : Yes
-	
-	### **3.2 check the database communication with the MAG-C,it should be in HOT satus**
-	  ```bash 
-   *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
+ 
+#### **3.2 check the database communication with the MAG-C,it should be in HOT satus**
+    ```bash 
+    *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
    ===============================================================================
    PDN Cdbx reference point peers
    ===============================================================================
@@ -302,7 +302,7 @@ Before you begin, ensure that the following are installed on your machine:
    Last status chng: 03/10/2025 18:13:30
    -------------------------------------------------------------------------------
    Number of peers : 1
-### **3.3 check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**
+#### **3.3 check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**
    ```bash
    *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
    ===============================================================================
@@ -352,7 +352,7 @@ Before you begin, ensure that the following are installed on your machine:
    -------------------------------------------------------------------------------
    ===============================================================================
 
-## **3.4 MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
+#### **3.4 MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
    ```bash
    *A:SMF2# admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1 now
    Switchover will be executed but new Master node may have incomplete UE records, proceed (y/n)?y   
