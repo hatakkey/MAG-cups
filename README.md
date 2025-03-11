@@ -251,158 +251,158 @@ Before you begin, ensure that the following are installed on your machine:
    │ cups-webui      │ linux                                      │ running │ 192.168.40.51  │
    │                 │ gradiant/open5gs-webui:2.7.1               │         │ N/A            │
    ╰─────────────────┴────────────────────────────────────────────┴─────────┴────────────────╯
-##### **3   **check the MAG-C ,DB and UP**:
-     check the multi-chassis redundancy between the MAG-C , the communcation with the DB and the sx satus with UP-1 and UP-2
+#### **3   check the MAG-C ,DB and UP**:
+   check the multi-chassis redundancy between the MAG-C , the communcation with the DB and the sx satus with UP-1 and UP-2
 
 
 ### **3.1 Check the PFCP Reference Point Peers**
-     ```bash          
-     *A:SMF1# show mobile-gateway pdn ref-point-peers sx-n4
-     ===============================================================================
-     PFCP reference point peers
-     ===============================================================================
-     Peer address     : 1.1.1.101
-     Node Id          : up1.nokia.com
-     Router           : vprn2043
-     Path Mgmt State  : up
-     Create Time      : 03/10/2025 19:54:57  Gateway Id       : 1
-     UP Features      : FTUP TREU EMPU PDIU FRRT ADPDP MNOP IP6PL
-     UP BBF Features  : PPPOE IPOE LCPKO
-     UP Nokia Features: BULK-AUDIT LAC SSSG FSG
-     UP Association   : up                   Last Change Time : 03/10/2025 21:00:10
-     UP Selection     : True
-     Enforced PFCP association list : Yes
-     -------------------------------------------------------------------------------
-     Peer address     : 1.1.1.102
-     Node Id          : up2.nokia.com
-     Router           : vprn2043
-     Path Mgmt State  : up
-     Create Time      : 03/10/2025 19:55:02  Gateway Id       : 1
-     UP Features      : FTUP TREU EMPU PDIU FRRT ADPDP MNOP IP6PL
-     UP BBF Features  : PPPOE IPOE LCPKO
-     UP Nokia Features: BULK-AUDIT LAC SSSG FSG
-     UP Association   : up                   Last Change Time : 03/10/2025 20:59:53
-     UP Selection     : True
-     Enforced PFCP association list : Yes
-     -------------------------------------------------------------------------------
+   ```bash          
+   *A:SMF1# show mobile-gateway pdn ref-point-peers sx-n4
+			===============================================================================
+			PFCP reference point peers
+			===============================================================================
+			Peer address     : 1.1.1.101
+			Node Id          : up1.nokia.com
+			Router           : vprn2043
+			Path Mgmt State  : up
+			Create Time      : 03/10/2025 19:54:57  Gateway Id       : 1
+			UP Features      : FTUP TREU EMPU PDIU FRRT ADPDP MNOP IP6PL
+			UP BBF Features  : PPPOE IPOE LCPKO
+			UP Nokia Features: BULK-AUDIT LAC SSSG FSG
+			UP Association   : up                   Last Change Time : 03/10/2025 21:00:10
+			UP Selection     : True
+			Enforced PFCP association list : Yes
+			-------------------------------------------------------------------------------
+			Peer address     : 1.1.1.102
+			Node Id          : up2.nokia.com
+			Router           : vprn2043
+			Path Mgmt State  : up
+			Create Time      : 03/10/2025 19:55:02  Gateway Id       : 1
+			UP Features      : FTUP TREU EMPU PDIU FRRT ADPDP MNOP IP6PL
+			UP BBF Features  : PPPOE IPOE LCPKO
+			UP Nokia Features: BULK-AUDIT LAC SSSG FSG
+			UP Association   : up                   Last Change Time : 03/10/2025 20:59:53
+			UP Selection     : True
+			Enforced PFCP association list : Yes
+			-------------------------------------------------------------------------------
 
 ### ***3.1 check the database communication with the MAG-C ,it should be in HOT satus**
-     ```bash 
-     *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
-     ===============================================================================
-     PDN Cdbx reference point peers
-     ===============================================================================
-     Peer address    : 192.168.1.100
-     Router          : vprn1151                         Port          : 5678
-     Vm              : 3
-     Admin State     : Up                               Oper State    : Up
-     Create Time     : 03/10/2025 18:12:15              Gateway Id    : 1
-     cloud-db-prof   : cdb-test
-     Interface       : system
-     DB Sync state   : HOT                              VM Sync state : HOT
-     Last status chng: 03/10/2025 18:13:30
-     -------------------------------------------------------------------------------
-     Number of peers : 1
+   ```bash 
+			*A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
+			===============================================================================
+			PDN Cdbx reference point peers
+			===============================================================================
+			Peer address    : 192.168.1.100
+			Router          : vprn1151                         Port          : 5678
+			Vm              : 3
+			Admin State     : Up                               Oper State    : Up
+			Create Time     : 03/10/2025 18:12:15              Gateway Id    : 1
+			cloud-db-prof   : cdb-test
+			Interface       : system
+			DB Sync state   : HOT                              VM Sync state : HOT
+			Last status chng: 03/10/2025 18:13:30
+			-------------------------------------------------------------------------------
+			Number of peers : 1
 ### ***3.2 check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**
-     ```bash
-     *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
-     ===============================================================================
-     Multi-chassis Peer Mc-Mobile Table
-     ===============================================================================
-     Peer                 : 10.10.10.2
-     Last State Change    : 03/10/2025 18:13:04
-     Admin State          : Up               Oper State           : Up
-     Peer Version         : TiMOS-AG-C-24.10.R3
-     Keep Alive           : 500 deci-sec     Hold On Nbr Fail     : 3
-     BFD Svc ID           : 0                BFD Interface Name   : system
-     MC-Redirect          : Disabled
-     Admin MC-complete-ue-sync : Enabled
-     Oper MC-complete-ue-sync  : Enabled
-     Slave Traffic Detection Delay Timer : Disabled
-     Traffic detection Poll timer                    : 5 secs
-     Master Traffic detection                        : Enabled
-     Traffic detection                               : Relaxed
-     Peer Connect                                    : Enabled
+			```bash
+			*A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
+			===============================================================================
+			Multi-chassis Peer Mc-Mobile Table
+			===============================================================================
+			Peer                 : 10.10.10.2
+			Last State Change    : 03/10/2025 18:13:04
+			Admin State          : Up               Oper State           : Up
+			Peer Version         : TiMOS-AG-C-24.10.R3
+			Keep Alive           : 500 deci-sec     Hold On Nbr Fail     : 3
+			BFD Svc ID           : 0                BFD Interface Name   : system
+			MC-Redirect          : Disabled
+			Admin MC-complete-ue-sync : Enabled
+			Oper MC-complete-ue-sync  : Enabled
+			Slave Traffic Detection Delay Timer : Disabled
+			Traffic detection Poll timer                    : 5 secs
+			Master Traffic detection                        : Enabled
+			Traffic detection                               : Relaxed
+			Peer Connect                                    : Enabled
 
-     -------------------------------------------------------------------------------
-     Gateway Id           : 1
-     -------------------------------------------------------------------------------
-     Admin Role           : Primary          Oper Role            : Slave
-     Peer Admin Role      : Secondary        Peer Oper Role       : Master
-     Admin State          : Up               Oper State           : Up
-     Advertised metric    : Slave
-     Last Time Peer Connected : 03/10/2025 18:13:04
+			-------------------------------------------------------------------------------
+			Gateway Id           : 1
+			-------------------------------------------------------------------------------
+			Admin Role           : Primary          Oper Role            : Slave
+			Peer Admin Role      : Secondary        Peer Oper Role       : Master
+			Admin State          : Up               Oper State           : Up
+			Advertised metric    : Slave
+			Last Time Peer Connected : 03/10/2025 18:13:04
 
-     Last Oper Role Change    : 03/10/2025 18:13:04
-     Last Oper Role Chg Rsn   : No Peer
-     Geo-Redundancy State : Hot
-     FSWO synchronization in progress : no
-     Mc-redirect trap set : no
-     MC-complete-ue-sync status : 100%
-     Mc-master-lock       : disabled
-     Mc-slave-lock        : disabled
-     Remaining Slave Traffic Detection Delay Timer : Disabled
+			Last Oper Role Change    : 03/10/2025 18:13:04
+			Last Oper Role Chg Rsn   : No Peer
+			Geo-Redundancy State : Hot
+			FSWO synchronization in progress : no
+			Mc-redirect trap set : no
+			MC-complete-ue-sync status : 100%
+			Mc-master-lock       : disabled
+			Mc-slave-lock        : disabled
+			Remaining Slave Traffic Detection Delay Timer : Disabled
 
-     -------------------------------------------------------------------------------
-     FSWO progress complete UE sync
-     -------------------------------------------------------------------------------
-     MG group Id            State           MCS sync use   Synced UEs
-     -------------------------------------------------------------------------------
-     CPM      : 0    Geo Redundancy : Hot         0%           100%
-     MG Group : 1    Geo Redundancy : Hot         0%           100%
-     -------------------------------------------------------------------------------
-     ===============================================================================
+			-------------------------------------------------------------------------------
+			FSWO progress complete UE sync
+			-------------------------------------------------------------------------------
+			MG group Id            State           MCS sync use   Synced UEs
+			-------------------------------------------------------------------------------
+			CPM      : 0    Geo Redundancy : Hot         0%           100%
+			MG Group : 1    Geo Redundancy : Hot         0%           100%
+			-------------------------------------------------------------------------------
+			===============================================================================
 
 ## **3.3 MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
-     ```bash
-     *A:SMF2# admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1 now
-     Switchover will be executed but new Master node may have incomplete UE records, proceed (y/n)?y   
-     *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
-     ===============================================================================
-     Multi-chassis Peer Mc-Mobile Table
-     ===============================================================================
-     Peer                 : 10.10.10.2
-     Last State Change    : 03/10/2025 18:22:57
-     Admin State          : Up               Oper State           : Up
-     Peer Version         : TiMOS-AG-C-24.10.R3
-     Keep Alive           : 500 deci-sec     Hold On Nbr Fail     : 3
-     BFD Svc ID           : 0                BFD Interface Name   : system
-     MC-Redirect          : Disabled
-     Admin MC-complete-ue-sync : Enabled
-     Oper MC-complete-ue-sync  : Enabled
-     Slave Traffic Detection Delay Timer : Disabled
-     Traffic detection Poll timer                    : 5 secs
-     Master Traffic detection                        : Enabled
-     Traffic detection                               : Relaxed
-     Peer Connect                                    : Enabled
+			```bash
+			*A:SMF2# admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1 now
+			Switchover will be executed but new Master node may have incomplete UE records, proceed (y/n)?y   
+			*A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
+			===============================================================================
+			Multi-chassis Peer Mc-Mobile Table
+			===============================================================================
+			Peer                 : 10.10.10.2
+			Last State Change    : 03/10/2025 18:22:57
+			Admin State          : Up               Oper State           : Up
+			Peer Version         : TiMOS-AG-C-24.10.R3
+			Keep Alive           : 500 deci-sec     Hold On Nbr Fail     : 3
+			BFD Svc ID           : 0                BFD Interface Name   : system
+			MC-Redirect          : Disabled
+			Admin MC-complete-ue-sync : Enabled
+			Oper MC-complete-ue-sync  : Enabled
+			Slave Traffic Detection Delay Timer : Disabled
+			Traffic detection Poll timer                    : 5 secs
+			Master Traffic detection                        : Enabled
+			Traffic detection                               : Relaxed
+			Peer Connect                                    : Enabled
 
-     -------------------------------------------------------------------------------
-     Gateway Id           : 1
-     -------------------------------------------------------------------------------
-     Admin Role           : Primary          Oper Role            : Master
-     Peer Admin Role      : Secondary        Peer Oper Role       : Slave
-     Admin State          : Up               Oper State           : Up
-     Advertised metric    : Master
-     Last Time Peer Connected : 03/10/2025 18:23:00
+			-------------------------------------------------------------------------------
+			Gateway Id           : 1
+			-------------------------------------------------------------------------------
+			Admin Role           : Primary          Oper Role            : Master
+			Peer Admin Role      : Secondary        Peer Oper Role       : Slave
+			Admin State          : Up               Oper State           : Up
+			Advertised metric    : Master
+			Last Time Peer Connected : 03/10/2025 18:23:00
 
-     Last Oper Role Change    : 03/10/2025 18:22:45
-     Last Oper Role Chg Rsn   : Peer Disconnect
-     Geo-Redundancy State : Hot
-     FSWO synchronization in progress : no
-     Mc-redirect trap set : no
-     MC-complete-ue-sync status : 100%
-     Mc-master-lock       : disabled
-     Mc-slave-lock        : disabled
-     Remaining Slave Traffic Detection Delay Timer : Disabled
+			Last Oper Role Change    : 03/10/2025 18:22:45
+			Last Oper Role Chg Rsn   : Peer Disconnect
+			Geo-Redundancy State : Hot
+			FSWO synchronization in progress : no
+			Mc-redirect trap set : no
+			MC-complete-ue-sync status : 100%
+			Mc-master-lock       : disabled
+			Mc-slave-lock        : disabled
+			Remaining Slave Traffic Detection Delay Timer : Disabled
 
-     -------------------------------------------------------------------------------
-     FSWO progress complete UE sync
-     -------------------------------------------------------------------------------
-     MG group Id            State           MCS sync use   Synced UEs
-     -------------------------------------------------------------------------------
-     CPM      : 0    Geo Redundancy : Hot         0%           100%
-     MG Group : 1    Geo Redundancy : Hot         0%           100%
-     ------------------------------------------------------------------------------
+			-------------------------------------------------------------------------------
+			FSWO progress complete UE sync
+			-------------------------------------------------------------------------------
+			MG group Id            State           MCS sync use   Synced UEs
+			-------------------------------------------------------------------------------
+			CPM      : 0    Geo Redundancy : Hot         0%           100%
+			MG Group : 1    Geo Redundancy : Hot         0%           100%
+			------------------------------------------------------------------------------
 
 3.   **Register the 5G Subscriber**:
      Navigate to the scripts directory and register the 5G subscriber:
