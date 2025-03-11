@@ -1,6 +1,6 @@
-# Pre-requirements for CLAB Setup
-
-## 1. SELinux Configuration
+## 1. Pre-requirements for CLAB Setup
+------
+### 1.1. SELinux Configuration
 
 Before starting the setup, **SELinux** should be disabled on your server for this CLAB to function properly. Check the current status of SELinux:
 
@@ -15,7 +15,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 ```
 
-## 2. firewalld configuration 
+### 1.2. firewalld configuration 
 The firewall should be enabled ,If the firewall is not enabled or inactive, start the firewalld service:
 ```bash
 [root@compute-1 MAG-cups]# systemctl status firewalld
@@ -31,8 +31,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
  ```   
 
 
-
-## 3. **create the needed bridges**:
+## 1.3. **create the needed bridges**:
    create the brideges
    ```bash   
    [root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -48,8 +47,8 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    success
    success
    ```
-  
-## 4. **Deploy the ContainerLab Environment**:
+---------------------------------------------------  
+## 2. **Deploy the ContainerLab Environment**:
 
    Deploy the containerized network environment using the ContainerLab configuration:
    ```bash     
