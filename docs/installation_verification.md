@@ -330,7 +330,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    ===============================================================================
   ```
 
-#### **3.4 MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**
+### 5.4 **MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**:
    ```bash 
    *A:SMF2# admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1 now
    Switchover will be executed but new Master node may have incomplete UE records, proceed (y/n)?y   
@@ -382,7 +382,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    ------------------------------------------------------------------------------
    ```  
 
-### **4 Register the 5G Subscriber**:
+## 6. **Register the 5G Subscriber**:
     you can subscriber the needed imsi using the below script,it contains the IMSI,APN ,Slice info....etc
      ```bash
      [root@compute-1 scripts]# ./register_subscriber.sh
@@ -450,10 +450,73 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
       ```
  
  
-###5 **Start the Open5GS Core Network (AMF,NRF...)**:
+## 7 **Start the Open5GS Core Network (AMF,NRF...)**:
      ```bash
      cd scripts
      ./start_open5gs.sh
+     [root@compute-1 scripts]# more start_open5gs.sh
+     #!/bin/bash
+
+     ## clear log files
+     for filename in ../logs/*.log; do
+         > "$filename"
+     done
+
+     docker exec -d cups-nrf open5gs-nrfd
+     docker exec -d cups-amf open5gs-amfd
+     docker exec -d cups-ausf open5gs-ausfd
+     docker exec -d cups-udm open5gs-udmd
+     docker exec -d cups-pcf open5gs-pcfd
+     docker exec -d cups-nssf open5gs-nssfd
+     docker exec -d cups-bsf open5gs-bsfd
+     docker exec -d cups-udr open5gs-udrd
+     ```
+### 7.1 **check that MAG-C is register to the open5GS NRF**:
+     ```bash
+     *A:SMF1# tools dump mobile-gateway 1 nf-profile
+     Active Nrf Peer IP      : 10.40.1.2
+     Active Nrf Peer ID      : dbc0409c-8b91-4aaa-8727-3cd7e354e7ac
+     Active Nrf Prof Name    : nnrf_nfm1
+     Registered NfProfile
+     NfInstanceID            : 10a0a0a0-8441-4000-8280-30000ac4b5c7
+     NfType                  : SMF
+     Nf Status               : Registered 03/10/2025 18:22:52
+     PLMN List Elements (0)  :
+     sNssai List (1) :
+             sst             : 1, sd : 0xabcdef
+     nsi List (0)            :
+     IpV4 addresses (1)      :
+             ip              : 1.1.1.1
+     Recovery Time           : 1741630038 (2025:03:10 - 18:07:18)
+     HeartBeat Timer         : 10
+     SMFInfo                 :
+                               Num of slices (1)             :
+                                             sst             : 1, sd : 0xabcdef
+                                             dnn[0]          : bngvrf
+                                             dnn[1]          : defaultbng
+                                             dnn[2]          : demo.nokia.mnc001.mcc206.gprs
+                                             dnn[3]          : internet
+                               Tai list (3)
+                                                             : 001-206-1
+                                                             : 001-206-2
+                                                             : 001-206-200
+
+
+     NfServices (1)          :
+
+                               NfService[0]                  :
+                               ServiceInstanceId             : nsmf_pdusession1
+                               ServiceName                   : nsmf-pdusession
+                               Scheme                        : HTTP
+                               ServiceStatus                 : Registered
+                               ApiVersionInUri               : v1
+                               ApiFullVersion                : 1.0.2
+                               Ip endpoints (1)              :
+                                             ip              : 1.1.1.1, port 8080
+                               allowedNfTypes (0)            :
+                               Allowed PLMN IDs List Elements (0):
+                               Allowed Nssais List (0)       :
+     ```                               
 
 6.   **Start PPPoE/IPoE Session using BNGBlaster**:
      Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session management
