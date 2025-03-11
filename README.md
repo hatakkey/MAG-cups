@@ -40,10 +40,10 @@ The entire network is simulated in a containerized environment using **Container
 ### 5. **BNGBlaster**
    - **BNGBlaster** provides **PPPoE** and **IPoE** session management capabilities, simulating broadband access using BNGBlaster to create fixed sessions for end users.
 
-### 6.  ** FreeRadius**
-    - **FreeRadius** is a widely used open-source RADIUS server for authentication, authorization, and accounting (AAA). 
-				- It supports various authentication methods, including EAP, PAP, CHAP, and integrates with databases like MySQL, PostgreSQL, and LDAP.
-				- FreeRADIUS is commonly used in ISPs, enterprises, and telecom networks for managing network access control			
+### 6. ** FreeRadius**
+   - **FreeRadius** is a widely used open-source RADIUS server for authentication, authorization, and accounting (AAA). 
+			- It supports various authentication methods, including EAP, PAP, CHAP, and integrates with databases like MySQL, PostgreSQL, and LDAP.
+			- FreeRADIUS is commonly used in ISPs, enterprises, and telecom networks for managing network access control.			
 
 ## Installation
 
@@ -61,55 +61,56 @@ Before you begin, ensure that the following are installed on your machine:
 
 ### Steps
 
-1. **Clone the Repository**:
+#### 1. **Clone the Repository**:
 
    First, clone this repository to your local machine:
    ```bash
    git clone https://github.com/htakkey/mag-cups.git
    cd mag-cups
+			```
  
-2. **create the needed bridges**:
+#### 2. **create the needed bridges**:
    create the brideges for Centos or Ubuntu ,example below for cenos OS 
    ```bash
    [root@compute-1 scripts]# ./create_bridges-centos.sh
     ```   
   
-3. **Deploy the ContainerLab Environment**:
+####3. **Deploy the ContainerLab Environment**:
 
    Deploy the containerized network environment using the ContainerLab configuration:
    ```bash     
    [root@compute-1 MAG-cups]# clab dep -t cups.clab.yml
     ```
 
-4.  **Register the 5G Subscriber**:
+####4.  **Register the 5G Subscriber**:
     you can subscriber the needed imsi using the below script,it contains the IMSI,APN ,Slice info....etc
      ```bash
      [root@compute-1 scripts]# ./register_subscriber.sh    
       ```
-4.1  **GUI access to the database **:
-	      You can check the users are created in the database via http://x.x.x.x:10000/   username/password: admin/1423
+####  4.1.  **GUI access to the database **:
+	     You can check the users are created in the database via http://x.x.x.x:10000/   username/password: admin/1423
 ![Network Topology](images/Database.png) 
  
-5. **Start the Open5GS Core Network (AMF,NRF...)**:
+####5. **Start the Open5GS Core Network (AMF,NRF...)**:
      ```bash
      [root@compute-1 scripts]#./start_open5gs.sh
 					  ```
 
-6.   **Start PPPoE/IPoE Session using BNGBlaster**:
-     Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session management
+####6.   **Start PPPoE/IPoE Session using BNGBlaster**:
+         Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session management
 ![Network Topology](images/fixed-cups.png)
      ```bash
      ./start_dhcp_red.sh
      ./start_pppoe.sh   # To start session with traffic
-7.   **Start the 5G Session**:
-     start the 5G session (just 1 IMSI or 10 IMSIs)
+####7.   **Start the 5G Session**:
+         start the 5G session (just 1 IMSI or 10 IMSIs)
 ![Network Topology](images/5G-cups.png)
      ```bash
      cd scripts
      ./start_5g_cups_10IMSI.sh
      ./start_5g_cups.sh			
 
-8. License
-clab image for MAG-C ,VSR are provided by nokia team,Commercial licenses are also available from Nokia team
-other clab images (open5GS,radius and UERANSIM) are available via public sites
+####8. **License**
+       - clab image for MAG-C ,VSR are provided by nokia team,Commercial licenses are also available from Nokia team
+       - other clab images (open5GS,radius and UERANSIM) are available via public sites
 	
