@@ -224,10 +224,37 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    │                 │ gradiant/open5gs-webui:2.7.1               │         │ N/A            │
    ╰─────────────────┴────────────────────────────────────────────┴─────────┴────────────────╯
    ```
-## 5. **check the MAG-C ,DB and UP**:
+### 2.1 **access the container nodes**
+    The nodes are accessable via the IP address or the node name
+				
+				```bash  
+				docker exec -it cups-amf        bash
+				docker exec -it cups-ausf       bash
+				docker exec -it cups-bsf        bash			
+				docker exec -it cups-gnb        bash
+				docker exec -it cups-ue1        bash			
+				docker exec -it cups-nrf        bash
+				docker exec -it cups-nssf       bash
+				docker exec -it cups-pcf        bash			
+				docker exec -it cups-udm        bash
+				docker exec -it cups-udr        bash
+				docker exec -it cups-db-1       bash
+    docker exec -it cups-db-2       bash
+				docker exec -it cups-radius     sh
+				ssh admin@cups-TRA    ## password=admin    
+    ssh admin@cups-up-1   ## password=admin     
+    ssh admin@cups-up-1   ## password=admin     
+    ssh admin@cups-mag-c1 ## password=admin
+    ssh admin@cups-mag-c2 ## password=admin
+				```				
+				
+
+
+
+## 3. **check the MAG-C ,DB and UP**:
    check the multi-chassis redundancy between the MAG-C , the communcation with the DB and the sx satus with UP-1 and UP-2
 
-### 5.1 **Check the PFCP Reference Point Peers**:
+### 3.1 **Check the PFCP Reference Point Peers**:
    ```bash          
    *A:SMF1# show mobile-gateway pdn ref-point-peers sx-n4
    ===============================================================================
@@ -259,7 +286,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    ```
    
  
-### 5.2 **check the database communication with the MAG-C,it should be in HOT satus**:
+### 3.2 **check the database communication with the MAG-C,it should be in HOT satus**:
    ```bash 
    *A:SMF1#  show mobile-gateway pdn ref-point-peers cdbx
    ===============================================================================
@@ -278,7 +305,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    Number of peers : 1
    ```
     
-### 5.3 **check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**:
+### 3.3 **check the two MAG-C sysnc with each other i.e. MAG-C1 is master , MAG-C2 is standby and Geo-Redundancy State: Hot**:
    ```bash 
    *A:SMF1# show redundancy multi-chassis mc-mobile peer 10.10.10.2
    ===============================================================================
@@ -329,7 +356,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    ===============================================================================
   ```
 
-### 5.4 **MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**:
+### 3.4 **MAG-C1 started as primary and slave ,you can change that to be Primary master if needed**:
    ```bash 
    *A:SMF2# admin redundancy mc-mobile-switchover mobile-gateway 1 peer 10.10.10.1 now
    Switchover will be executed but new Master node may have incomplete UE records, proceed (y/n)?y   
@@ -381,7 +408,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    ------------------------------------------------------------------------------
    ```  
 
-## 6. **Register the 5G Subscriber**:
+## 4. **Register the 5G Subscriber**:
     you can subscriber the needed imsi using the below script,it contains the IMSI,APN ,Slice info....etc
      ```bash
      [root@compute-1 scripts]# ./register_subscriber.sh
@@ -449,7 +476,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
       ```
  
  
-## 7 **Start the Open5GS Core Network (AMF,NRF...)**:
+## 5 **Start the Open5GS Core Network (AMF,NRF...)**:
      ```bash
      cd scripts
      ./start_open5gs.sh
@@ -470,7 +497,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
      docker exec -d cups-bsf open5gs-bsfd
      docker exec -d cups-udr open5gs-udrd
      ```
-### 7.1 **check that MAG-C is register to the open5GS NRF**:
+### 5.1 **check that MAG-C is register to the open5GS NRF**:
      ```bash
      *A:SMF1# tools dump mobile-gateway 1 nf-profile
      Active Nrf Peer IP      : 10.40.1.2
@@ -517,7 +544,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
                                Allowed Nssais List (0)       :
      ```                               
 
-### 7.2 **start the 5G session**:
+### 5.2 **start the 5G session**:
 you can start 1 session or 10 sessions via the scripts
 start 1 session
 ```bash
@@ -836,7 +863,7 @@ bash-5.1# ip a
        valid_lft forever preferred_lft forever
     
 ```
-### 7.3 **check the logs**:    
+### 5.3 **check the logs**:    
 you can check the logs for the open5GS and UERANSIM
 ```bash
 [root@compute-1 logs]# ls
