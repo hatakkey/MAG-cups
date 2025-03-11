@@ -224,7 +224,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
    │ cups-webui      │ linux                                      │ running │ 192.168.40.51  │
    │                 │ gradiant/open5gs-webui:2.7.1               │         │ N/A            │
    ╰─────────────────┴────────────────────────────────────────────┴─────────┴────────────────╯
-    ```
+   ```
 ## 5. **check the MAG-C ,DB and UP**:
    check the multi-chassis redundancy between the MAG-C , the communcation with the DB and the sx satus with UP-1 and UP-2
 
