@@ -1,20 +1,38 @@
-1. some requiremnt before starting
-   For this CLAB its important that SELinux is disabled on your server. Example Centos os-release
-   If status is disabled, then nothing to do.
-		 ```bash
-   [root@compute-1 ~]# sestatus
-   SELinux status:      disabled
-		 ```
-		
-		If status is different then  disabled, change it to disabled in /etc/selinux/config and reboot your server
-		 ```bash
-   [root@compute-1 ~]# more /etc/selinux/config
-   SELINUX=disabled
-   SELINUXTYPE=targeted
-	  ```
+# Pre-requirements for CLAB Setup
 
-1. firewalld should be en 
-**create the needed bridges**:
+## 1. SELinux Configuration
+
+Before starting the setup, **SELinux** should be disabled on your server for this CLAB to function properly. Check the current status of SELinux:
+
+```bash
+[root@compute-1 ~]# sestatus
+SELinux status:      disabled
+```
+If status is different then  disabled, change it to disabled in /etc/selinux/config and reboot your server
+```bash
+[root@compute-1 ~]# more /etc/selinux/config
+SELINUX=disabled
+SELINUXTYPE=targeted
+```
+
+##2. firewalld configuration 
+The firewall should be enabled ,If the firewall is not enabled or inactive, start the firewalld service:
+```bash
+[root@compute-1 MAG-cups]# systemctl status firewalld
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sun 2025-03-09 11:09:29 EDT; 2 days ago
+     Docs: man:firewalld(1)
+ Main PID: 2015 (firewalld)
+    Tasks: 2 (limit: 1646254)
+   Memory: 45.7M
+   CGroup: /system.slice/firewalld.service
+           └─2015 /usr/libexec/platform-python -s /usr/sbin/firewalld --nofork --nopid
+ ```   
+
+
+
+3.**create the needed bridges**:
    create the brideges
    ```bash   
    [root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -29,7 +47,7 @@
    Warning: ALREADY_ENABLED: br-enb
    success
    success
-			```
+   ```
   
 3. **Deploy the ContainerLab Environment**:
 
@@ -431,7 +449,7 @@
      All subscribers added successfully!
       ```
  ####  **4.1  GUI access to the database **:
-	      You can check the users are created in the database via http://x.x.x.x:10000/   username/password: admin/1423
+       You can check the users are created in the database via http://x.x.x.x:10000/   username/password: admin/1423
  
 ###5 **Start the Open5GS Core Network (AMF,NRF...)**:
      ```bash
