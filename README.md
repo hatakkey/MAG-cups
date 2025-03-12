@@ -93,9 +93,8 @@ Run the following command to deploy the simulated network:
 [root@compute-1 MAG-cups]# clab dep -t cups.clab.yml
 ```
 #### **4. cliscripts**
-
+For simplicity ,you can download the cliscripts to the CF1 of the MAG-C,UP and TRA to execute the needed commands
 ```bash
-for simplicity ,you can download the cliscripts to the CF1 of the MAG-C,UP and TRA to execute the needed commands
 [root@compute-1 magc]# pwd
 /root/MAG-cups/cliscripts/
 ```
@@ -118,14 +117,17 @@ You can verify subscriber records via **Web GUI**:
 
 
 #### **6. Start the Open5GS Core Network**
-Run the following script to start the 5G Core:
+Run the following script to start the 5G Core
+Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
 ```bash
 [root@compute-1 scripts]# ./start_open5gs.sh
 ```
 
+
 #### **7. Start PPPoE/IPoE Session using BNGBlaster**
 Start the broadband session using **BNGBlaster**:
+Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
 ![Fixed Network Topology](images/fixed-cups.png)
 
@@ -135,8 +137,10 @@ Start the broadband session using **BNGBlaster**:
 ```
 ![dhcp_red](images/dhcp-red.png)
 
+
 #### **7. Start the 5G Session**
-Start the 5G session (single IMSI or multiple IMSIs):
+Start the 5G session (single IMSI or multiple IMSIs)
+Follow the **[documentation](docs/5G_session_verification.md)** for detailed information/checking .
 
 ![5G Network Topology](images/5G-cups.png)
 
@@ -144,6 +148,7 @@ Start the 5G session (single IMSI or multiple IMSIs):
 cd scripts
 ./start_5g_cups_10IMSI.sh
 ./start_5g_cups.sh
+
 ```
 #### **8. troubleshooting **
 
