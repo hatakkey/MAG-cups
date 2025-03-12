@@ -92,15 +92,22 @@ Run the following command to deploy the simulated network:
 ```bash
 [root@compute-1 MAG-cups]# clab dep -t cups.clab.yml
 ```
-
-#### **4. Register a 5G Subscriber**
-Use this script to register a new **IMSI**, APN, and Slice information:
+#### **4. cliscripts**
 
 ```bash
-[root@compute-1 scripts]# ./register_subscriber.sh    
+for simplicity ,you can download the cliscripts to the CF1 of the MAG-C,UP and TRA to execute the needed commands
+[root@compute-1 magc]# pwd
+/root/MAG-cups/cliscripts/
 ```
+ 
+ 
+#### **5. Register a 5G Subscriber**
+Use this script to register the **IMSI** with a specific apn,opc,key,sst and sd   
 
-##### **4.1 GUI Access to the Database**
+```bash
+[root@compute-1 scripts]# ./register_subscriber.sh 
+```
+##### **5.1 GUI Access to the Database**
 You can verify subscriber records via **Web GUI**:
 
 📌 **URL**: `http://x.x.x.x:10000/`  
@@ -108,14 +115,16 @@ You can verify subscriber records via **Web GUI**:
 
 ![Database View](images/Database.png)
 
-#### **5. Start the Open5GS Core Network**
+
+
+#### **6. Start the Open5GS Core Network**
 Run the following script to start the 5G Core:
 
 ```bash
 [root@compute-1 scripts]# ./start_open5gs.sh
 ```
 
-#### **6. Start PPPoE/IPoE Session using BNGBlaster**
+#### **7. Start PPPoE/IPoE Session using BNGBlaster**
 Start the broadband session using **BNGBlaster**:
 
 ![Fixed Network Topology](images/fixed-cups.png)
@@ -124,6 +133,7 @@ Start the broadband session using **BNGBlaster**:
 ./start_dhcp_red.sh
 ./start_pppoe.sh   # To start session with traffic
 ```
+![dhcp_red](images/dhcp-red.png)
 
 #### **7. Start the 5G Session**
 Start the 5G session (single IMSI or multiple IMSIs):
@@ -135,6 +145,12 @@ cd scripts
 ./start_5g_cups_10IMSI.sh
 ./start_5g_cups.sh
 ```
+#### **8. troubleshooting **
+
+The logs are available for further checking, tcpdump can be used to capture the traffic for any bridge/port
+also  there is another option can be integrated with this containerlab whihch EdgeShark
+ https://containerlab.dev/manual/wireshark/ 
+![edgeshark](images/edgeshark.png)
 
 ---
 
