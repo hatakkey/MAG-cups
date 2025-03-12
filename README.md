@@ -109,8 +109,8 @@ Use this script to register the **IMSI** with a specific apn,opc,key,sst and sd
 ##### **5.1 GUI Access to the Database**
 You can verify subscriber records via **Web GUI**:
 
-📌 **URL**: `http://x.x.x.x:10000/`  
-📌 **Username/Password**: `admin/1423`  
+📌 **URL**: `http://x.x.x.x:10000/' 
+📌 **Username/Password**: `admin/1423'  
 
 ![Database View](images/Database.png)
 
@@ -138,7 +138,7 @@ Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed
 ![dhcp_red](images/dhcp-red.png)
 
 
-#### **7. Start the 5G Session**
+#### **8. Start the 5G Session**
 Start the 5G session (single IMSI or multiple IMSIs)
 Follow the **[documentation](docs/5G_session_verification.md)** for detailed information/checking .
 
@@ -150,7 +150,7 @@ cd scripts
 ./start_5g_cups.sh
 ```
 
-#### **8. Troubleshooting**
+#### **9. Troubleshooting**
 
 The logs are available for further checking, tcpdump can be used to capture the traffic for any bridge/port
 also  there is another option can be integrated with this containerlab is EdgeShark https://containerlab.dev/manual/wireshark/ 
