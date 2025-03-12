@@ -148,9 +148,9 @@ Follow the **[documentation](docs/5G_session_verification.md)** for detailed inf
 cd scripts
 ./start_5g_cups_10IMSI.sh
 ./start_5g_cups.sh
-
 ```
-#### **8. troubleshooting **
+
+#### **8. troubleshooting**
 
 The logs are available for further checking, tcpdump can be used to capture the traffic for any bridge/port
 also  there is another option can be integrated with this containerlab whihch EdgeShark
