@@ -155,6 +155,8 @@ cd scripts
 The logs are available for further checking, tcpdump can be used to capture the traffic for any bridge/port
 also  there is another option can be integrated with this containerlab whihch EdgeShark
  https://containerlab.dev/manual/wireshark/ 
+
+
 ![edgeshark](images/edgeshark.png)
 
 ---

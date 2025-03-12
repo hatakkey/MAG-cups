@@ -4,9 +4,10 @@ Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session m
 ### 1.1. **start dhcp redundncy session**
 10 dhcp sessions are established using the BNGBlaster
 ```bash
-     ./start_dhcp_red.sh
+./start_dhcp_red.sh
 ```
-![dhcp_red](images/dhcp-red.png)
+
+![dhcp_red](../images/dhcp-red.png)
 
 The 10 IPOEs sessions are established on UP-2 and UP1 with hot-standby,can be verified following the below show commands:
 
@@ -427,7 +428,7 @@ Charging Profile 1             : mybngcharging
 ./start_dhcp.sh
 ```
 
-![dhcp_red](images/dhcp.png)
+![dhcp_red](../images/dhcp.png)
   
 The 10 sessions are created on UP2
   
@@ -599,13 +600,13 @@ Charging Profile 1             : mybngcharging
   CHF rating group             : N/A
 ```
 
-### 1.3. **start PPPoE session **
+### 1.3. **start PPPoE session**
 
 Another example for PPPoE 
 ```bash
 ./start_pppoe.sh
 ```
-![pppoe](images/pppoe.png)
+![pppoe](../images/pppoe.png)
 
 PPPoE session are created on UP-1
 ```bash 
