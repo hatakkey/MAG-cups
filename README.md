@@ -15,9 +15,9 @@ The topology of the setup is illustrated in the diagram below:
 ## **Components**
 ### **1. MAG-C (Control Plane)**
 - MAG-C (Multi-Access Gateway – Control Plane) is responsible for session control, mobility management, and policy enforcement for both mobile (4G/5G) and fixed broadband (PPPoE/IPoE) sessions.
-  - This lab initiates 10 dual-stack PPPoE or 10 redundant/non redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
-  - This lab initiates a single and 10 ipv4v6 5G FWA session using predefined scripts that trigger the ueransim application, including  ./start_5g_cups_10IMSI.sh , ./start_5g_cups.sh  and ./stop_5g_cups.sh  
-- It works alongside MAG-U (User Plane) to implement CUPS (Control and User Plane Separation) for improved scalability,network efficiency,latency and flexibility
+  - This lab initiates 10 dual-stack PPPoE or 10 redundant/non redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_dhcp.sh , ./start_pppoe.sh and ./start_dhcp_red.sh
+  - This lab initiates a single or 10 dual-stack 5G FWA session using predefined scripts that trigger the ueransim application, including  ./start_5g_cups_10IMSI.sh , ./start_5g_cups.sh  and ./stop_5g_cups.sh  
+- It works alongside MAG-U (User Plane) to implement CUPS for improved scalability, network efficiency, latency and flexibility
 
 ### **2. FreeRADIUS**
 - **FreeRADIUS** is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
@@ -29,11 +29,11 @@ The topology of the setup is illustrated in the diagram below:
 
 ### **4. Open5GS**
 - Open5GS provides the 5G core network, including key components such as AMF, NRF, UDM,UDR, AUSF, NSSF,BSF and PCF 
-  - This lab initiates the above elements using the pre-defined script:./start_open5gs.sh and ./stop_open5gs.sh
+  - This lab initiates the above elements using the pre-defined script ./start_open5gs.sh and ./stop_open5gs.sh
 
 ### **5. UERANSIM**
 - UERANSIM simulates the gNB (5G base station) and UE (User Equipment), enabling the simulation of the 5G Radio Access Network (RAN).
-  - This LAB initiates a single or 10 ipv4v6 5G FWA session(s) using pre-defined scripts: ./start_5g_cups_10IMSI.sh or ./start_5g_cups.sh and ./stop_5g_cups.sh
+  - This LAB initiates a single or 10 dual-stack 5G FWA session(s) using pre-defined scripts ./start_5g_cups_10IMSI.sh or ./start_5g_cups.sh and ./stop_5g_cups.sh
 
 ### LAB Prerequisites
 
@@ -83,7 +83,7 @@ root@compute-1 scripts]# ./register_subscriber.sh
 You can verify the registered subscriber records using the Web GUI:
 📌 URL: http://x.x.x.x:10000/' 📌 **Username/Password**: admin/1423'
 
-![Database View](snaps/Database.png) 
+![Database View](snaps/database.png) 
 
 
 ### **2. Start the Open5GS Core Network**
