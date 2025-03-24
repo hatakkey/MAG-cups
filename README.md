@@ -9,7 +9,8 @@
 
 ## **Topology setup**
 The topology of the setup is illustrated in the diagram below: 
-![drawing View](images/topology-mag-cups.png) 
+![drawing View](images/MAG-cups-fwa.png) 
+![drawing View](images/MAG-cups-fixed.png) 
 
 ## **Components**
 ### **1. MAG-C (Control Plane)**
