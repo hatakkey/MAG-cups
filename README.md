@@ -9,8 +9,8 @@
 
 ## **Topology setup**
 The topology of the setup is illustrated in the diagram below: 
-![drawing View](images/MAG-cups-fwa.png) 
-![drawing View](images/MAG-cups-fixed.png) 
+![drawing View](snaps/MAG-cups-fwa.png) 
+![drawing View](snaps/MAG-cups-fixed.png) 
 
 ## **Components**
 ### **1. MAG-C (Control Plane)**
@@ -83,7 +83,7 @@ root@compute-1 scripts]# ./register_subscriber.sh
 You can verify the registered subscriber records using the Web GUI:
 📌 URL: http://x.x.x.x:10000/' 📌 **Username/Password**: admin/1423'
 
-![Database View](images/Database.png) 
+![Database View](snaps/Database.png) 
 
 
 ### **2. Start the Open5GS Core Network**
@@ -113,7 +113,7 @@ cd scripts
 ./start_pppoe.sh
 ./start_dhcp_red.sh
 ```
-![pppoe](images/pppoe.png)
+![pppoe](snaps/pppoe.png)
 
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
@@ -123,8 +123,8 @@ For further troubleshooting, you can use tcpdump to capture traffic on any bridg
 
 
 ## **License**
-- ContainerLab images for VSR are provided by Nokia and require a commercial license.
-- All other ContainerLab images like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
+- ContainerLab snaps for VSR are provided by Nokia and require a commercial license.
+- All other ContainerLab snaps like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
 ------
 ## **Contributing**
 Contributions are welcome! Please submit a pull request or open an issue if you find bugs or want to improve the project.
