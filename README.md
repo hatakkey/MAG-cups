@@ -8,8 +8,12 @@
 - The entire network is containerized and simulated using **[ContainerLab](https://containerlab.dev/)** for providing a flexible and scalable platform for testing, experimentation, and deployment of 5G CUPS networks. 
 
 ## **Topology setup**
-The topology of the setup is illustrated in the diagram below: 
-![drawing View](snaps/MAG-cups-fwa.png) 
+The topology of the setup is illustrated in the diagram below:
+The FWA setup:
+
+![drawing View](snaps/MAG-cups-fwa.png)
+The fixed setup:
+ 
 ![drawing View](snaps/MAG-cups-fixed.png) 
 
 ## **Components**
