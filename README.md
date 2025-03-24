@@ -1,175 +1,133 @@
-# **MAG-CUPS: 5G CUPS Simulation using Open5GS, UERANSIM, FreeRadius, BNGBlaster, and ContainerLab**
+# **MAG-CUPS: Multi-Access Gateway for Control User Plane Separation Using Open-Source Tools**
 
-**MAG-CUPS** is an open-source project designed to simulate a **5G CUPS (Centralized User Plane Separation)** network architecture. This project leverages **ContainerLab** for container-based network simulation, **Open5GS** for the 5G core network, **UERANSIM** for 5G RAN simulation, and **BNGBlaster** for simulating broadband access using **PPPoE** and **IPoE**.
+## **Objective**
+- The goal of this MAG-CUPS project , build with **[ContainerLab](https://containerlab.dev/)**, is to provide an efficient, flexible environment for simulating **fixed** and **Fixed Wireless Access (FWA) CUPS** sessions using open-source test tools.It is primarily designed for functional testing and educational purposes.
 
 ## **Overview**
+- MAG-CUPS is an open-source project designed to simulate a 5G mobile network with a CUPS architecture. The architecture separates the Control Plane and User Plane for scalability and flexibility. The solution uses **[Open5GS](https://open5gs.org/)**  for the 5G core network, **[FreeRADIUS](https://www.freeradius.org/)**, an open-source RADIUS server for **Authentication, Authorization, and Accounting (AAA)**, **[UERANSIM](https://github.com/aligungr/UERANSIM)** to simulate the gNB (5G base station) and UE (User Equipment),  **[BNG Blaster](https://rtbrick.github.io/bngblaster/index.html)**  for simulating broadband access with PPPoE and IPoE protocols.
+- The entire network is containerized and simulated using **[ContainerLab](https://containerlab.dev/)** for providing a flexible and scalable platform for testing, experimentation, and deployment of 5G CUPS networks. 
 
-This project simulates a 5G mobile network with a **CUPS architecture**, where the **Control Plane** and **User Plane** are separated. The solution uses **Open5GS** for the 5G core network, **UERANSIM** for simulating the **gNB** (5G base station) and **UE** (User Equipment), and **BNGBlaster** for simulating broadband access using **PPPoE** and **IPoE** protocols.
-
-The entire network is simulated in a containerized environment using **ContainerLab**, providing a flexible and scalable platform for deployment, testing, and experimentation with 5G CUPS networks.
-
----
-
-## **Features**
-
-- **5G CUPS Simulation**: Implements 5G with a separated Control Plane and User Plane.
-- **Containerized Setup**: Uses **ContainerLab** to orchestrate and manage the container-based network.
-- **Open5GS Core**: Supports AMF, NRF, UDM, AUSF, SMF, and UPF components.
-- **UERANSIM**: Simulates **gNB** and **UE** for 5G RAN (Radio Access Network).
-- **PPPoE/IPoE Simulation**: Uses **BNGBlaster** for broadband session simulation.
-- **FreeRADIUS Integration**: Implements AAA (Authentication, Authorization, and Accounting).
-- **Flexible Setup**: Customizable network topologies for testing different scenarios.
-- **Open Source**: Ideal for research, education, and testing.
-
----
+## **Topology setup**
+The topology of the setup is illustrated in the diagram below: 
+![drawing View](images/topology-mag-cups.png) 
 
 ## **Components**
+### **1. MAG-C (Control Plane)**
+- MAG-C (Multi-Access Gateway – Control Plane) is responsible for session control, mobility management, and policy enforcement for both mobile (4G/5G) and fixed broadband (PPPoE/IPoE) sessions.
+  - This lab initiates 10 dual-stack PPPoE or 10 redundant/non redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_pppoe_bng_notraffic.sh, ./start_pppoe_bng_traffic.sh and ./start_dhcp_bng.sh.
+  - This lab initiates a single and 10 ipv4v6 5G FWA session using predefined scripts that trigger the ueransim application, including  ./start_5g_cups_10IMSI.sh , ./start_5g_cups.sh  and ./stop_5g_cups.sh  
+- It works alongside MAG-U (User Plane) to implement CUPS (Control and User Plane Separation) for improved scalability,network efficiency,latency and flexibility
 
-### **1. Nokia MAG-C**
-   - **Nokia MAG-C** (Multi-Access Gateway – Control Plane) manages session control, mobility, and policy enforcement for both mobile (4G/5G) and fixed broadband (PPPoE/IPoE) sessions.
-   - Works alongside MAG-U (User Plane) to enable **CUPS (Control and User Plane Separation)** for scalability and flexibility.
+### **2. FreeRADIUS**
+- **FreeRADIUS** is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
+  - This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
 
-### **2. ContainerLab**
-   - **ContainerLab** deploys network components in isolated containers.
-   - Simplifies network deployment and real-world simulation.
-   - Used to manage containerized instances of **Open5GS**, **UERANSIM**, and **BNGBlaster**.
+### **3. BNGBlaster**
+- **BNG Blaster** simulates fixed sessions, such as PPPoE and IPoE, for broadband access testing while also supporting data traffic generation
+  - This lab offers predefined scripts to initiate fixed sessions with or without data traffic (see above).
 
-### **3. Open5GS**
-   - Provides the **5G core network**, including **AMF, NRF, UDM, AUSF, SMF, and UPF**.
-   - Configured for **CUPS** architecture with a separate **Control Plane** and **User Plane**.
+### **4. Open5GS**
+- Open5GS provides the 5G core network, including key components such as AMF, NRF, UDM,UDR, AUSF, NSSF,BSF and PCF 
+  - This lab initiates the above elements using the pre-defined script:./start_open5gs.sh and ./stop_open5gs.sh
 
-### **4. UERANSIM**
-   - Simulates **gNB** (5G base station) and **UE** (User Equipment).
-   - Supports 5G NR (New Radio) and communication with Open5GS.
+### **5. UERANSIM**
+- UERANSIM simulates the gNB (5G base station) and UE (User Equipment), enabling the simulation of the 5G Radio Access Network (RAN).
+  - This LAB initiates a single or 10 ipv4v6 5G FWA session(s) using pre-defined scripts: ./start_5g_cups_10IMSI.sh or ./start_5g_cups.sh and ./stop_5g_cups.sh
 
-### **5. BNGBlaster**
-   - Simulates **PPPoE** and **IPoE** sessions for broadband access testing.
+### LAB Prerequisites
 
-### **6. FreeRADIUS**
-   - Open-source RADIUS server for **Authentication, Authorization, and Accounting (AAA)**.
-   - Supports EAP, PAP, CHAP, and integrates with **MySQL, PostgreSQL, LDAP**.
-   - Used in ISPs and telecom networks for network access control.
+Ensure the following dependencies are installed:
+- **Docker**: Required for running containerized components.
+- **ContainerLab**: For managing container-based network simulations.
+- **Git**: For cloning this repository.
 
----
+## Installation Steps
 
-## **Installation**
+Follow the **[documentation](docs/installation_verification.md)** for detailed setup instructions
 
-### **Prerequisites**
-Ensure the following are installed:
+### **1. Clone the Repository**
 
-- **Docker**: Runs containerized components.
-- **ContainerLab**: Manages container-based network simulations.
-- **Git**: Required for cloning the repository.
-
----
-
-### **Getting Started**
-
-Follow the **[documentation](docs/installation_verification.md)** for detailed setup instructions.
-
----
-
-### **Installation Steps**
-
-#### **1. Clone the Repository**
-Clone this repository and navigate to the project directory:
-
+- Clone this repository and navigate to the project directory:
 ```bash
 git clone https://github.com/htakkey/mag-cups.git
 cd mag-cups
 ```
-
-#### **2. Create Required Network Bridges**
+### **2. Create Network Bridges**
 For **CentOS** (example):
-
 ```bash
 [root@compute-1 scripts]# ./create_bridges-centos.sh
 ```
 
-#### **3. Deploy the ContainerLab Environment**
+### **3. Deploy the ContainerLab**
 Run the following command to deploy the simulated network:
-
-```bash
+```bash    
 [root@compute-1 MAG-cups]# clab dep -t cups.clab.yml
 ```
-#### **4. cliscripts**
-For simplicity ,you can download the cliscripts to the CF1 of the MAG-C,UP and TRA to execute the needed commands
+### **4. Download cliscripts**
+The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific commands, these scripts provide a convenient way to execute them. 
 ```bash
 [root@compute-1 magc]# pwd
 /root/MAG-cups/cliscripts/
 ```
- 
- 
-#### **5. Register a 5G Subscriber**
-Use this script to register the **IMSI** with a specific apn,opc,key,sst and sd   
+To use them, first manually download and upload the predefined scripts from /root/MAG-cups/cliscripts/ to cf1:\scripts-md on cp-1, cp-2, up-1, up-2 and and TRA-cups. Before uploading, ensure the directory is created by running the command: file md cf1:\scripts-md on cp-1, cp-2,up-1, up-2 and TRA-cups.
+
+## Start sessions
+
+### **1. Register IMSI in database**
+Register a 5G subscriber with specific IMSI, APN, OPC, Key, SST, and SD values using the script:
 
 ```bash
-[root@compute-1 scripts]# ./register_subscriber.sh 
+root@compute-1 scripts]# ./register_subscriber.sh 
 ```
-##### **5.1 GUI Access to the Database**
-You can verify subscriber records via **Web GUI**:
+You can verify the registered subscriber records using the Web GUI:
+📌 URL: http://x.x.x.x:10000/' 📌 **Username/Password**: admin/1423'
 
-📌 **URL**: `http://x.x.x.x:10000/' 
-📌 **Username/Password**: `admin/1423'  
-
-![Database View](images/Database.png)
+![Database View](images/Database.png) 
 
 
+### **2. Start the Open5GS Core Network**
 
-#### **6. Start the Open5GS Core Network**
-Run the following script to start the 5G Core
-Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
-
-```bash
+Start the 4G Core (AMF, NRF, UDM, UDR, AUSF, NSSF, BSF and PCF) using the pre-defined script.
+```bash 
 [root@compute-1 scripts]# ./start_open5gs.sh
 ```
+Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
-
-#### **7. Start PPPoE/IPoE Session using BNGBlaster**
-Start the broadband session using **BNGBlaster**:
-Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
-
-![Fixed Network Topology](images/fixed-cups.png)
-
-```bash
-./start_dhcp_red.sh
-./start_pppoe.sh   # To start session with traffic
-```
-![dhcp_red](images/dhcp-red.png)
-
-
-#### **8. Start the 5G Session**
-Start the 5G session (single IMSI or multiple IMSIs)
-Follow the **[documentation](docs/5G_session_verification.md)** for detailed information/checking .
-
-![5G Network Topology](images/5G-cups.png)
+### **3. Start the 5G FWA session**
+Start the 5G session using the pre-defined script
 
 ```bash
 cd scripts
-./start_5g_cups_10IMSI.sh
-./start_5g_cups.sh
+start_5g_cups.sh  ## to start 1x5G session
+start_5g_cups_10IMSI.sh  ## to start 10x5G sessions
 ```
+Follow the **[documentation](docs/5G_session_verification.md)** for detailed information/checking .
 
-#### **9. Troubleshooting**
+### **4. Start the PPPoE or IPoE fixed sessions** 
+Start the broadband session using the pre-defined script:
 
-The logs are available for further checking, tcpdump can be used to capture the traffic for any bridge/port
-also  there is another option can be integrated with this containerlab is EdgeShark https://containerlab.dev/manual/wireshark/ 
- 
+```bash 
+cd scripts
+./start_dhcp.sh 
+./start_pppoe.sh
+./start_dhcp_red.sh
+```
+![pppoe](images/pppoe.png)
 
-![edgeshark](images/edgeshark.png)
+Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .
 
----
+### **5. Troubleshooting**
+The logs available for analysis are gnb.log, amf.log, nrf.log, radiusd.log, and ue1.log. You can clear these logs using the ./clear_logs.sh script.
+For further troubleshooting, you can use tcpdump to capture traffic on any bridge or port. Additionally, EdgeShark can be integrated with Containerlab for more advanced packet analysis. For more information, refer to the Containerlab manual for [Wireshark integration](https://containerlab.dev/manual/wireshark/) .
+
 
 ## **License**
-- **ContainerLab images for MAG-C and VSR** are provided by **Nokia** and require a commercial license.
-- **Other ContainerLab images** (Open5GS, FreeRADIUS, UERANSIM) are publicly available.
-
----
-
+- ContainerLab images for VSR are provided by Nokia and require a commercial license.
+- All other ContainerLab images like Open5GS, FreeRADIUS or UERANSIM are publicly available and don’t require a license.
+------
 ## **Contributing**
-Contributions are welcome! Please submit a **pull request** or open an **issue** if you find bugs or want to improve the project.
-
----
+Contributions are welcome! Please submit a pull request or open an issue if you find bugs or want to improve the project.
 
 ## **Contact**
-For questions, reach out via GitHub issues or contact the **Nokia team** for commercial licensing.
+For questions, reach out via GitHub issues or contact the Nokia team for commercial licensing.
+
