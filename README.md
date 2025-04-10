@@ -54,7 +54,7 @@ Follow the **[documentation](docs/installation_verification.md)** for detailed s
 
 - Clone this repository and navigate to the project directory:
 ```bash
-git clone https://github.com/htakkey/mag-cups.git
+git clone https://github.com/hatakkey/mag-cups.git
 cd mag-cups
 ```
 ### **2. Create Network Bridges**
