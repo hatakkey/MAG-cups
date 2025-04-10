@@ -28,17 +28,15 @@ COMMANDS:
 
 
 #### 5G cups  subscriber
-docker exec -u root  cups-dbctl open5gs-dbctl --db_uri=mongodb://mongo/open5gs add_ue_with_slice\
- 206010000000002 465B5CE8B199B49FAA5F0A2EE238A6BD E8ED289DEBA952E4283B54E88E6183CB demo.nokia.mnc001.mcc206.gprs 1 abcdef
 
-#### 5G cups ++ 10 subscriber
+#### 5G cups ++ 11 subscriber
 # IMSI List
 
 # Define the IMSI prefix
 IMSI_PREFIX="2060100000000"
 
 # Loop through the range (09 to 19) ensuring 15-digit IMSI format
-for i in $(seq -w 9 19); do
+for i in $(seq -w 1 11); do
   IMSI="${IMSI_PREFIX}${i}"
 
   docker exec -u root cups-dbctl open5gs-dbctl --db_uri=mongodb://mongo/open5gs add_ue_with_slice \
