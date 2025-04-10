@@ -92,7 +92,7 @@ You can verify the registered subscriber records using the Web GUI:
 
 ### **2. Start the Open5GS Core Network**
 
-Start the 4G Core (AMF, NRF, UDM, UDR, AUSF, NSSF, BSF and PCF) using the pre-defined script.
+Start the 5G Core (AMF, NRF, UDM, UDR, AUSF, NSSF, BSF and PCF) using the pre-defined script.
 ```bash 
 [root@compute-1 scripts]# ./start_open5gs.sh
 ```
