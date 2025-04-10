@@ -1,11 +1,3 @@
-*A:CP2# admin display-config
-# TiMOS-AG-C-25.3.R1 cpm/x86_64 Nokia 7750 MAG-c Copyright (c) 2000-2025 Nokia.
-# All rights reserved. All use subject to applicable license agreements.
-# Built on Wed Mar 12 16:24:39 PDT 2025 by builder in /builds/AG253B/R1/panos/main/sros
-# Configuration format version 25.3 revision 0
-
-# Generated WED APR 09 21:10:26 2025 UTC
-
 exit all
 configure
 #--------------------------------------------------

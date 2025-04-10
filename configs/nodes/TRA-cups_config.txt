@@ -1,463 +1,449 @@
-A:admin@TRA-cups# admin show configuration flat
-# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
-# All rights reserved. All use subject to applicable license agreements.
-# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
-# Configuration format version 25.3 revision 0
-
-# Generated 2025-04-09T23:18:50.4+02:00 by admin from 172.31.255.29
-# Last modified 2025-04-09T14:55:08.0+02:00 by admin (MD-CLI) from 172.31.255.29
-# Last saved 2025-04-09T14:55:10.4+02:00 by admin from 172.31.255.29
-
-    configure card 1 mda 1 mda-type s36-100gb-qsfp28
-    configure { card 1 fp 1 }
-    configure { card 1 fp 2 }
-    configure chassis router chassis-number 1 power-shelf 1 power-shelf-type ps-a4-shelf-dc
-    configure chassis router chassis-number 1 power-shelf 1 power-module 1 power-module-type ps-a-dc-6000
-    configure chassis router chassis-number 1 power-shelf 1 power-module 2 power-module-type ps-a-dc-6000
-    configure chassis router chassis-number 1 power-shelf 1 power-module 3 power-module-type ps-a-dc-6000
-    configure chassis router chassis-number 1 power-shelf 1 power-module 4 power-module-type ps-a-dc-6000
-    configure log filter "1001" named-entry "10" description "Collect only events of major severity or higher"
-    configure log filter "1001" named-entry "10" action forward
-    configure log filter "1001" named-entry "10" match severity gte major
-    configure log log-id "99" description "Default System Log"
-    configure log log-id "99" time-format local
-    configure log log-id "99" source main true
-    configure log log-id "99" destination memory max-entries 500
-    configure log log-id "100" description "Default Serious Errors Log"
-    configure log log-id "100" filter "1001"
-    configure log log-id "100" source main true
-    configure log log-id "100" destination memory max-entries 500
-    configure multicast-management chassis-level per-mcast-plane-capacity total-capacity dynamic
-    configure multicast-management chassis-level per-mcast-plane-capacity mcast-capacity primary-percentage 87.5
-    configure multicast-management chassis-level per-mcast-plane-capacity mcast-capacity secondary-percentage 87.5
-    configure multicast-management chassis-level per-mcast-plane-capacity redundant-mcast-capacity primary-percentage 87.5
-    configure multicast-management chassis-level per-mcast-plane-capacity redundant-mcast-capacity secondary-percentage 87.5
-    configure port 1/1/c1 admin-state enable
-    configure port 1/1/c1 connector breakout c1-10g
-    configure port 1/1/c1/1 admin-state enable
-    configure port 1/1/c1/1 ethernet mode hybrid
-    configure port 1/1/c2 admin-state enable
-    configure port 1/1/c2 connector breakout c1-10g
-    configure port 1/1/c2/1 admin-state enable
-    configure port 1/1/c2/1 ethernet mode hybrid
-    configure port 1/1/c3 admin-state enable
-    configure port 1/1/c3 connector breakout c1-10g
-    configure port 1/1/c3/1 admin-state enable
-    configure port 1/1/c3/1 ethernet mode hybrid
-    configure port 1/1/c4 admin-state enable
-    configure port 1/1/c4 connector breakout c1-10g
-    configure port 1/1/c4/1 admin-state enable
-    configure port 1/1/c4/1 ethernet mode hybrid
-    configure port 1/1/c5 admin-state enable
-    configure port 1/1/c5 connector breakout c1-10g
-    configure port 1/1/c5/1 admin-state enable
-    configure port 1/1/c5/1 ethernet mode hybrid
-    configure port 1/1/c6 admin-state enable
-    configure port 1/1/c6 connector breakout c1-10g
-    configure port 1/1/c6/1 admin-state enable
-    configure port 1/1/c6/1 ethernet mode hybrid
-    configure port 1/1/c7 admin-state enable
-    configure port 1/1/c7 connector breakout c1-10g
-    configure port 1/1/c7/1 admin-state enable
-    configure port 1/1/c7/1 ethernet mode hybrid
-    configure port 1/1/c8 admin-state enable
-    configure port 1/1/c8 connector breakout c1-10g
-    configure port 1/1/c8/1 admin-state enable
-    configure port 1/1/c8/1 ethernet mode hybrid
-    configure port 1/1/c9 admin-state enable
-    configure port 1/1/c9 connector breakout c1-10g
-    configure port 1/1/c9/1 admin-state enable
-    configure port 1/1/c9/1 ethernet mode hybrid
-    configure port 1/1/c9/1 ethernet encap-type qinq
-    configure port 1/1/c10 admin-state enable
-    configure port 1/1/c10 connector breakout c1-10g
-    configure port 1/1/c10/1 admin-state enable
-    configure port 1/1/c10/1 ethernet mode access
-    configure port 1/1/c10/1 ethernet encap-type qinq
-    configure port 1/1/c11 admin-state enable
-    configure port 1/1/c11 connector breakout c1-10g
-    configure port 1/1/c11/1 admin-state enable
-    configure port 1/1/c11/1 ethernet mode hybrid
-    configure port 1/1/c11/1 ethernet encap-type qinq
-    configure port 1/1/c12 admin-state enable
-    configure port 1/1/c12 connector breakout c1-10g
-    configure port 1/1/c12/1 admin-state enable
-    configure port 1/1/c12/1 ethernet mode access
-    configure port 1/1/c13 admin-state enable
-    configure port 1/1/c13 connector breakout c1-10g
-    configure port 1/1/c13/1 admin-state enable
-    configure port 1/1/c13/1 ethernet mode hybrid
-    configure port 1/1/c14 admin-state enable
-    configure port 1/1/c14 connector breakout c1-10g
-    configure port 1/1/c14/1 admin-state enable
-    configure port 1/1/c14/1 ethernet mode hybrid
-    configure port 1/1/c15 admin-state enable
-    configure port 1/1/c15 connector breakout c1-10g
-    configure port 1/1/c15/1 admin-state enable
-    configure port 1/1/c15/1 ethernet mode hybrid
-    configure port 1/1/c16 admin-state enable
-    configure port 1/1/c16 connector breakout c1-10g
-    configure port 1/1/c16/1 admin-state enable
-    configure port 1/1/c16/1 ethernet mode hybrid
-    configure port 1/1/c17 admin-state enable
-    configure port 1/1/c17 connector breakout c1-10g
-    configure port 1/1/c17/1 admin-state enable
-    configure port 1/1/c17/1 ethernet mode hybrid
-    configure port 1/1/c18 admin-state enable
-    configure port 1/1/c18 connector breakout c1-10g
-    configure port 1/1/c18/1 admin-state enable
-    configure port 1/1/c18/1 ethernet mode hybrid
-    configure port 1/1/c19 admin-state enable
-    configure port 1/1/c19 connector breakout c1-10g
-    configure port 1/1/c19/1 admin-state enable
-    configure port 1/1/c19/1 ethernet mode access
-    configure port 1/1/c20 admin-state enable
-    configure port 1/1/c20 connector breakout c1-10g
-    configure port 1/1/c20/1 admin-state enable
-    configure port 1/1/c20/1 ethernet mode hybrid
-    configure port 1/1/c21 admin-state enable
-    configure port 1/1/c21 connector breakout c1-10g
-    configure port 1/1/c21/1 admin-state enable
-    configure port 1/1/c21/1 ethernet mode hybrid
-    configure port 1/1/c22 admin-state enable
-    configure port 1/1/c22 connector breakout c1-10g
-    configure port 1/1/c22/1 admin-state enable
-    configure port 1/1/c22/1 ethernet mode hybrid
-    configure port 1/1/c23 admin-state enable
-    configure port 1/1/c23 connector breakout c1-10g
-    configure port 1/1/c23/1 admin-state enable
-    configure port 1/1/c23/1 ethernet mode hybrid
-    configure port 1/1/c24 admin-state enable
-    configure port 1/1/c24 connector breakout c1-10g
-    configure port 1/1/c24/1 admin-state enable
-    configure port 1/1/c24/1 ethernet mode hybrid
-    configure port 1/1/c24/1 ethernet encap-type qinq
-    configure port 1/1/c25 admin-state enable
-    configure port 1/1/c25 connector breakout c1-10g
-    configure port 1/1/c25/1 admin-state enable
-    configure port 1/1/c25/1 ethernet mode hybrid
-    configure port 1/1/c25/1 ethernet encap-type qinq
-    configure port 1/1/c26 admin-state enable
-    configure port 1/1/c26 connector breakout c1-10g
-    configure port 1/1/c26/1 admin-state enable
-    configure port 1/1/c26/1 ethernet mode access
-    configure port 1/1/c27 admin-state enable
-    configure port 1/1/c27 connector breakout c1-10g
-    configure port 1/1/c27/1 admin-state enable
-    configure port 1/1/c27/1 ethernet mode hybrid
-    configure port 1/1/c28 admin-state enable
-    configure port 1/1/c28 connector breakout c1-10g
-    configure port 1/1/c28/1 admin-state enable
-    configure port 1/1/c28/1 ethernet mode hybrid
-    configure port 1/1/c29 admin-state enable
-    configure port 1/1/c29 connector breakout c1-10g
-    configure port 1/1/c29/1 admin-state enable
-    configure port 1/1/c29/1 ethernet mode hybrid
-    configure port 1/1/c30 admin-state enable
-    configure port 1/1/c30 connector breakout c1-10g
-    configure port 1/1/c30/1 admin-state enable
-    configure port 1/1/c30/1 ethernet mode hybrid
-    configure port 1/1/c30/1 ethernet encap-type qinq
-    configure port 1/1/c31 admin-state enable
-    configure port 1/1/c31 connector breakout c1-10g
-    configure port 1/1/c31/1 admin-state enable
-    configure port 1/1/c31/1 ethernet mode hybrid
-    configure port 1/1/c32 admin-state enable
-    configure port 1/1/c32 connector breakout c1-10g
-    configure port 1/1/c32/1 admin-state enable
-    configure port 1/1/c32/1 ethernet mode access
-    configure port 1/1/c33 admin-state enable
-    configure port 1/1/c33 connector breakout c1-10g
-    configure port 1/1/c33/1 admin-state enable
-    configure port 1/1/c33/1 ethernet mode hybrid
-    configure port 1/1/c34 admin-state enable
-    configure port 1/1/c34 connector breakout c1-10g
-    configure port 1/1/c34/1 admin-state enable
-    configure port 1/1/c34/1 ethernet mode hybrid
-    configure port 1/1/c35 admin-state enable
-    configure port 1/1/c35 connector breakout c1-10g
-    configure port 1/1/c35/1 admin-state enable
-    configure port 1/1/c35/1 ethernet mode hybrid
-    configure port 1/1/c36 admin-state enable
-    configure port 1/1/c36 connector breakout c1-10g
-    configure port 1/1/c36/1 admin-state enable
-    configure port 1/1/c36/1 ethernet mode access
-    configure router "Base" autonomous-system 65000
-    configure router "Base" router-id 192.0.2.1
-    configure router "Base" interface "system" ipv4 primary address 192.0.2.1
-    configure router "Base" interface "system" ipv4 primary prefix-length 32
-    configure router "Base" interface "to-UPF1" port 1/1/c7/1:0
-    configure router "Base" interface "to-UPF1" ipv4 primary address 172.16.114.13
-    configure router "Base" interface "to-UPF1" ipv4 primary prefix-length 30
-    configure router "Base" interface "to-UPF2" port 1/1/c8/1:0
-    configure router "Base" interface "to-UPF2" ipv4 primary address 172.16.115.13
-    configure router "Base" interface "to-UPF2" ipv4 primary prefix-length 30
-    configure router "Base" interface "to-magc1" port 1/1/c13/1:0
-    configure router "Base" interface "to-magc1" ipv4 primary address 192.0.43.1
-    configure router "Base" interface "to-magc1" ipv4 primary prefix-length 30
-    configure router "Base" interface "to-magc2" port 1/1/c14/1:0
-    configure router "Base" interface "to-magc2" ipv4 primary address 192.1.43.1
-    configure router "Base" interface "to-magc2" ipv4 primary prefix-length 30
-    configure router "Base" bgp min-route-advertisement 1
-    configure router "Base" bgp rapid-withdrawal true
-    configure router "Base" bgp ebgp-default-reject-policy import false
-    configure router "Base" bgp ebgp-default-reject-policy export false
-    configure router "Base" bgp rapid-update vpn-ipv4 true
-    configure router "Base" bgp rapid-update vpn-ipv6 true
-    configure router "Base" bgp rapid-update l2-vpn true
-    configure router "Base" bgp rapid-update mvpn-ipv4 true
-    configure router "Base" bgp rapid-update mdt-safi true
-    configure router "Base" bgp rapid-update mcast-vpn-ipv4 true
-    configure router "Base" bgp rapid-update mvpn-ipv6 true
-    configure router "Base" bgp rapid-update evpn true
-    configure router "Base" bgp rapid-update label-ipv4 true
-    configure router "Base" bgp rapid-update label-ipv6 true
-    configure router "Base" bgp rapid-update mcast-vpn-ipv6 true
-    configure router "Base" bgp group "internal" type internal
-    configure router "Base" bgp group "internal" family ipv4 true
-    configure router "Base" bgp group "internal" family vpn-ipv4 true
-    configure router "Base" bgp group "internal" family vpn-ipv6 true
-    configure router "Base" bgp group "to-magc1" type external
-    configure router "Base" bgp group "to-magc1" peer-as 65001
-    configure router "Base" bgp group "to-magc1" split-horizon true
-    configure router "Base" bgp group "to-magc1" family ipv4 true
-    configure router "Base" bgp group "to-magc1" local-as as-number 65000
-    configure router "Base" bgp group "to-magc2" type external
-    configure router "Base" bgp group "to-magc2" peer-as 65002
-    configure router "Base" bgp group "to-magc2" split-horizon true
-    configure router "Base" bgp group "to-magc2" family ipv4 true
-    configure router "Base" bgp group "to-magc2" local-as as-number 65000
-    configure router "Base" bgp neighbor "192.0.2.3" group "internal"
-    configure router "Base" bgp neighbor "192.0.2.4" group "internal"
-    configure router "Base" bgp neighbor "192.0.43.2" group "to-magc1"
-    configure router "Base" bgp neighbor "192.1.43.2" group "to-magc2"
-    configure { router "Base" ldp interface-parameters interface "to-UPF1" ipv4 }
-    configure { router "Base" ldp interface-parameters interface "to-UPF2" ipv4 }
-    configure router "Base" ospf 0 admin-state enable
-    configure router "Base" ospf 0 area 0.0.0.0 interface "system" interface-type point-to-point
-    configure router "Base" ospf 0 area 0.0.0.0 interface "to-UPF1" interface-type point-to-point
-    configure router "Base" ospf 0 area 0.0.0.0 interface "to-UPF2" interface-type point-to-point
-    configure service vpls "100" admin-state enable
-    configure service vpls "100" description "access to up1 and up2"
-    configure service vpls "100" customer "1"
-    configure service vpls "100" sap 1/1/c9/1:*.* description "to-UP1"
-    configure service vpls "100" sap 1/1/c10/1:*.* description "to-UP2"
-    configure service vpls "100" sap 1/1/c11/1:*.* description "to-bngblaster"
-    configure service vprn "500" admin-state enable
-    configure service vprn "500" customer "1"
-    configure service vprn "500" bgp-ipvpn mpls admin-state enable
-    configure service vprn "500" bgp-ipvpn mpls route-distinguisher "500:1"
-    configure service vprn "500" bgp-ipvpn mpls vrf-target community "target:65000:500"
-    configure service vprn "500" bgp-ipvpn mpls auto-bind-tunnel resolution filter
-    configure service vprn "500" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
-    configure service vprn "500" interface "internet" ipv4 primary address 10.0.0.2
-    configure service vprn "500" interface "internet" ipv4 primary prefix-length 24
-    configure { service vprn "500" interface "internet" sap 1/1/c12/1 }
-    configure service vprn "500" interface "loopback" loopback true
-    configure service vprn "500" interface "loopback" ipv4 primary address 1.1.1.201
-    configure service vprn "500" interface "loopback" ipv4 primary prefix-length 32
-    configure service vprn "500" static-routes route 10.60.0.0/24 route-type unicast next-hop "10.99.99.1" admin-state enable
-    configure service vprn "500" static-routes route 10.60.0.0/24 route-type unicast next-hop "10.99.99.1" description "vls-data"
-    configure service vprn "1151" admin-state enable
-    configure service vprn "1151" description "db2"
-    configure service vprn "1151" customer "1"
-    configure service vprn "1151" interface "to-cdb-2" ip-mtu 9000
-    configure service vprn "1151" interface "to-cdb-2" ipv4 primary address 192.168.1.1
-    configure service vprn "1151" interface "to-cdb-2" ipv4 primary prefix-length 24
-    configure { service vprn "1151" interface "to-cdb-2" sap 1/1/c18/1:0 }
-    configure service vprn "1151" interface "to-magc-2" ip-mtu 9000
-    configure service vprn "1151" interface "to-magc-2" ipv4 primary address 10.40.43.1
-    configure service vprn "1151" interface "to-magc-2" ipv4 primary prefix-length 31
-    configure { service vprn "1151" interface "to-magc-2" sap 1/1/c16/1:0 }
-    configure service vprn "1151" static-routes route 1.1.1.1/32 route-type unicast next-hop "10.40.43.0" admin-state enable
-    configure service vprn "2043" admin-state enable
-    configure service vprn "2043" customer "1"
-    configure service vprn "2043" autonomous-system 65000
-    configure service vprn "2043" ecmp 2
-    configure service vprn "2043" bgp-ipvpn mpls admin-state enable
-    configure service vprn "2043" bgp-ipvpn mpls route-distinguisher "2043:2043"
-    configure service vprn "2043" bgp-ipvpn mpls vrf-target community "target:65000:2043"
-    configure service vprn "2043" bgp-ipvpn mpls auto-bind-tunnel resolution filter
-    configure service vprn "2043" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
-    configure service vprn "2043" bgp-ipvpn mpls auto-bind-tunnel resolution-filter rsvp true
-    configure service vprn "2043" bgp min-route-advertisement 1
-    configure service vprn "2043" bgp rapid-withdrawal true
-    configure service vprn "2043" bgp ebgp-default-reject-policy import false
-    configure service vprn "2043" bgp ebgp-default-reject-policy export false
-    configure service vprn "2043" bgp group "pe-ce" peer-as 65000
-    configure service vprn "2043" bgp group "pe-ce" family ipv4 true
-    configure service vprn "2043" bgp neighbor "10.20.43.0" group "pe-ce"
-    configure service vprn "2043" bgp neighbor "10.20.43.0" local-address 10.20.43.1
-    configure service vprn "2043" bgp neighbor "10.20.43.0" send-default ipv4 true
-    configure service vprn "2043" bgp neighbor "10.30.43.0" group "pe-ce"
-    configure service vprn "2043" bgp neighbor "10.30.43.0" local-address 10.30.43.1
-    configure service vprn "2043" bgp neighbor "10.30.43.0" send-default ipv4 true
-    configure service vprn "2043" interface "loopback" loopback true
-    configure service vprn "2043" interface "loopback" ipv4 primary address 192.0.2.1
-    configure service vprn "2043" interface "loopback" ipv4 primary prefix-length 32
-    configure service vprn "2043" interface "to-AMF-N2" ipv4 primary address 10.50.1.1
-    configure service vprn "2043" interface "to-AMF-N2" ipv4 primary prefix-length 24
-    configure { service vprn "2043" interface "to-AMF-N2" sap 1/1/c3/1:0 }
-    configure service vprn "2043" interface "to-amf" ipv4 primary address 10.100.1.1
-    configure service vprn "2043" interface "to-amf" ipv4 primary prefix-length 24
-    configure { service vprn "2043" interface "to-amf" sap 1/1/c20/1:0 }
-    configure service vprn "2043" interface "to-gnb" ipv4 primary address 10.80.1.1
-    configure service vprn "2043" interface "to-gnb" ipv4 primary prefix-length 24
-    configure { service vprn "2043" interface "to-gnb" sap 1/1/c1/1:0 }
-    configure service vprn "2043" interface "to-mag-1" ipv4 primary address 10.20.43.1
-    configure service vprn "2043" interface "to-mag-1" ipv4 primary prefix-length 31
-    configure { service vprn "2043" interface "to-mag-1" sap 1/1/c5/1:0 }
-    configure service vprn "2043" interface "to-mag-2" ipv4 primary address 10.30.43.1
-    configure service vprn "2043" interface "to-mag-2" ipv4 primary prefix-length 31
-    configure { service vprn "2043" interface "to-mag-2" sap 1/1/c6/1:0 }
-    configure service vprn "2043" interface "to-metric-pcf-amf" ipv4 primary address 10.110.1.1
-    configure service vprn "2043" interface "to-metric-pcf-amf" ipv4 primary prefix-length 24
-    configure { service vprn "2043" interface "to-metric-pcf-amf" sap 1/1/c2/1:0 }
-    configure service vprn "2043" interface "to-nrf" ipv4 primary address 10.40.1.1
-    configure service vprn "2043" interface "to-nrf" ipv4 primary prefix-length 24
-    configure { service vprn "2043" interface "to-nrf" sap 1/1/c4/1:0 }
-    configure service vprn "2043" interface "to-radius" ipv4 primary address 100.0.0.1
-    configure service vprn "2043" interface "to-radius" ipv4 primary prefix-length 24
-    configure { service vprn "2043" interface "to-radius" sap 1/1/c19/1 }
-    configure service vprn "ToDatabase" admin-state enable
-    configure service vprn "ToDatabase" service-id 151
-    configure service vprn "ToDatabase" customer "1"
-    configure service vprn "ToDatabase" interface "to-cdb-1" ip-mtu 9000
-    configure service vprn "ToDatabase" interface "to-cdb-1" ipv4 primary address 192.168.1.1
-    configure service vprn "ToDatabase" interface "to-cdb-1" ipv4 primary prefix-length 24
-    configure { service vprn "ToDatabase" interface "to-cdb-1" sap 1/1/c17/1:0 }
-    configure service vprn "ToDatabase" interface "to-magc-1" ip-mtu 9000
-    configure service vprn "ToDatabase" interface "to-magc-1" ipv4 primary address 10.40.43.1
-    configure service vprn "ToDatabase" interface "to-magc-1" ipv4 primary prefix-length 31
-    configure { service vprn "ToDatabase" interface "to-magc-1" sap 1/1/c15/1:0 }
-    configure service vprn "ToDatabase" static-routes route 1.1.1.1/32 route-type unicast next-hop "10.40.43.0" admin-state enable
-    configure system name "TRA-cups"
-    configure system boot-good-exec "tftp://172.31.255.29/post-boot-exec.cfg"
-    configure system grpc admin-state enable
-    configure system grpc allow-unsecure-connection
-    configure system management-interface configuration-save incremental-saves false
-    configure system management-interface netconf listen admin-state enable
-    configure system bluetooth advertising-timeout 30
-    configure system login-control idle-timeout none
-    configure system login-control motd text "## This node is part of the CUPS CLAB ...Enjoy ##\n"
-    configure system security aaa local-profiles profile "administrative" default-action permit-all
-    configure system security aaa local-profiles profile "administrative" entry 10 match "configure system security"
-    configure system security aaa local-profiles profile "administrative" entry 10 action permit
-    configure system security aaa local-profiles profile "administrative" entry 20 match "show system security"
-    configure system security aaa local-profiles profile "administrative" entry 20 action permit
-    configure system security aaa local-profiles profile "administrative" entry 30 match "tools perform security"
-    configure system security aaa local-profiles profile "administrative" entry 30 action permit
-    configure system security aaa local-profiles profile "administrative" entry 40 match "tools dump security"
-    configure system security aaa local-profiles profile "administrative" entry 40 action permit
-    configure system security aaa local-profiles profile "administrative" entry 42 match "tools dump system security"
-    configure system security aaa local-profiles profile "administrative" entry 42 action permit
-    configure system security aaa local-profiles profile "administrative" entry 50 match "admin system security"
-    configure system security aaa local-profiles profile "administrative" entry 50 action permit
-    configure system security aaa local-profiles profile "administrative" entry 100 match "configure li"
-    configure system security aaa local-profiles profile "administrative" entry 100 action deny
-    configure system security aaa local-profiles profile "administrative" entry 110 match "show li"
-    configure system security aaa local-profiles profile "administrative" entry 110 action deny
-    configure system security aaa local-profiles profile "administrative" entry 111 match "clear li"
-    configure system security aaa local-profiles profile "administrative" entry 111 action deny
-    configure system security aaa local-profiles profile "administrative" entry 112 match "tools dump li"
-    configure system security aaa local-profiles profile "administrative" entry 112 action deny
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization action true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization cancel-commit true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization close-session true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization commit true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization copy-config true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization create-subscription true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization delete-config true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization discard-changes true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization edit-config true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-config true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-data true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-schema true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization kill-session true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization lock true
-    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization validate true
-    configure system security aaa local-profiles profile "default" entry 10 match "exec"
-    configure system security aaa local-profiles profile "default" entry 10 action permit
-    configure system security aaa local-profiles profile "default" entry 20 match "exit"
-    configure system security aaa local-profiles profile "default" entry 20 action permit
-    configure system security aaa local-profiles profile "default" entry 30 match "help"
-    configure system security aaa local-profiles profile "default" entry 30 action permit
-    configure system security aaa local-profiles profile "default" entry 40 match "logout"
-    configure system security aaa local-profiles profile "default" entry 40 action permit
-    configure system security aaa local-profiles profile "default" entry 50 match "password"
-    configure system security aaa local-profiles profile "default" entry 50 action permit
-    configure system security aaa local-profiles profile "default" entry 60 match "show config"
-    configure system security aaa local-profiles profile "default" entry 60 action deny
-    configure system security aaa local-profiles profile "default" entry 65 match "show li"
-    configure system security aaa local-profiles profile "default" entry 65 action deny
-    configure system security aaa local-profiles profile "default" entry 66 match "clear li"
-    configure system security aaa local-profiles profile "default" entry 66 action deny
-    configure system security aaa local-profiles profile "default" entry 67 match "tools dump li"
-    configure system security aaa local-profiles profile "default" entry 67 action deny
-    configure system security aaa local-profiles profile "default" entry 68 match "state li"
-    configure system security aaa local-profiles profile "default" entry 68 action deny
-    configure system security aaa local-profiles profile "default" entry 70 match "show"
-    configure system security aaa local-profiles profile "default" entry 70 action permit
-    configure system security aaa local-profiles profile "default" entry 75 match "state"
-    configure system security aaa local-profiles profile "default" entry 75 action permit
-    configure system security aaa local-profiles profile "default" entry 80 match "enable-admin"
-    configure system security aaa local-profiles profile "default" entry 80 action permit
-    configure system security aaa local-profiles profile "default" entry 90 match "enable"
-    configure system security aaa local-profiles profile "default" entry 90 action permit
-    configure system security aaa local-profiles profile "default" entry 100 match "configure li"
-    configure system security aaa local-profiles profile "default" entry 100 action deny
-    configure system security aaa user-template ldap-default restricted-to-home false
-    configure system security aaa user-template ldap-default save-when-restricted false
-    configure system security aaa user-template radius-default restricted-to-home false
-    configure system security aaa user-template radius-default save-when-restricted false
-    configure system security aaa user-template tacplus-default restricted-to-home false
-    configure system security aaa user-template tacplus-default save-when-restricted false
-    configure system security ssh server-cipher-list-v2 cipher 190 name aes256-ctr
-    configure system security ssh server-cipher-list-v2 cipher 192 name aes192-ctr
-    configure system security ssh server-cipher-list-v2 cipher 194 name aes128-ctr
-    configure system security ssh server-cipher-list-v2 cipher 200 name aes128-cbc
-    configure system security ssh server-cipher-list-v2 cipher 205 name 3des-cbc
-    configure system security ssh server-cipher-list-v2 cipher 225 name aes192-cbc
-    configure system security ssh server-cipher-list-v2 cipher 230 name aes256-cbc
-    configure system security ssh client-cipher-list-v2 cipher 190 name aes256-ctr
-    configure system security ssh client-cipher-list-v2 cipher 192 name aes192-ctr
-    configure system security ssh client-cipher-list-v2 cipher 194 name aes128-ctr
-    configure system security ssh client-cipher-list-v2 cipher 200 name aes128-cbc
-    configure system security ssh client-cipher-list-v2 cipher 205 name 3des-cbc
-    configure system security ssh client-cipher-list-v2 cipher 225 name aes192-cbc
-    configure system security ssh client-cipher-list-v2 cipher 230 name aes256-cbc
-    configure system security ssh server-mac-list-v2 mac 200 name hmac-sha2-512
-    configure system security ssh server-mac-list-v2 mac 210 name hmac-sha2-256
-    configure system security ssh server-mac-list-v2 mac 215 name hmac-sha1
-    configure system security ssh server-mac-list-v2 mac 220 name hmac-sha1-96
-    configure system security ssh server-mac-list-v2 mac 225 name hmac-md5
-    configure system security ssh server-mac-list-v2 mac 240 name hmac-md5-96
-    configure system security ssh client-mac-list-v2 mac 200 name hmac-sha2-512
-    configure system security ssh client-mac-list-v2 mac 210 name hmac-sha2-256
-    configure system security ssh client-mac-list-v2 mac 215 name hmac-sha1
-    configure system security ssh client-mac-list-v2 mac 220 name hmac-sha1-96
-    configure system security ssh client-mac-list-v2 mac 225 name hmac-md5
-    configure system security ssh client-mac-list-v2 mac 240 name hmac-md5-96
-    configure system security user-params local-user user "admin" password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
-    configure system security user-params local-user user "admin" restricted-to-home false
-    configure system security user-params local-user user "admin" save-when-restricted false
-    configure system security user-params local-user user "admin" access console true
-    configure system security user-params local-user user "admin" access ftp true
-    configure system security user-params local-user user "admin" access snmp true
-    configure system security user-params local-user user "admin" access netconf true
-    configure system security user-params local-user user "admin" access grpc true
-    configure system security user-params local-user user "admin" access li true
-    configure system security user-params local-user user "admin" console member ["administrative"]
-    configure system time zone standard name cet
-    configure system time daylight-saving-time-zone standard name cest
-    configure system time ntp admin-state enable
-    configure { system time ntp ntp-server }
-    configure system time ntp server 10.171.8.4 router-instance "management" prefer true
-    configure { system time ntp server 10.171.8.45 router-instance "management" }
-
-# Finished 2025-04-09T23:18:50.4+02:00
-
-[/]
-A:admin@TRA-cups#
-
+configure {
+    card 1 mda 1 mda-type s36-100gb-qsfp28
+    card 1 { fp 1 }
+    card 1 { fp 2 }
+    chassis router chassis-number 1 power-shelf 1 power-shelf-type ps-a4-shelf-dc
+    chassis router chassis-number 1 power-shelf 1 power-module 1 power-module-type ps-a-dc-6000
+    chassis router chassis-number 1 power-shelf 1 power-module 2 power-module-type ps-a-dc-6000
+    chassis router chassis-number 1 power-shelf 1 power-module 3 power-module-type ps-a-dc-6000
+    chassis router chassis-number 1 power-shelf 1 power-module 4 power-module-type ps-a-dc-6000
+    log filter "1001" named-entry "10" description "Collect only events of major severity or higher"
+    log filter "1001" named-entry "10" action forward
+    log filter "1001" named-entry "10" match severity gte major
+    log log-id "99" description "Default System Log"
+    log log-id "99" time-format local
+    log log-id "99" source main true
+    log log-id "99" destination memory max-entries 500
+    log log-id "100" description "Default Serious Errors Log"
+    log log-id "100" filter "1001"
+    log log-id "100" source main true
+    log log-id "100" destination memory max-entries 500
+    multicast-management chassis-level per-mcast-plane-capacity total-capacity dynamic
+    multicast-management chassis-level per-mcast-plane-capacity mcast-capacity primary-percentage 87.5
+    multicast-management chassis-level per-mcast-plane-capacity mcast-capacity secondary-percentage 87.5
+    multicast-management chassis-level per-mcast-plane-capacity redundant-mcast-capacity primary-percentage 87.5
+    multicast-management chassis-level per-mcast-plane-capacity redundant-mcast-capacity secondary-percentage 87.5
+    port 1/1/c1 admin-state enable
+    port 1/1/c1 connector breakout c1-10g
+    port 1/1/c1/1 admin-state enable
+    port 1/1/c1/1 ethernet mode hybrid
+    port 1/1/c2 admin-state enable
+    port 1/1/c2 connector breakout c1-10g
+    port 1/1/c2/1 admin-state enable
+    port 1/1/c2/1 ethernet mode hybrid
+    port 1/1/c3 admin-state enable
+    port 1/1/c3 connector breakout c1-10g
+    port 1/1/c3/1 admin-state enable
+    port 1/1/c3/1 ethernet mode hybrid
+    port 1/1/c4 admin-state enable
+    port 1/1/c4 connector breakout c1-10g
+    port 1/1/c4/1 admin-state enable
+    port 1/1/c4/1 ethernet mode hybrid
+    port 1/1/c5 admin-state enable
+    port 1/1/c5 connector breakout c1-10g
+    port 1/1/c5/1 admin-state enable
+    port 1/1/c5/1 ethernet mode hybrid
+    port 1/1/c6 admin-state enable
+    port 1/1/c6 connector breakout c1-10g
+    port 1/1/c6/1 admin-state enable
+    port 1/1/c6/1 ethernet mode hybrid
+    port 1/1/c7 admin-state enable
+    port 1/1/c7 connector breakout c1-10g
+    port 1/1/c7/1 admin-state enable
+    port 1/1/c7/1 ethernet mode hybrid
+    port 1/1/c8 admin-state enable
+    port 1/1/c8 connector breakout c1-10g
+    port 1/1/c8/1 admin-state enable
+    port 1/1/c8/1 ethernet mode hybrid
+    port 1/1/c9 admin-state enable
+    port 1/1/c9 connector breakout c1-10g
+    port 1/1/c9/1 admin-state enable
+    port 1/1/c9/1 ethernet mode hybrid
+    port 1/1/c9/1 ethernet encap-type qinq
+    port 1/1/c10 admin-state enable
+    port 1/1/c10 connector breakout c1-10g
+    port 1/1/c10/1 admin-state enable
+    port 1/1/c10/1 ethernet mode access
+    port 1/1/c10/1 ethernet encap-type qinq
+    port 1/1/c11 admin-state enable
+    port 1/1/c11 connector breakout c1-10g
+    port 1/1/c11/1 admin-state enable
+    port 1/1/c11/1 ethernet mode hybrid
+    port 1/1/c11/1 ethernet encap-type qinq
+    port 1/1/c12 admin-state enable
+    port 1/1/c12 connector breakout c1-10g
+    port 1/1/c12/1 admin-state enable
+    port 1/1/c12/1 ethernet mode access
+    port 1/1/c13 admin-state enable
+    port 1/1/c13 connector breakout c1-10g
+    port 1/1/c13/1 admin-state enable
+    port 1/1/c13/1 ethernet mode hybrid
+    port 1/1/c14 admin-state enable
+    port 1/1/c14 connector breakout c1-10g
+    port 1/1/c14/1 admin-state enable
+    port 1/1/c14/1 ethernet mode hybrid
+    port 1/1/c15 admin-state enable
+    port 1/1/c15 connector breakout c1-10g
+    port 1/1/c15/1 admin-state enable
+    port 1/1/c15/1 ethernet mode hybrid
+    port 1/1/c16 admin-state enable
+    port 1/1/c16 connector breakout c1-10g
+    port 1/1/c16/1 admin-state enable
+    port 1/1/c16/1 ethernet mode hybrid
+    port 1/1/c17 admin-state enable
+    port 1/1/c17 connector breakout c1-10g
+    port 1/1/c17/1 admin-state enable
+    port 1/1/c17/1 ethernet mode hybrid
+    port 1/1/c18 admin-state enable
+    port 1/1/c18 connector breakout c1-10g
+    port 1/1/c18/1 admin-state enable
+    port 1/1/c18/1 ethernet mode hybrid
+    port 1/1/c19 admin-state enable
+    port 1/1/c19 connector breakout c1-10g
+    port 1/1/c19/1 admin-state enable
+    port 1/1/c19/1 ethernet mode access
+    port 1/1/c20 admin-state enable
+    port 1/1/c20 connector breakout c1-10g
+    port 1/1/c20/1 admin-state enable
+    port 1/1/c20/1 ethernet mode hybrid
+    port 1/1/c21 admin-state enable
+    port 1/1/c21 connector breakout c1-10g
+    port 1/1/c21/1 admin-state enable
+    port 1/1/c21/1 ethernet mode hybrid
+    port 1/1/c22 admin-state enable
+    port 1/1/c22 connector breakout c1-10g
+    port 1/1/c22/1 admin-state enable
+    port 1/1/c22/1 ethernet mode hybrid
+    port 1/1/c23 admin-state enable
+    port 1/1/c23 connector breakout c1-10g
+    port 1/1/c23/1 admin-state enable
+    port 1/1/c23/1 ethernet mode hybrid
+    port 1/1/c24 admin-state enable
+    port 1/1/c24 connector breakout c1-10g
+    port 1/1/c24/1 admin-state enable
+    port 1/1/c24/1 ethernet mode hybrid
+    port 1/1/c24/1 ethernet encap-type qinq
+    port 1/1/c25 admin-state enable
+    port 1/1/c25 connector breakout c1-10g
+    port 1/1/c25/1 admin-state enable
+    port 1/1/c25/1 ethernet mode hybrid
+    port 1/1/c25/1 ethernet encap-type qinq
+    port 1/1/c26 admin-state enable
+    port 1/1/c26 connector breakout c1-10g
+    port 1/1/c26/1 admin-state enable
+    port 1/1/c26/1 ethernet mode access
+    port 1/1/c27 admin-state enable
+    port 1/1/c27 connector breakout c1-10g
+    port 1/1/c27/1 admin-state enable
+    port 1/1/c27/1 ethernet mode hybrid
+    port 1/1/c28 admin-state enable
+    port 1/1/c28 connector breakout c1-10g
+    port 1/1/c28/1 admin-state enable
+    port 1/1/c28/1 ethernet mode hybrid
+    port 1/1/c29 admin-state enable
+    port 1/1/c29 connector breakout c1-10g
+    port 1/1/c29/1 admin-state enable
+    port 1/1/c29/1 ethernet mode hybrid
+    port 1/1/c30 admin-state enable
+    port 1/1/c30 connector breakout c1-10g
+    port 1/1/c30/1 admin-state enable
+    port 1/1/c30/1 ethernet mode hybrid
+    port 1/1/c30/1 ethernet encap-type qinq
+    port 1/1/c31 admin-state enable
+    port 1/1/c31 connector breakout c1-10g
+    port 1/1/c31/1 admin-state enable
+    port 1/1/c31/1 ethernet mode hybrid
+    port 1/1/c32 admin-state enable
+    port 1/1/c32 connector breakout c1-10g
+    port 1/1/c32/1 admin-state enable
+    port 1/1/c32/1 ethernet mode access
+    port 1/1/c33 admin-state enable
+    port 1/1/c33 connector breakout c1-10g
+    port 1/1/c33/1 admin-state enable
+    port 1/1/c33/1 ethernet mode hybrid
+    port 1/1/c34 admin-state enable
+    port 1/1/c34 connector breakout c1-10g
+    port 1/1/c34/1 admin-state enable
+    port 1/1/c34/1 ethernet mode hybrid
+    port 1/1/c35 admin-state enable
+    port 1/1/c35 connector breakout c1-10g
+    port 1/1/c35/1 admin-state enable
+    port 1/1/c35/1 ethernet mode hybrid
+    port 1/1/c36 admin-state enable
+    port 1/1/c36 connector breakout c1-10g
+    port 1/1/c36/1 admin-state enable
+    port 1/1/c36/1 ethernet mode access
+    router "Base" autonomous-system 65000
+    router "Base" router-id 192.0.2.1
+    router "Base" interface "system" ipv4 primary address 192.0.2.1
+    router "Base" interface "system" ipv4 primary prefix-length 32
+    router "Base" interface "to-UPF1" port 1/1/c7/1:0
+    router "Base" interface "to-UPF1" ipv4 primary address 172.16.114.13
+    router "Base" interface "to-UPF1" ipv4 primary prefix-length 30
+    router "Base" interface "to-UPF2" port 1/1/c8/1:0
+    router "Base" interface "to-UPF2" ipv4 primary address 172.16.115.13
+    router "Base" interface "to-UPF2" ipv4 primary prefix-length 30
+    router "Base" interface "to-magc1" port 1/1/c13/1:0
+    router "Base" interface "to-magc1" ipv4 primary address 192.0.43.1
+    router "Base" interface "to-magc1" ipv4 primary prefix-length 30
+    router "Base" interface "to-magc2" port 1/1/c14/1:0
+    router "Base" interface "to-magc2" ipv4 primary address 192.1.43.1
+    router "Base" interface "to-magc2" ipv4 primary prefix-length 30
+    router "Base" bgp min-route-advertisement 1
+    router "Base" bgp rapid-withdrawal true
+    router "Base" bgp ebgp-default-reject-policy import false
+    router "Base" bgp ebgp-default-reject-policy export false
+    router "Base" bgp rapid-update vpn-ipv4 true
+    router "Base" bgp rapid-update vpn-ipv6 true
+    router "Base" bgp rapid-update l2-vpn true
+    router "Base" bgp rapid-update mvpn-ipv4 true
+    router "Base" bgp rapid-update mdt-safi true
+    router "Base" bgp rapid-update mcast-vpn-ipv4 true
+    router "Base" bgp rapid-update mvpn-ipv6 true
+    router "Base" bgp rapid-update evpn true
+    router "Base" bgp rapid-update label-ipv4 true
+    router "Base" bgp rapid-update label-ipv6 true
+    router "Base" bgp rapid-update mcast-vpn-ipv6 true
+    router "Base" bgp group "internal" type internal
+    router "Base" bgp group "internal" family ipv4 true
+    router "Base" bgp group "internal" family vpn-ipv4 true
+    router "Base" bgp group "internal" family vpn-ipv6 true
+    router "Base" bgp group "to-magc1" type external
+    router "Base" bgp group "to-magc1" peer-as 65001
+    router "Base" bgp group "to-magc1" split-horizon true
+    router "Base" bgp group "to-magc1" family ipv4 true
+    router "Base" bgp group "to-magc1" local-as as-number 65000
+    router "Base" bgp group "to-magc2" type external
+    router "Base" bgp group "to-magc2" peer-as 65002
+    router "Base" bgp group "to-magc2" split-horizon true
+    router "Base" bgp group "to-magc2" family ipv4 true
+    router "Base" bgp group "to-magc2" local-as as-number 65000
+    router "Base" bgp neighbor "192.0.2.3" group "internal"
+    router "Base" bgp neighbor "192.0.2.4" group "internal"
+    router "Base" bgp neighbor "192.0.43.2" group "to-magc1"
+    router "Base" bgp neighbor "192.1.43.2" group "to-magc2"
+    router "Base" { ldp interface-parameters interface "to-UPF1" ipv4 }
+    router "Base" { ldp interface-parameters interface "to-UPF2" ipv4 }
+    router "Base" ospf 0 admin-state enable
+    router "Base" ospf 0 area 0.0.0.0 interface "system" interface-type point-to-point
+    router "Base" ospf 0 area 0.0.0.0 interface "to-UPF1" interface-type point-to-point
+    router "Base" ospf 0 area 0.0.0.0 interface "to-UPF2" interface-type point-to-point
+    service vpls "100" admin-state enable
+    service vpls "100" description "access to up1 and up2"
+    service vpls "100" customer "1"
+    service vpls "100" sap 1/1/c9/1:*.* description "to-UP1"
+    service vpls "100" sap 1/1/c10/1:*.* description "to-UP2"
+    service vpls "100" sap 1/1/c11/1:*.* description "to-bngblaster"
+    service vprn "500" admin-state enable
+    service vprn "500" customer "1"
+    service vprn "500" bgp-ipvpn mpls admin-state enable
+    service vprn "500" bgp-ipvpn mpls route-distinguisher "500:1"
+    service vprn "500" bgp-ipvpn mpls vrf-target community "target:65000:500"
+    service vprn "500" bgp-ipvpn mpls auto-bind-tunnel resolution filter
+    service vprn "500" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
+    service vprn "500" interface "internet" ipv4 primary address 10.0.0.2
+    service vprn "500" interface "internet" ipv4 primary prefix-length 24
+    service { vprn "500" interface "internet" sap 1/1/c12/1 }
+    service vprn "500" interface "loopback" loopback true
+    service vprn "500" interface "loopback" ipv4 primary address 1.1.1.201
+    service vprn "500" interface "loopback" ipv4 primary prefix-length 32
+    service vprn "500" static-routes route 10.60.0.0/24 route-type unicast next-hop "10.99.99.1" admin-state enable
+    service vprn "500" static-routes route 10.60.0.0/24 route-type unicast next-hop "10.99.99.1" description "vls-data"
+    service vprn "1151" admin-state enable
+    service vprn "1151" description "db2"
+    service vprn "1151" customer "1"
+    service vprn "1151" interface "to-cdb-2" ip-mtu 9000
+    service vprn "1151" interface "to-cdb-2" ipv4 primary address 192.168.1.1
+    service vprn "1151" interface "to-cdb-2" ipv4 primary prefix-length 24
+    service { vprn "1151" interface "to-cdb-2" sap 1/1/c18/1:0 }
+    service vprn "1151" interface "to-magc-2" ip-mtu 9000
+    service vprn "1151" interface "to-magc-2" ipv4 primary address 10.40.43.1
+    service vprn "1151" interface "to-magc-2" ipv4 primary prefix-length 31
+    service { vprn "1151" interface "to-magc-2" sap 1/1/c16/1:0 }
+    service vprn "1151" static-routes route 1.1.1.1/32 route-type unicast next-hop "10.40.43.0" admin-state enable
+    service vprn "2043" admin-state enable
+    service vprn "2043" customer "1"
+    service vprn "2043" autonomous-system 65000
+    service vprn "2043" ecmp 2
+    service vprn "2043" bgp-ipvpn mpls admin-state enable
+    service vprn "2043" bgp-ipvpn mpls route-distinguisher "2043:2043"
+    service vprn "2043" bgp-ipvpn mpls vrf-target community "target:65000:2043"
+    service vprn "2043" bgp-ipvpn mpls auto-bind-tunnel resolution filter
+    service vprn "2043" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
+    service vprn "2043" bgp-ipvpn mpls auto-bind-tunnel resolution-filter rsvp true
+    service vprn "2043" bgp min-route-advertisement 1
+    service vprn "2043" bgp rapid-withdrawal true
+    service vprn "2043" bgp ebgp-default-reject-policy import false
+    service vprn "2043" bgp ebgp-default-reject-policy export false
+    service vprn "2043" bgp group "pe-ce" peer-as 65000
+    service vprn "2043" bgp group "pe-ce" family ipv4 true
+    service vprn "2043" bgp neighbor "10.20.43.0" group "pe-ce"
+    service vprn "2043" bgp neighbor "10.20.43.0" local-address 10.20.43.1
+    service vprn "2043" bgp neighbor "10.20.43.0" send-default ipv4 true
+    service vprn "2043" bgp neighbor "10.30.43.0" group "pe-ce"
+    service vprn "2043" bgp neighbor "10.30.43.0" local-address 10.30.43.1
+    service vprn "2043" bgp neighbor "10.30.43.0" send-default ipv4 true
+    service vprn "2043" interface "loopback" loopback true
+    service vprn "2043" interface "loopback" ipv4 primary address 192.0.2.1
+    service vprn "2043" interface "loopback" ipv4 primary prefix-length 32
+    service vprn "2043" interface "to-AMF-N2" ipv4 primary address 10.50.1.1
+    service vprn "2043" interface "to-AMF-N2" ipv4 primary prefix-length 24
+    service { vprn "2043" interface "to-AMF-N2" sap 1/1/c3/1:0 }
+    service vprn "2043" interface "to-amf" ipv4 primary address 10.100.1.1
+    service vprn "2043" interface "to-amf" ipv4 primary prefix-length 24
+    service { vprn "2043" interface "to-amf" sap 1/1/c20/1:0 }
+    service vprn "2043" interface "to-gnb" ipv4 primary address 10.80.1.1
+    service vprn "2043" interface "to-gnb" ipv4 primary prefix-length 24
+    service { vprn "2043" interface "to-gnb" sap 1/1/c1/1:0 }
+    service vprn "2043" interface "to-mag-1" ipv4 primary address 10.20.43.1
+    service vprn "2043" interface "to-mag-1" ipv4 primary prefix-length 31
+    service { vprn "2043" interface "to-mag-1" sap 1/1/c5/1:0 }
+    service vprn "2043" interface "to-mag-2" ipv4 primary address 10.30.43.1
+    service vprn "2043" interface "to-mag-2" ipv4 primary prefix-length 31
+    service { vprn "2043" interface "to-mag-2" sap 1/1/c6/1:0 }
+    service vprn "2043" interface "to-metric-pcf-amf" ipv4 primary address 10.110.1.1
+    service vprn "2043" interface "to-metric-pcf-amf" ipv4 primary prefix-length 24
+    service { vprn "2043" interface "to-metric-pcf-amf" sap 1/1/c2/1:0 }
+    service vprn "2043" interface "to-nrf" ipv4 primary address 10.40.1.1
+    service vprn "2043" interface "to-nrf" ipv4 primary prefix-length 24
+    service { vprn "2043" interface "to-nrf" sap 1/1/c4/1:0 }
+    service vprn "2043" interface "to-radius" ipv4 primary address 100.0.0.1
+    service vprn "2043" interface "to-radius" ipv4 primary prefix-length 24
+    service { vprn "2043" interface "to-radius" sap 1/1/c19/1 }
+    service vprn "ToDatabase" admin-state enable
+    service vprn "ToDatabase" service-id 151
+    service vprn "ToDatabase" customer "1"
+    service vprn "ToDatabase" interface "to-cdb-1" ip-mtu 9000
+    service vprn "ToDatabase" interface "to-cdb-1" ipv4 primary address 192.168.1.1
+    service vprn "ToDatabase" interface "to-cdb-1" ipv4 primary prefix-length 24
+    service { vprn "ToDatabase" interface "to-cdb-1" sap 1/1/c17/1:0 }
+    service vprn "ToDatabase" interface "to-magc-1" ip-mtu 9000
+    service vprn "ToDatabase" interface "to-magc-1" ipv4 primary address 10.40.43.1
+    service vprn "ToDatabase" interface "to-magc-1" ipv4 primary prefix-length 31
+    service { vprn "ToDatabase" interface "to-magc-1" sap 1/1/c15/1:0 }
+    service vprn "ToDatabase" static-routes route 1.1.1.1/32 route-type unicast next-hop "10.40.43.0" admin-state enable
+    system name "TRA-cups"
+    system boot-good-exec "tftp://172.31.255.29/post-boot-exec.cfg"
+    system grpc admin-state enable
+    system grpc allow-unsecure-connection
+    system management-interface configuration-save incremental-saves false
+    system management-interface netconf listen admin-state enable
+    system bluetooth advertising-timeout 30
+    system login-control idle-timeout none
+    system login-control motd text "## This node is part of the CUPS CLAB ...Enjoy ##\n"
+    system security aaa local-profiles profile "administrative" default-action permit-all
+    system security aaa local-profiles profile "administrative" entry 10 match "configure system security"
+    system security aaa local-profiles profile "administrative" entry 10 action permit
+    system security aaa local-profiles profile "administrative" entry 20 match "show system security"
+    system security aaa local-profiles profile "administrative" entry 20 action permit
+    system security aaa local-profiles profile "administrative" entry 30 match "tools perform security"
+    system security aaa local-profiles profile "administrative" entry 30 action permit
+    system security aaa local-profiles profile "administrative" entry 40 match "tools dump security"
+    system security aaa local-profiles profile "administrative" entry 40 action permit
+    system security aaa local-profiles profile "administrative" entry 42 match "tools dump system security"
+    system security aaa local-profiles profile "administrative" entry 42 action permit
+    system security aaa local-profiles profile "administrative" entry 50 match "admin system security"
+    system security aaa local-profiles profile "administrative" entry 50 action permit
+    system security aaa local-profiles profile "administrative" entry 100 match "configure li"
+    system security aaa local-profiles profile "administrative" entry 100 action deny
+    system security aaa local-profiles profile "administrative" entry 110 match "show li"
+    system security aaa local-profiles profile "administrative" entry 110 action deny
+    system security aaa local-profiles profile "administrative" entry 111 match "clear li"
+    system security aaa local-profiles profile "administrative" entry 111 action deny
+    system security aaa local-profiles profile "administrative" entry 112 match "tools dump li"
+    system security aaa local-profiles profile "administrative" entry 112 action deny
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization action true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization cancel-commit true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization close-session true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization commit true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization copy-config true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization create-subscription true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization delete-config true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization discard-changes true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization edit-config true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization get true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization get-config true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization get-data true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization get-schema true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization kill-session true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization lock true
+    system security aaa local-profiles profile "administrative" netconf base-op-authorization validate true
+    system security aaa local-profiles profile "default" entry 10 match "exec"
+    system security aaa local-profiles profile "default" entry 10 action permit
+    system security aaa local-profiles profile "default" entry 20 match "exit"
+    system security aaa local-profiles profile "default" entry 20 action permit
+    system security aaa local-profiles profile "default" entry 30 match "help"
+    system security aaa local-profiles profile "default" entry 30 action permit
+    system security aaa local-profiles profile "default" entry 40 match "logout"
+    system security aaa local-profiles profile "default" entry 40 action permit
+    system security aaa local-profiles profile "default" entry 50 match "password"
+    system security aaa local-profiles profile "default" entry 50 action permit
+    system security aaa local-profiles profile "default" entry 60 match "show config"
+    system security aaa local-profiles profile "default" entry 60 action deny
+    system security aaa local-profiles profile "default" entry 65 match "show li"
+    system security aaa local-profiles profile "default" entry 65 action deny
+    system security aaa local-profiles profile "default" entry 66 match "clear li"
+    system security aaa local-profiles profile "default" entry 66 action deny
+    system security aaa local-profiles profile "default" entry 67 match "tools dump li"
+    system security aaa local-profiles profile "default" entry 67 action deny
+    system security aaa local-profiles profile "default" entry 68 match "state li"
+    system security aaa local-profiles profile "default" entry 68 action deny
+    system security aaa local-profiles profile "default" entry 70 match "show"
+    system security aaa local-profiles profile "default" entry 70 action permit
+    system security aaa local-profiles profile "default" entry 75 match "state"
+    system security aaa local-profiles profile "default" entry 75 action permit
+    system security aaa local-profiles profile "default" entry 80 match "enable-admin"
+    system security aaa local-profiles profile "default" entry 80 action permit
+    system security aaa local-profiles profile "default" entry 90 match "enable"
+    system security aaa local-profiles profile "default" entry 90 action permit
+    system security aaa local-profiles profile "default" entry 100 match "configure li"
+    system security aaa local-profiles profile "default" entry 100 action deny
+    system security aaa user-template ldap-default restricted-to-home false
+    system security aaa user-template ldap-default save-when-restricted false
+    system security aaa user-template radius-default restricted-to-home false
+    system security aaa user-template radius-default save-when-restricted false
+    system security aaa user-template tacplus-default restricted-to-home false
+    system security aaa user-template tacplus-default save-when-restricted false
+    system security ssh server-cipher-list-v2 cipher 190 name aes256-ctr
+    system security ssh server-cipher-list-v2 cipher 192 name aes192-ctr
+    system security ssh server-cipher-list-v2 cipher 194 name aes128-ctr
+    system security ssh server-cipher-list-v2 cipher 200 name aes128-cbc
+    system security ssh server-cipher-list-v2 cipher 205 name 3des-cbc
+    system security ssh server-cipher-list-v2 cipher 225 name aes192-cbc
+    system security ssh server-cipher-list-v2 cipher 230 name aes256-cbc
+    system security ssh client-cipher-list-v2 cipher 190 name aes256-ctr
+    system security ssh client-cipher-list-v2 cipher 192 name aes192-ctr
+    system security ssh client-cipher-list-v2 cipher 194 name aes128-ctr
+    system security ssh client-cipher-list-v2 cipher 200 name aes128-cbc
+    system security ssh client-cipher-list-v2 cipher 205 name 3des-cbc
+    system security ssh client-cipher-list-v2 cipher 225 name aes192-cbc
+    system security ssh client-cipher-list-v2 cipher 230 name aes256-cbc
+    system security ssh server-mac-list-v2 mac 200 name hmac-sha2-512
+    system security ssh server-mac-list-v2 mac 210 name hmac-sha2-256
+    system security ssh server-mac-list-v2 mac 215 name hmac-sha1
+    system security ssh server-mac-list-v2 mac 220 name hmac-sha1-96
+    system security ssh server-mac-list-v2 mac 225 name hmac-md5
+    system security ssh server-mac-list-v2 mac 240 name hmac-md5-96
+    system security ssh client-mac-list-v2 mac 200 name hmac-sha2-512
+    system security ssh client-mac-list-v2 mac 210 name hmac-sha2-256
+    system security ssh client-mac-list-v2 mac 215 name hmac-sha1
+    system security ssh client-mac-list-v2 mac 220 name hmac-sha1-96
+    system security ssh client-mac-list-v2 mac 225 name hmac-md5
+    system security ssh client-mac-list-v2 mac 240 name hmac-md5-96
+    system security user-params local-user user "admin" password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+    system security user-params local-user user "admin" restricted-to-home false
+    system security user-params local-user user "admin" save-when-restricted false
+    system security user-params local-user user "admin" access console true
+    system security user-params local-user user "admin" access ftp true
+    system security user-params local-user user "admin" access snmp true
+    system security user-params local-user user "admin" access netconf true
+    system security user-params local-user user "admin" access grpc true
+    system security user-params local-user user "admin" access li true
+    system security user-params local-user user "admin" console member ["administrative"]
+    system time zone standard name cet
+    system time daylight-saving-time-zone standard name cest
+    system time ntp admin-state enable
+    system { time ntp ntp-server }
+    system time ntp server 10.171.8.4 router-instance "management" prefer true
+    system { time ntp server 10.171.8.45 router-instance "management" }
+}
