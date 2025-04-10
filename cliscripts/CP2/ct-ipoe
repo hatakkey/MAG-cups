@@ -1,0 +1,14 @@
+echo
+echo "From Debug to Sesion"
+echo "---------------------"
+echo
+echo "debug mobile-gateway call-insight bng profile debug-output mac-address 02:00:02:00:00:01"
+/debug mobile-gateway call-insight bng mac-address  02:00:02:00:00:01 profile "debug-output"
+echo "show mobile-gateway call-insight bng"
+sleep 1
+/show mobile-gateway call-insight bng
+echo
+echo "Command:"
+echo "debug mobile-gateway call-insight  no bng all"
+echo
+

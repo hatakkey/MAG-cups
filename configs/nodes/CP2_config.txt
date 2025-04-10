@@ -1,0 +1,1343 @@
+*A:CP2# admin display-config
+# TiMOS-AG-C-25.3.R1 cpm/x86_64 Nokia 7750 MAG-c Copyright (c) 2000-2025 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Mar 12 16:24:39 PDT 2025 by builder in /builds/AG253B/R1/panos/main/sros
+# Configuration format version 25.3 revision 0
+
+# Generated WED APR 09 21:10:26 2025 UTC
+
+exit all
+configure
+#--------------------------------------------------
+echo "System Configuration"
+#--------------------------------------------------
+    system
+        name "CP2"
+        ethernet
+            new-qinq-untagged-sap
+        exit
+        boot-good-exec "tftp://172.31.255.29/post-boot-exec.cfg"
+        netconf
+            no shutdown
+        exit
+        snmp
+            shutdown
+        exit
+        time
+            ntp
+                ntp-server
+                no shutdown
+            exit
+            sntp
+                shutdown
+            exit
+            dst-zone CEST
+                start last sunday march 02:00
+                end last sunday october 03:00
+            exit
+            zone CET
+        exit
+    exit
+#--------------------------------------------------
+echo "System Security Configuration"
+#--------------------------------------------------
+    system
+        security
+            user-template "ldap_default"
+                no restricted-to-home
+                no save-when-restricted
+            exit
+            user-template "radius_default"
+                no restricted-to-home
+                no save-when-restricted
+            exit
+            user-template "tacplus_default"
+                no restricted-to-home
+                no save-when-restricted
+            exit
+            user "admin"
+                password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+                access console ftp snmp li netconf grpc
+                no restricted-to-home
+                no save-when-restricted
+                console
+                    member "administrative"
+                exit
+            exit
+            dist-cpu-protection
+                policy "_default-access-policy" create
+                exit
+                policy "_default-network-policy" create
+                exit
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "System Login Control Configuration"
+#--------------------------------------------------
+    system
+        login-control
+            ssh
+                inbound-max-sessions 30
+            exit
+            idle-timeout disable
+            motd text "## This node is part of the CUPS CLAB ...Enjoy ##\n"
+        exit
+    exit
+#--------------------------------------------------
+echo "Log Configuration"
+#--------------------------------------------------
+    log
+        event-control "system" 2071 suppress
+        event-control "system" 2072 suppress
+        log-id 77
+            from debug-trace
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "System gRPC Configuration"
+#--------------------------------------------------
+    system
+        grpc
+            allow-unsecure-connection
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Card Configuration"
+#--------------------------------------------------
+    card 1
+        card-type iom-v
+        mda 1
+            mda-type m20-v
+            no shutdown
+        exit
+        no shutdown
+    exit
+    card 2
+        card-type iom-v-mg
+        mda 1
+            mda-type isa-mg-v
+            no shutdown
+        exit
+        no shutdown
+    exit
+    card 3
+        card-type iom-v-mg
+        mda 1
+            mda-type isa-mg-v
+            no shutdown
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Port Configuration"
+#--------------------------------------------------
+    port 1/1/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/2
+        ethernet
+            speed 10000
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/3
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/4
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/5
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/6
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/7
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/8
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/9
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/10
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/11
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/12
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/13
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/14
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/15
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/16
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/17
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/18
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/19
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+    port 1/1/20
+        ethernet
+            mode hybrid
+            encap-type dot1q
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Redundancy Configuration"
+#--------------------------------------------------
+    redundancy
+        multi-chassis
+            peer 10.10.10.1 create
+                peer-name "SMF1"
+                description "MC-Mobile peer 10.10.10.1"
+                source-address 10.10.10.2
+                mc-mobile
+                    keep-alive-interval 500
+                    bfd-enable interface "system"
+                    mobile-gateway 1 role secondary
+                        no shutdown
+                    exit
+                exit
+                no shutdown
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Management Router Configuration"
+#--------------------------------------------------
+    router management
+    exit
+
+#--------------------------------------------------
+echo "Router (Network Side) Configuration"
+#--------------------------------------------------
+    router Base
+        interface "system"
+            address 10.10.10.2/32
+            bfd 1000 receive 1000 multiplier 3 echo-receive 1000
+            no shutdown
+        exit
+        interface "to-core"
+            address 192.1.43.2/30
+            port 1/1/3:0
+            no shutdown
+        exit
+        autonomous-system 65002
+    exit
+
+#--------------------------------------------------
+echo "Service Configuration"
+#--------------------------------------------------
+    service
+        customer 1 name "1" create
+            description "Default customer"
+        exit
+        vprn 1151 name "ToDatabase" customer 1 create
+            interface "to-cdb1" create
+            exit
+            interface "system" create
+            exit
+        exit
+        vprn 2043 name "sx" customer 1 create
+            interface "system" create
+            exit
+            interface "to-upfs" create
+            exit
+        exit
+        vprn 1151 name "ToDatabase" customer 1 create
+            interface "to-cdb1" create
+                address 10.40.43.0/31
+                ip-mtu 9000
+                sap 1/1/2:0 create
+                exit
+            exit
+            interface "system" create
+                address 1.1.1.1/32
+                loopback
+            exit
+            static-route-entry 192.168.1.100/32
+                next-hop 10.40.43.1
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+        vprn 2043 name "sx" customer 1 create
+            autonomous-system 65000
+            interface "system" create
+                address 1.1.1.1/32
+                loopback
+            exit
+            interface "to-upfs" create
+                address 10.30.43.0/31
+                sap 1/1/1:0 create
+                exit
+            exit
+            bgp
+                min-route-advertisement 1
+                rapid-withdrawal
+                group "ce-pe"
+                    family ipv4
+                    export "sx-loopback"
+                    peer-as 65000
+                    neighbor 10.30.43.1
+                        local-address 10.30.43.0
+                    exit
+                exit
+                no shutdown
+            exit
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Router (Service Side) Configuration"
+#--------------------------------------------------
+    router Base
+#--------------------------------------------------
+echo "Policy Configuration"
+#--------------------------------------------------
+        policy-options
+            begin
+            prefix-list "sx-loopback"
+                prefix 1.1.1.1/32 exact
+            exit
+            prefix-list "system-loopback"
+                prefix 10.10.10.2/32 exact
+            exit
+            policy-statement "sx-loopback"
+                entry 10
+                    from
+                        prefix-list "sx-loopback"
+                        state mobile-master
+                    exit
+                    to
+                        protocol bgp
+                    exit
+                    action accept
+                        metric set 20
+                    exit
+                exit
+                entry 15
+                    from
+                        prefix-list "sx-loopback"
+                        state mobile-slave
+                    exit
+                    to
+                        protocol bgp
+                    exit
+                    action accept
+                        metric set 200
+                    exit
+                exit
+                entry 20
+                    from
+                        prefix-list "sx-loopback"
+                        state mobile-pre-slave
+                    exit
+                    to
+                        protocol bgp
+                    exit
+                    action accept
+                        metric set 20
+                    exit
+                exit
+                default-action drop
+                exit
+            exit
+            policy-statement "system-loopback"
+                entry 10
+                    from
+                        prefix-list "system-loopback"
+                    exit
+                    to
+                        protocol bgp
+                    exit
+                    action accept
+                    exit
+                exit
+            exit
+            commit
+        exit
+#--------------------------------------------------
+echo "BGP Configuration"
+#--------------------------------------------------
+        bgp
+            min-route-advertisement 1
+            rapid-withdrawal
+            rapid-update
+            group "to_core"
+                family ipv4
+                type external
+                export "system-loopback"
+                local-as 65002
+                peer-as 65000
+                split-horizon
+                neighbor 192.1.43.1
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Log all events for service vprn Configuration"
+#--------------------------------------------------
+    log
+    exit
+#--------------------------------------------------
+echo "System Time NTP Configuration"
+#--------------------------------------------------
+    system
+        time
+            ntp
+                server 10.171.8.4 router management prefer
+                server 10.171.8.45 router management
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Mobile Gateway Configuration"
+#--------------------------------------------------
+    mobile-gateway
+        profile
+            radius-group "radiusgroup1"
+                server-type both
+                interface router "vprn2043" "system"
+                radius-profile "default"
+                peer 100.0.0.2
+                    secret "McTNkSePNJMVFysxyZa4y9LdcXRy91E=" hash2
+                    no shutdown
+                exit
+            exit
+            list
+                plmn "test"
+                    mcc 206 mnc 01
+                exit
+                prioritized-ip-address-list "nrfPrioList1"
+                    address 10.40.1.2 port 8080
+                exit
+                slice-list "slices"
+                    slice "eMBB" sst 1 sd abcdef
+                    exit
+                exit
+                nf-id-list "nrfList1"
+                    nf-prof-id 1
+                        prioritized-address-list "nrfPrioList1"
+                        uuid DBC0409C-8B91-4AAA-8727-3CD7E354E7AC
+                        enable
+                    exit
+                exit
+                tai-list "test"
+                    tai mcc 206 mnc 01 tac 0x000001
+                    tai mcc 206 mnc 01 tac 0x000002
+                    tai mcc 206 mnc 01 tac 0x0000c8
+                exit
+            exit
+            charging
+                bng-charging "accounting-1"
+                    description "Accounting profile"
+                    radius
+                        interim-update-interval 1200
+                        radius-group "radiusgroup1"
+                        session
+                            include-attribute
+                                access-loop-options
+                                acct-authentic
+                                acct-delay-time
+                                acct-triggered-reason
+                                address-information
+                                aggregate-statistics
+                                called-station-id
+                                calling-station-id l2-circuit
+                                circuit-id
+                                detailed-statistics
+                                dhcp-vendor-class-id
+                                framed-protocol
+                                imeisv
+                                imsi
+                                mac-address
+                                nas-identifier
+                                nas-ip-address
+                                nas-port-id prefix-string "bert" suffix remote-id
+                                nas-port-type
+                                nat-port-range
+                                rat-type
+                                remote-id
+                                service-type
+                                sla-profile
+                                static-port-forward
+                                subscriber-id
+                                subscriber-profile
+                                up-group
+                                up-info
+                                up-subscriber-id
+                                user-location-info
+                                user-name
+                            exit
+                            update-triggers
+                                active-upf-change
+                                address-state-change
+                                user-location-change
+                            exit
+                            no shutdown
+                        exit
+                    exit
+                exit
+                bng-charging "mybngcharging"
+                    radius
+                        interim-update-interval 1200
+                        radius-group "radiusgroup1"
+                        session
+                            include-attribute
+                                access-loop-options
+                                acct-authentic
+                                acct-delay-time
+                                acct-triggered-reason
+                                address-information
+                                aggregate-statistics
+                                called-station-id
+                                calling-station-id l2-circuit
+                                circuit-id
+                                detailed-statistics
+                                dhcp-vendor-class-id
+                                framed-protocol
+                                imeisv
+                                imsi
+                                mac-address
+                                nas-identifier
+                                nas-ip-address
+                                nas-port-id prefix-string "bert" suffix remote-id
+                                nas-port-type
+                                nat-port-range
+                                rat-type
+                                remote-id
+                                service-type
+                                sla-profile
+                                static-port-forward
+                                subscriber-id
+                                subscriber-profile
+                                up-group
+                                up-info
+                                up-subscriber-id
+                                user-location-info
+                                user-name
+                            exit
+                            update-triggers
+                                active-upf-change
+                                address-state-change
+                                user-location-change
+                            exit
+                            no shutdown
+                        exit
+                    exit
+                exit
+            exit
+            gtp "default"
+            exit
+            pfcp
+                pfcp-association-peer-list "sx"
+                    pfcp-peer 1.1.1.101
+                    exit
+                    pfcp-peer 1.1.1.102
+                    exit
+                exit
+                up-peer-list "up-test"
+                    peer 1.1.1.101
+                        apn "demo.nokia.mnc001.mcc206.gprs"
+                        exit
+                    exit
+                    peer 1.1.1.102
+                        apn "demo.nokia.mnc001.mcc206.gprs"
+                        exit
+                    exit
+                exit
+            exit
+            call-insight
+                ue "debug-output"
+                    events all
+                    debug-output
+                exit
+                all-ues "test"
+                exit
+            exit
+            cloud-db "cdb-test"
+                server 192.168.1.100 port 5678
+                    no shutdown
+                exit
+            exit
+            bng
+                dhcp-profile "mydefault"
+                exit
+                radius-authentication-profile "bngradauth1"
+                exit
+                fsg-profile "fsg1"
+                exit
+            exit
+            authentication-database "adb1"
+                match 1 attribute up-ip
+                exit
+                match 2 attribute s-vlan
+                exit
+                match 3 attribute c-vlan
+                    optional
+                exit
+                entry "up1-101"
+                    action radius radius-authentication-profile "bngradauth1"
+                    apn "bngvrf"
+                    dhcp-profile "mydefault"
+                    ip-anti-spoof true
+                    address-assignment
+                        local-dynamic
+                            ipv4-pool "pppoe-pool1"
+                            ipv6-pd-pool "pppoe-pool1"
+                            ipv6-slaac-pool "pppoe-pool1"
+                        exit
+                    exit
+                    interface
+                        group-interface-template "defaultgrp"
+                        sap-template "defaultsap"
+                    exit
+                    match
+                        up-ip 1.1.1.101
+                        vlan
+                            s-vlan start 101 end 101
+                        exit
+                    exit
+                    subscriber-mgmt
+                        sla-profile "sla-base"
+                        sub-profile "sub-base"
+                    exit
+                    no shutdown
+                exit
+                entry "up2-102"
+                    action radius radius-authentication-profile "bngradauth1"
+                    apn "bngvrf"
+                    dhcp-profile "mydefault"
+                    ip-anti-spoof true
+                    address-assignment
+                        local-dynamic
+                            ipv4-pool "ipoe-pool1"
+                            ipv6-na-pool "ipoe-pool1"
+                            ipv6-pd-pool "ipoe-pool1"
+                        exit
+                    exit
+                    interface
+                        group-interface-template "defaultgrp"
+                        sap-template "defaultsap"
+                    exit
+                    match
+                        up-ip 1.1.1.102
+                        vlan
+                            s-vlan start 102 end 102
+                        exit
+                    exit
+                    subscriber-mgmt
+                        sla-profile "sla-base"
+                        sub-profile "sub-base"
+                    exit
+                    no shutdown
+                exit
+                no shutdown
+            exit
+            authentication-database "adb1-group"
+                match 1 attribute up-group
+                exit
+                match 2 attribute s-vlan
+                exit
+                match 3 attribute c-vlan
+                    optional
+                exit
+                entry "up1-up2-1003"
+                    action radius radius-authentication-profile "bngradauth1"
+                    apn "bngvrf"
+                    dhcp-profile "mydefault"
+                    ip-anti-spoof true
+                    address-assignment
+                        local-dynamic
+                            ipv4-pool "ipoe-pool1"
+                            ipv6-na-pool "ipoe-pool1"
+                            ipv6-pd-pool "ipoe-pool1"
+                        exit
+                    exit
+                    interface
+                        group-interface-template "defaultgrp"
+                        sap-template "defaultsap"
+                    exit
+                    match
+                        up-group "HOT1-UP1-UP2-VPLS-A/A"
+                        vlan
+                            s-vlan start 1003 end 1003
+                        exit
+                    exit
+                    subscriber-mgmt
+                        sla-profile "sla-base"
+                        sub-profile "sub-base"
+                    exit
+                    no shutdown
+                exit
+                no shutdown
+            exit
+            authentication-database "adb2"
+                entry "charging"
+                    charging
+                        bng-charging-profile "mybngcharging"
+                        statistics-collection-interval 30
+                    exit
+                    no shutdown
+                exit
+                no shutdown
+            exit
+            authentication-database "adb2-group"
+                entry "charging"
+                    charging
+                        bng-charging-profile "mybngcharging"
+                        statistics-collection-interval 30
+                    exit
+                    no shutdown
+                exit
+                no shutdown
+            exit
+            authentication-database "adbfwa"
+                match 1 attribute apn
+                exit
+                entry "5G"
+                    action radius radius-authentication-profile "bngradauth1"
+                    charging
+                        bng-charging-profile "accounting-1"
+                        statistics-collection-interval 30
+                    exit
+                    dynamic-policy bypass
+                    address-assignment
+                        local-dynamic
+                            ipv4-pool "fwa"
+                        exit
+                        unmanaged
+                            ipv4-pool "fwa"
+                        exit
+                        lifetimes
+                            valid hrs 1
+                            preferred min 15
+                        exit
+                    exit
+                    interface
+                        group-interface-template "templ2"
+                        sap-template "templ1"
+                    exit
+                    match
+                        apn "demo.nokia.mnc001.mcc206.gprs"
+                    exit
+                    subscriber-mgmt
+                        sla-profile "sla-fwa"
+                        sub-profile "sub-fwa"
+                    exit
+                    no shutdown
+                exit
+                no shutdown
+            exit
+            bng
+                pppoe-profile "pppoeProf1"
+                exit
+                ipoe-profile "mydefault"
+                exit
+                dhcp-profile "mydefault"
+                exit
+                radius-authentication-profile "bngradauth1"
+                    password "7NcYcNGWMxapfjrDQIyYNTK0svJHSTQ=" hash2
+                    radius-group "radiusgroup1"
+                    include-attribute
+                        access-loop-options
+                        acct-multi-session-id
+                        acct-session-id
+                        called-station-id
+                        calling-station-id l2-circuit
+                        circuit-id
+                        dhcp-options
+                        dhcp-vendor-class-id
+                        dhcp6-options
+                        gprs-negotiated-qos-profile
+                        imeisv
+                        imsi
+                        ipoe-hostname
+                        mac-address
+                        nas-identifier
+                        nas-port-id prefix-string "bert" suffix remote-id
+                        nas-port-type
+                        pppoe-service-name
+                        rat-type
+                        remote-id
+                        session-s-nssai
+                        supported-features
+                        up-group
+                        up-info
+                        user-location-info
+                    exit
+                    user-name-format
+                        fixed-wireless-access
+                            format imsi
+                        exit
+                    exit
+                exit
+                entry-point "e1"
+                    match 1 attribute up-group
+                        optional
+                    exit
+                    match 2 attribute up-ip
+                        optional
+                    exit
+                    match 3 attribute s-vlan
+                        optional
+                    exit
+                    entry "up1-101"
+                        description "pppoe only svlan"
+                        match
+                            up-ip 1.1.1.101
+                            vlan
+                                s-vlan start 101 end 101
+                            exit
+                        exit
+                        pppoe
+                            pppoe-profile "pppoeProf1"
+                            authentication-flow
+                                pap-chap-adb "adb1" "adb2"
+                            exit
+                        exit
+                        no shutdown
+                    exit
+                    entry "up1-up2-1003"
+                        description "pppoe and ipoe svlan"
+                        ipoe
+                            ipoe-profile "mydefault"
+                            authentication-flow
+                                adb "adb1-group" "adb2-group"
+                            exit
+                        exit
+                        match
+                            up-group "HOT1-UP1-UP2-VPLS-A/A"
+                            vlan
+                                s-vlan start 1003 end 1003
+                            exit
+                        exit
+                        pppoe
+                            pppoe-profile "pppoeProf1"
+                            authentication-flow
+                                pap-chap-adb "adb1-group" "adb2-group"
+                            exit
+                        exit
+                        no shutdown
+                    exit
+                    entry "up2-102"
+                        description "ipoe only svlan"
+                        ipoe
+                            ipoe-profile "mydefault"
+                            authentication-flow
+                                adb "adb1" "adb2"
+                            exit
+                        exit
+                        match
+                            up-ip 1.1.1.102
+                            vlan
+                                s-vlan start 102 end 102
+                            exit
+                        exit
+                        no shutdown
+                    exit
+                    no shutdown
+                exit
+                fsg-profile "fsg1"
+                    upf-fsg-template "upf-fsg1"
+                    active-standby-selection
+                        hold-off-on-recovery 30000
+                    exit
+                    health-calculation
+                        network-realm "bngvrf"
+                    exit
+                exit
+            exit
+            qfi-mapping-profile "5qi-as-qfi"
+                5qi-as-qfi
+            exit
+            http2  "test"
+            exit
+        exit
+        pdn 1
+            slices
+                slice-list "slices"
+            exit
+            local-address-assignment
+                network-realm "bngvrf"
+                    pool "fwa"
+                        hold-time sec 5
+                        ipv4
+                            dns
+                                primary-dns 208.67.254.254
+                                secondary-dns 208.67.255.255
+                            exit
+                            micro-net-length 19
+                            prefix 43.0.0.0/15
+                                exclude-addresses start 43.0.0.1 end 43.0.0.20
+                            exit
+                        exit
+                        ipv6
+                            dns
+                                primary-dns 4001::208:67:254:254
+                                secondary-dns 4001::208:67:254:255
+                            exit
+                            slaac
+                                micro-net-length 50
+                                prefix 4343::/47
+                                exit
+                            exit
+                        exit
+                    exit
+                    pool "ipoe-pool1"
+                        hold-time sec 5
+                        ipv4
+                            dns
+                                primary-dns 208.67.5.1
+                            exit
+                            micro-net-length 19
+                            prefix 111.250.0.0/16
+                            exit
+                            prefix 111.251.0.0/16
+                            exit
+                        exit
+                        ipv6
+                            dns
+                                primary-dns 4001::208:67:5:1
+                            exit
+                            pd
+                                micro-net length 42
+                                prefix c01d:2::/39
+                                exit
+                            exit
+                            na
+                                micro-net-length 114
+                                prefix c01d:1::/111
+                                exit
+                            exit
+                        exit
+                    exit
+                    pool "pool3"
+                        hold-time sec 5
+                        ipv4
+                            dns
+                                primary-dns 208.67.5.1
+                            exit
+                            micro-net-length 25
+                            prefix 172.16.11.0/24
+                            exit
+                            prefix 172.16.12.0/24
+                            exit
+                        exit
+                    exit
+                    pool "pppoe-pool1"
+                        hold-time sec 5
+                        ipv4
+                            dns
+                                primary-dns 208.67.5.1
+                            exit
+                            micro-net-length 19
+                            prefix 110.250.0.0/16
+                            exit
+                            prefix 110.251.0.0/16
+                            exit
+                        exit
+                        ipv6
+                            dns
+                                primary-dns 4001::208:67:5:1
+                            exit
+                            slaac
+                                micro-net-length 50
+                                prefix c00d:3::/47
+                                exit
+                            exit
+                            pd
+                                micro-net length 42
+                                prefix c00d:2::/39
+                                exit
+                            exit
+                        exit
+                    exit
+                exit
+            exit
+            apn "bngvrf"
+                network-realm "bngvrf"
+                address-assignment-defaults
+                    unmanaged
+                        ipv4-pool "pool3"
+                    exit
+                exit
+                realm-loopback-address 1.1.1.1
+                no shutdown
+            exit
+            apn "demo.nokia.mnc001.mcc206.gprs"
+                fixed-wireless-access
+                    authentication-flow
+                        adb "adbfwa"
+                    exit
+                    no shutdown
+                exit
+                network-realm "bngvrf"
+                qfi-mapping-profile "5qi-as-qfi"
+                no shutdown
+            exit
+            bng
+                up-group "HOT1-UP1-UP2-VPLS-A/A"
+                    fsg-profile "fsg1"
+                    s-tag-range start 1003 end 1003
+                    c-tag-range start 1 end 1000
+                    l2-access-id 1/1/c2/1
+                    up "up1.nokia.com"
+                        preferred
+                    exit
+                    up "up2.nokia.com"
+                    exit
+                    no shutdown
+                exit
+            exit
+            epc-node "206.01.PGW.1.1.1"
+            s5 "default"
+                interface
+                    gtp-c router 2043 "system" interface-realm "sx"
+                exit
+            exit
+            s11 "default"
+                interface
+                    gtp-c "system" router 2043 interface-realm "sx"
+                exit
+            exit
+            sx-n4 "default"
+                pfcp-association-list "sx"
+                enforced-pfcp-association-list
+                interface
+                    pfcp router 2043 "system"
+                    ibcp router 2043 "system"
+                exit
+                signaling
+                    ibcp
+                        bng-entry-point "e1"
+                        triggers pppoe-discover ipoe-dhcp ipoe-dhcpv6
+                    exit
+                exit
+            exit
+            cdbx
+                cloud-db-profile cdb-test
+                interface "system" router 1151
+            exit
+            no suspend
+            up-peer-list "up-test"
+            nf-profile-attributes
+                tai-list "test"
+            exit
+            sba-server-services
+                nsmf-pdusession "nsmf_pdusession1"
+                    n3-interface-realm "sx"
+                    s5-ref-point "default"
+                    interface "system" router 2043 port 8080
+                exit
+            exit
+            sba-client-services
+                amf-client
+                    namf-comm "namf-comm1"
+                        n1-profile "default"
+                        amf-profile "default"
+                        interface "system" router 2043
+                    exit
+                exit
+                pcf-client
+                    npcf-smpolicycontrol "npcf-smpolicycontrol1"
+                        pcf-profile "dummy"
+                        interface "system" router 2043
+                    exit
+                exit
+                nrf-client
+                    nnrf-nfm "nnrf_nfm1"
+                        nf-id-list "nrfList1"
+                        interface "system" router 2043
+                    exit
+                    nnrf-disc "nnrf_disc1"
+                        nf-id-list "nrfList1"
+                        interface "system" router 2043
+                        use-locality
+                    exit
+                exit
+                udm-client
+                    nudm-sdm "udm-sdm1"
+                        interface "system" router 2043
+                    exit
+                    nudm-uecm "udm-uecm1"
+                        interface "system" router 2043
+                    exit
+                exit
+            exit
+            sba-service-realm "sbaRealm1"
+                server-service nsmf-pdusession service-instance "nsmf_pdusession1"
+                client-service nnrf-nfm service-instance "nnrf_nfm1"
+                client-service nnrf-disc service-instance "nnrf_disc1"
+                client-service namf-comm service-instance "namf-comm1"
+                client-service npcf-smpolicycontrol service-instance "npcf-smpolicycontrol1"
+                client-service nudm-sdm service-instance "udm-sdm1"
+                client-service nudm-uecm service-instance "udm-uecm1"
+            exit
+            no shutdown
+        exit
+        system
+            resource-pool 1 gateway 1
+                card 2
+                card 3
+            exit
+            group 1 resource-pool 1
+                no shutdown
+            exit
+            call-insight
+                location cf2
+                    disable
+                exit
+            exit
+            bng
+                queries
+                    session "Total-FWA-5G"
+                        user-access-type fwa
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na false
+                                ipv6-pd false
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                    session "UP1-fwa-5G"
+                        up-ip 1.1.1.101
+                        user-access-type fwa
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na false
+                                ipv6-pd false
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                    session "UP1-ipoe"
+                        up-ip 1.1.1.101
+                        user-access-type ipoe
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na true
+                                ipv6-pd true
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                    session "UP1-pppoe"
+                        up-ip 1.1.1.101
+                        user-access-type pppoe
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na true
+                                ipv6-pd true
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                    session "UP2-fwa-5G"
+                        up-ip 1.1.1.102
+                        user-access-type fwa
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na false
+                                ipv6-pd false
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                    session "UP2-ipoe"
+                        up-ip 1.1.1.102
+                        user-access-type ipoe
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na true
+                                ipv6-pd true
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                    session "UP2-pppoe"
+                        up-ip 1.1.1.102
+                        user-access-type pppoe
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na true
+                                ipv6-pd true
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                    session "ipoe"
+                        user-access-type ipoe
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na true
+                                ipv6-pd true
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                    session "pppoe"
+                        user-access-type pppoe
+                        ip
+                            address-stacks
+                                ipv4 true
+                                ipv6-na true
+                                ipv6-pd true
+                                ipv6-slaac false
+                            exit
+                        exit
+                        output-options
+                            count
+                        exit
+                    exit
+                exit
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "System Configuration Mode Configuration"
+#--------------------------------------------------
+    system
+        management-interface
+            cli
+                cli-engine classic-cli md-cli
+            exit
+        exit
+    exit
+
+exit all
+
+# Finished WED APR 09 21:10:28 2025 UTC
+*A:CP2#
+

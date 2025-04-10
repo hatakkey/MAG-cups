@@ -1,0 +1,5 @@
+echo
+echo "PCF access enabled for 5G APN demo.nokia.mnc001.mcc206.gprs"
+#/configure mobile-gateway profile authentication-database "adbfwa" entry "5G" dynamic-policy bypass
+/configure mobile-gateway profile authentication-database "adbfwa" entry "5G" dynamic-policy required
+echo

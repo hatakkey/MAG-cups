@@ -1,3 +1,0 @@
-echo
-/clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
-echo

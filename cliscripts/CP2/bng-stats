@@ -1,0 +1,8 @@
+echo
+echo "tools dump mobile-gateway 1 bng error-history"
+/tools dump mobile-gateway 1 bng error-history
+echo
+echo "clear command:"
+echo "clear mobile-gateway bng error-history"
+echo
+

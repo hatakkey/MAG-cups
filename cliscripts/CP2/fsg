@@ -1,0 +1,12 @@
+echo
+echo
+/show mobile-gateway pdn bng up
+echo
+echo
+/show mobile-gateway pdn bng up-group "HOT1-UP1-UP2-VPLS-A/A"
+echo
+echo
+/show mobile-gateway pdn bng fsg
+echo
+echo
+

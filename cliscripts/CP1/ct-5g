@@ -1,0 +1,13 @@
+echo
+echo "From Debug to Sesion"
+echo "---------------------"
+echo
+/debug mobile-gateway call-insight ue imsi 206010000000001 profile debug-output
+/debug mobile-gateway call-insight ue imsi 206010000000011 profile debug-output
+sleep 2
+/show mobile-gateway call-insight ue
+echo
+echo "Command:"
+echo "debug mobile-gateway call-insight  no ue all"
+echo
+

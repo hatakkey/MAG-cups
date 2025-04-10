@@ -1,0 +1,21 @@
+echo
+echo " clear adb/radius/pfcp/ibcp stats/error-bng"
+/clear mobile-gateway pdn 1 ref-point-stats sx-n4
+/clear mobile-gateway pdn 1 path-mgmt-stats sx-n4
+/clear mobile-gateway pdn 1 ref-point-stats radius
+/clear mobile-gateway bng error-history
+/clear mobile-gateway pdn 1 ref-point-stats ibcp
+/clear log 99
+/clear mobile-gateway pdn 1 ref-point-stats radius-group radiusgroup1 radius
+/clear mobile-gateway pdn 1 ref-point-stats s11
+#
+/configure mobile-gateway profile authentication-database adb1 shutdown
+/configure mobile-gateway profile authentication-database adb1 no shutdown
+/configure mobile-gateway profile authentication-database adb2 shutdown
+/configure mobile-gateway profile authentication-database adb2 no shutdown
+/configure mobile-gateway profile authentication-database adb1-group shutdown
+/configure mobile-gateway profile authentication-database adb1-group no shutdown
+/configure mobile-gateway profile authentication-database adb2-group shutdown
+/configure mobile-gateway profile authentication-database adb2-group no shutdown
+/configure mobile-gateway profile authentication-database adbfwa shutdown
+/configure mobile-gateway profile authentication-database adbfwa no shutdown

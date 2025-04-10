@@ -1,0 +1,11 @@
+echo
+echo "command:"
+echo
+echo "/configure mobile-gateway pdn 1 bng up-group HOT1-UP1-UP2-VPLS-A/A up up1.nokia.com drain"
+echo "/configure mobile-gateway pdn 1 bng up-group HOT1-UP1-UP2-VPLS-A/A up up1.nokia.com no drain"
+echo
+echo
+echo "/configure mobile-gateway pdn 1 bng up-group HOT1-UP1-UP2-VPLS-A/A up up2.nokia.com drain"
+echo "/configure mobile-gateway pdn 1 bng up-group HOT1-UP1-UP2-VPLS-A/A up up2.nokia.com no drain"
+echo
+echo

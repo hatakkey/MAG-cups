@@ -1,0 +1,432 @@
+
+
+[/]
+A:admin@UP2#
+
+[/]
+A:admin@UP2# admin show configuration flat
+# TiMOS-B-25.3.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2025 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Mar 12 21:50:19 UTC 2025 by builder in /builds/253B/R1/panos/main/sros
+# Configuration format version 25.3 revision 0
+
+# Generated 2025-04-09T23:12:53.0+02:00 by admin from 172.31.255.29
+# Last modified 2025-04-08T19:13:29.9+02:00 by admin (MD-CLI) from 172.31.255.29
+# Last saved 2025-04-09T23:11:51.4+02:00 by admin from 172.31.255.29
+
+    configure card 1 card-type iom-1
+    configure card 1 mda 1 mda-type me6-100gb-qsfp28
+    configure { card 1 mda 2 }
+    configure { card 1 fp 1 }
+    configure fwd-path-ext fpe 1 multi-path path 1 pxc 1
+    configure fwd-path-ext fpe 1 application sub-mgmt-extension true
+    configure log filter "1001" named-entry "10" description "Collect only events of major severity or higher"
+    configure log filter "1001" named-entry "10" action forward
+    configure log filter "1001" named-entry "10" match severity gte major
+    configure log log-id "99" description "Default System Log"
+    configure log log-id "99" source main true
+    configure log log-id "99" destination memory max-entries 500
+    configure log log-id "100" description "Default Serious Errors Log"
+    configure log log-id "100" filter "1001"
+    configure log log-id "100" source main true
+    configure log log-id "100" destination memory max-entries 500
+    configure { policy-options community "target:65000:500" member "target:65000:500" }
+    configure policy-options policy-statement "pfcp-addresses" entry 10 description "PFCP installed prefixes/hosts/framed-routes"
+    configure policy-options policy-statement "pfcp-addresses" entry 10 from origin pfcp
+    configure policy-options policy-statement "pfcp-addresses" entry 10 from state fsg-active
+    configure policy-options policy-statement "pfcp-addresses" entry 10 from protocol name [managed]
+    configure policy-options policy-statement "pfcp-addresses" entry 10 action action-type accept
+    configure policy-options policy-statement "pfcp-addresses" entry 10 action metric set 10
+    configure policy-options policy-statement "pfcp-addresses" entry 10 action community add ["target:65000:500"]
+    configure policy-options policy-statement "pfcp-addresses" entry 11 from origin pfcp
+    configure policy-options policy-statement "pfcp-addresses" entry 11 from state fsg-active-path-restoration
+    configure policy-options policy-statement "pfcp-addresses" entry 11 from protocol name [managed]
+    configure policy-options policy-statement "pfcp-addresses" entry 11 action action-type accept
+    configure policy-options policy-statement "pfcp-addresses" entry 11 action metric set 15
+    configure policy-options policy-statement "pfcp-addresses" entry 11 action community add ["target:65000:500"]
+    configure policy-options policy-statement "pfcp-addresses" entry 12 description "PFCP installed prefixes/hosts/framed-routes"
+    configure policy-options policy-statement "pfcp-addresses" entry 12 from origin pfcp
+    configure policy-options policy-statement "pfcp-addresses" entry 12 from state fsg-standby
+    configure policy-options policy-statement "pfcp-addresses" entry 12 from protocol name [managed]
+    configure policy-options policy-statement "pfcp-addresses" entry 12 action action-type accept
+    configure policy-options policy-statement "pfcp-addresses" entry 12 action metric set 20
+    configure policy-options policy-statement "pfcp-addresses" entry 12 action community add ["target:65000:500"]
+    configure policy-options policy-statement "pfcp-addresses" entry 13 from origin pfcp
+    configure policy-options policy-statement "pfcp-addresses" entry 13 from protocol name [managed]
+    configure policy-options policy-statement "pfcp-addresses" entry 13 action action-type accept
+    configure policy-options policy-statement "pfcp-addresses" entry 13 action community add ["target:65000:500"]
+    configure policy-options policy-statement "pfcp-addresses" entry 30 from origin pfcp
+    configure policy-options policy-statement "pfcp-addresses" entry 30 from state fsg-active
+    configure policy-options policy-statement "pfcp-addresses" entry 30 from protocol name [direct]
+    configure policy-options policy-statement "pfcp-addresses" entry 30 action action-type accept
+    configure policy-options policy-statement "pfcp-addresses" entry 30 action metric set 10
+    configure policy-options policy-statement "pfcp-addresses" entry 30 action community add ["target:65000:500"]
+    configure policy-options policy-statement "pfcp-addresses" entry 31 from origin pfcp
+    configure policy-options policy-statement "pfcp-addresses" entry 31 from state fsg-active-path-restoration
+    configure policy-options policy-statement "pfcp-addresses" entry 31 from protocol name [direct]
+    configure policy-options policy-statement "pfcp-addresses" entry 31 action action-type accept
+    configure policy-options policy-statement "pfcp-addresses" entry 31 action metric set 15
+    configure policy-options policy-statement "pfcp-addresses" entry 31 action community add ["target:65000:500"]
+    configure policy-options policy-statement "pfcp-addresses" entry 32 from origin pfcp
+    configure policy-options policy-statement "pfcp-addresses" entry 32 from state fsg-standby
+    configure policy-options policy-statement "pfcp-addresses" entry 32 from protocol name [direct]
+    configure policy-options policy-statement "pfcp-addresses" entry 32 action action-type accept
+    configure policy-options policy-statement "pfcp-addresses" entry 32 action metric set 20
+    configure policy-options policy-statement "pfcp-addresses" entry 32 action community add ["target:65000:500"]
+    configure policy-options policy-statement "pfcp-addresses" entry 33 from origin pfcp
+    configure policy-options policy-statement "pfcp-addresses" entry 33 from protocol name [direct]
+    configure policy-options policy-statement "pfcp-addresses" entry 33 action action-type accept
+    configure policy-options policy-statement "pfcp-addresses" entry 33 action community add ["target:65000:500"]
+    configure port pxc-1.a admin-state enable
+    configure port pxc-1.a ethernet encap-type qinq
+    configure port pxc-1.b admin-state enable
+    configure port pxc-1.b ethernet encap-type qinq
+    configure port 1/1/c1 admin-state enable
+    configure port 1/1/c1 connector breakout c1-10g
+    configure port 1/1/c1/1 admin-state enable
+    configure port 1/1/c1/1 oper-group "test"
+    configure port 1/1/c1/1 ethernet mode hybrid
+    configure port 1/1/c2 admin-state enable
+    configure port 1/1/c2 connector breakout c1-10g
+    configure port 1/1/c2/1 admin-state enable
+    configure port 1/1/c2/1 ethernet mode hybrid
+    configure port 1/1/c2/1 ethernet encap-type qinq
+    configure port 1/1/c3 admin-state enable
+    configure port 1/1/c3 connector breakout c1-10g
+    configure port 1/1/c3/1 admin-state enable
+    configure port 1/1/c3/1 ethernet mode hybrid
+    configure port 1/1/c4 admin-state enable
+    configure port 1/1/c4 connector breakout c1-10g
+    configure port 1/1/c4/1 admin-state enable
+    configure port 1/1/c4/1 ethernet mode hybrid
+    configure port 1/1/c5 admin-state enable
+    configure port 1/1/c5 connector breakout c1-10g
+    configure port 1/1/c5/1 admin-state enable
+    configure port 1/1/c5/1 ethernet mode hybrid
+    configure port 1/1/c6 admin-state enable
+    configure port 1/1/c6 connector breakout c1-10g
+    configure port 1/1/c6/1 admin-state enable
+    configure port 1/1/c6/1 ethernet mode hybrid
+    configure port 1/1/c6/1 ethernet dot1x tunneling true
+    configure port-xc pxc 1 admin-state enable
+    configure port-xc pxc 1 port-id 1/1/c6/1
+    configure { qos sap-ingress "2" policer 1 }
+    configure qos sap-ingress "2" fc "af" policer 1
+    configure qos sap-ingress "2" fc "be" policer 1
+    configure qos sap-ingress "2" fc "ef" policer 1
+    configure qos sap-ingress "2" fc "h1" policer 1
+    configure qos sap-ingress "2" fc "h2" policer 1
+    configure qos sap-ingress "2" fc "l1" policer 1
+    configure qos sap-ingress "2" fc "l2" policer 1
+    configure qos sap-ingress "2" fc "nc" policer 1
+    configure { qos sap-ingress "3" policer 1 }
+    configure qos sap-ingress "3" fc "af" policer 1
+    configure qos sap-ingress "3" fc "be" policer 1
+    configure qos sap-ingress "3" fc "ef" policer 1
+    configure qos sap-ingress "3" fc "h1" policer 1
+    configure qos sap-ingress "3" fc "h2" policer 1
+    configure qos sap-ingress "3" fc "l1" policer 1
+    configure qos sap-ingress "3" fc "l2" policer 1
+    configure qos sap-ingress "3" fc "nc" policer 1
+    configure { qos policer-control-policy "policer_control_policy" }
+    configure qos sap-egress "4" description "example HQoS ESM"
+    configure qos sap-egress "4" dot1p 1 fc be
+    configure qos sap-egress "4" dot1p 3 fc af
+    configure qos sap-egress "4" dot1p 5 fc ef
+    configure qos sap-egress "4" dscp af33 fc af
+    configure qos sap-egress "4" dscp ef fc ef
+    configure qos sap-egress "4" queue 1 mbs 102400
+    configure qos sap-egress "4" queue 1 port-parent weight 25
+    configure qos sap-egress "4" queue 2 mbs 102400
+    configure qos sap-egress "4" queue 2 port-parent weight 75
+    configure qos sap-egress "4" queue 3 rate pir 50
+    configure qos sap-egress "4" queue 3 port-parent level 5
+    configure qos sap-egress "4" fc af queue 2
+    configure qos sap-egress "4" fc ef queue 3
+    configure { qos port-scheduler-policy "psp" }
+    configure redundancy srrp auto-srrp-id-range start 2147483649
+    configure router "Base" autonomous-system 65000
+    configure router "Base" router-id 192.0.2.4
+    configure router "Base" interface "system" ipv4 primary address 192.0.2.4
+    configure router "Base" interface "system" ipv4 primary prefix-length 32
+    configure router "Base" interface "to-TRA" port 1/1/c1/1:0
+    configure router "Base" interface "to-TRA" ipv4 primary address 172.16.115.14
+    configure router "Base" interface "to-TRA" ipv4 primary prefix-length 30
+    configure router "Base" bgp min-route-advertisement 1
+    configure router "Base" bgp split-horizon true
+    configure router "Base" bgp ebgp-default-reject-policy import false
+    configure router "Base" bgp ebgp-default-reject-policy export false
+    configure router "Base" bgp rapid-update vpn-ipv4 true
+    configure router "Base" bgp rapid-update vpn-ipv6 true
+    configure router "Base" bgp rapid-update l2-vpn true
+    configure router "Base" bgp rapid-update mvpn-ipv4 true
+    configure router "Base" bgp rapid-update mdt-safi true
+    configure router "Base" bgp rapid-update mcast-vpn-ipv4 true
+    configure router "Base" bgp rapid-update mvpn-ipv6 true
+    configure router "Base" bgp rapid-update evpn true
+    configure router "Base" bgp rapid-update label-ipv4 true
+    configure router "Base" bgp rapid-update label-ipv6 true
+    configure router "Base" bgp rapid-update mcast-vpn-ipv6 true
+    configure router "Base" bgp group "internal" type internal
+    configure router "Base" bgp group "internal" family ipv4 true
+    configure router "Base" bgp group "internal" family vpn-ipv4 true
+    configure router "Base" bgp group "internal" family vpn-ipv6 true
+    configure router "Base" bgp neighbor "192.0.2.1" group "internal"
+    configure { router "Base" ldp interface-parameters interface "to-TRA" ipv4 }
+    configure router "Base" ospf 0 admin-state enable
+    configure router "Base" ospf 0 area 0.0.0.0 interface "system" interface-type point-to-point
+    configure router "Base" ospf 0 area 0.0.0.0 interface "to-TRA" interface-type point-to-point
+    configure service oper-group "test" hold-time up 0
+    configure service system extended-default-qinq-sap-lookup true
+    configure service vpls "bng-access" admin-state enable
+    configure service vpls "bng-access" service-id 100
+    configure service vpls "bng-access" customer "1"
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:102.* description "singe-homed"
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:102.* pfcp association "sx"
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:102.* trigger-packet dhcp true
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:102.* trigger-packet dhcp6 true
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:1003.* description "dual-homed"
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:1003.* pfcp association "sx"
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:1003.* pfcp up-resiliency monitor-oper-group "test" health-drop 100
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:1003.* trigger-packet dhcp true
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:1003.* trigger-packet dhcp6 true
+    configure service vpls "bng-access" capture-sap 1/1/c2/1:1003.* trigger-packet pppoe true
+    configure service vprn "bngvrf" admin-state enable
+    configure service vprn "bngvrf" service-id 500
+    configure service vprn "bngvrf" customer "1"
+    configure service vprn "bngvrf" bgp-ipvpn mpls admin-state enable
+    configure service vprn "bngvrf" bgp-ipvpn mpls route-distinguisher "500:2"
+    configure service vprn "bngvrf" bgp-ipvpn mpls vrf-target community "target:65000:500"
+    configure service vprn "bngvrf" bgp-ipvpn mpls vrf-export policy ["pfcp-addresses"]
+    configure service vprn "bngvrf" bgp-ipvpn mpls auto-bind-tunnel resolution filter
+    configure service vprn "bngvrf" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
+    configure service vprn "bngvrf" subscriber-mgmt up-resiliency monitor-oper-group "test" health-drop 100
+    configure service vprn "bngvrf" interface "loopback" loopback true
+    configure service vprn "bngvrf" interface "loopback" ipv4 primary address 1.1.1.102
+    configure service vprn "bngvrf" interface "loopback" ipv4 primary prefix-length 32
+    configure service vprn "sx" admin-state enable
+    configure service vprn "sx" service-id 2043
+    configure service vprn "sx" customer "1"
+    configure service vprn "sx" gtp upf-data-endpoint interface "system"
+    configure service vprn "sx" gtp upf-data-endpoint fpe 1
+    configure service vprn "sx" bgp-ipvpn mpls admin-state enable
+    configure service vprn "sx" bgp-ipvpn mpls route-distinguisher "2043:2"
+    configure service vprn "sx" bgp-ipvpn mpls vrf-target community "target:65000:2043"
+    configure service vprn "sx" bgp-ipvpn mpls auto-bind-tunnel resolution filter
+    configure service vprn "sx" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
+    configure service vprn "sx" interface "system" loopback true
+    configure service vprn "sx" interface "system" ipv4 primary address 1.1.1.102
+    configure service vprn "sx" interface "system" ipv4 primary prefix-length 32
+    configure { subscriber-mgmt group-interface-template "defaultgrp" }
+    configure { subscriber-mgmt group-interface-template "templ2" }
+    configure { subscriber-mgmt sap-template "defaultsap" }
+    configure { subscriber-mgmt sap-template "templ1" }
+    configure subscriber-mgmt pfcp association "sx" admin-state enable
+    configure subscriber-mgmt pfcp association "sx" association-release-timeout 30
+    configure subscriber-mgmt pfcp association "sx" path-restoration-time 60
+    configure subscriber-mgmt pfcp association "sx" bfd-expedited-path-down true
+    configure subscriber-mgmt pfcp association "sx" node-id fqdn "up2.nokia.com"
+    configure subscriber-mgmt pfcp association "sx" interface router-instance "sx"
+    configure subscriber-mgmt pfcp association "sx" interface name "system"
+    configure subscriber-mgmt pfcp association "sx" peer ip-address 1.1.1.1
+    configure subscriber-mgmt pfcp association "sx" heartbeat interval 5
+    configure subscriber-mgmt pfcp association "sx" heartbeat timeout 10
+    configure subscriber-mgmt pfcp association "sx" heartbeat retries 15
+    configure subscriber-mgmt sub-profile "sub-base" control cups true
+    configure subscriber-mgmt sub-profile "sub-default" control cups true
+    configure subscriber-mgmt sub-profile "sub-fwa" control cups true
+    configure subscriber-mgmt sub-profile "sub3" description "cups-bng"
+    configure subscriber-mgmt sub-profile "sub3" control cups true
+    configure subscriber-mgmt sub-profile "sub3" egress qos agg-rate rate 600
+    configure subscriber-mgmt sub-profile "sub3-fwa" control cups true
+    configure subscriber-mgmt sub-profile "sub3-fwa" egress qos agg-rate rate 10000
+    configure subscriber-mgmt sub-profile "sub3-fwa" ingress qos policer-control-policy policy-name "policer_control_policy"
+    configure subscriber-mgmt sla-profile "sla-base" control cups true
+    configure subscriber-mgmt sla-profile "sla-default" control cups true
+    configure subscriber-mgmt sla-profile "sla-fwa" control cups true
+    configure subscriber-mgmt sla-profile "sla-fwa" ingress qos sap-ingress policy-name "3"
+    configure subscriber-mgmt sla-profile "sla1-internet" description "cups stc sessions spi 1"
+    configure subscriber-mgmt sla-profile "sla1-internet" control cups true
+    configure subscriber-mgmt sla-profile "sla1-internet" egress qos qos-marking-from-sap false
+    configure subscriber-mgmt sla-profile "sla1-internet" ingress qos sap-ingress policy-name "2"
+    configure subscriber-mgmt sla-profile "sla3" description "example HQoS ESM"
+    configure subscriber-mgmt sla-profile "sla3" control cups true
+    configure subscriber-mgmt sla-profile "sla3" egress qos sap-egress policy-name "4"
+    configure subscriber-mgmt sla-profile "sla3" ingress qos sap-ingress policy-name "2"
+    configure subscriber-mgmt up-resiliency fate-sharing-group-template "upf-fsg1" gratuitous-arp one-per-outer-tag
+    configure subscriber-mgmt up-resiliency fate-sharing-group-template "upf-fsg1" uplink-forwarding-while-standby true
+    configure system name "UP2"
+    configure system boot-good-exec "tftp://172.31.255.29/post-boot-exec.cfg"
+    configure system grpc gnmi auto-config-save false
+    configure system management-interface cli md-cli auto-config-save false
+    configure system management-interface cli md-cli environment command-alias alias "all-stats" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "all-stats" cli-command "exec \"cf1:/scripts-md/clear-all-stats\""
+    configure { system management-interface cli md-cli environment command-alias alias "all-stats" mount-point "/clear" }
+    configure system management-interface cli md-cli environment command-alias alias "fsg" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "fsg" cli-command "exec \"cf1:/scripts-md/fsg\""
+    configure { system management-interface cli md-cli environment command-alias alias "fsg" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "pfcp-peers" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "pfcp-peers" cli-command "exec \"cf1:/scripts-md/pfcp-peers\""
+    configure { system management-interface cli md-cli environment command-alias alias "pfcp-peers" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "pfcp-stats" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "pfcp-stats" cli-command "exec \"cf1:/scripts-md/pfcp-stats\""
+    configure { system management-interface cli md-cli environment command-alias alias "pfcp-stats" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "s-5g" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "s-5g" cli-command "exec \"cf1:/scripts-md/s-5g\""
+    configure { system management-interface cli md-cli environment command-alias alias "s-5g" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "s-ipoe" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "s-ipoe" cli-command "exec \"cf1:/scripts-md/s-ipoe\""
+    configure { system management-interface cli md-cli environment command-alias alias "s-ipoe" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "s-ipoe_red" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "s-ipoe_red" cli-command "exec \"cf1:/scripts-md/s-ipoe_red\""
+    configure { system management-interface cli md-cli environment command-alias alias "s-ipoe_red" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "s-pppoe" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "s-pppoe" cli-command "exec \"cf1:/scripts-md/s-pppoe\""
+    configure { system management-interface cli md-cli environment command-alias alias "s-pppoe" mount-point "/show" }
+    configure system management-interface cli md-cli environment command-alias alias "sessions" admin-state enable
+    configure system management-interface cli md-cli environment command-alias alias "sessions" cli-command "exec \"cf1:/scripts-md/sessions\""
+    configure { system management-interface cli md-cli environment command-alias alias "sessions" mount-point "/show" }
+    configure system management-interface configuration-save configuration-backups 5
+    configure system management-interface configuration-save incremental-saves false
+    configure system management-interface netconf auto-config-save false
+    configure system management-interface netconf listen admin-state enable
+    configure system management-interface yang-modules nokia-submodules true
+    configure system management-interface yang-modules nokia-combined-modules false
+    configure system bluetooth advertising-timeout 30
+    configure system login-control idle-timeout none
+    configure system login-control motd text "## This node is part of the Broadband Edge CLAB ...Enjoy ##\n"
+    configure system security aaa local-profiles profile "administrative" default-action permit-all
+    configure system security aaa local-profiles profile "administrative" entry 10 match "configure system security"
+    configure system security aaa local-profiles profile "administrative" entry 10 action permit
+    configure system security aaa local-profiles profile "administrative" entry 20 match "show system security"
+    configure system security aaa local-profiles profile "administrative" entry 20 action permit
+    configure system security aaa local-profiles profile "administrative" entry 30 match "tools perform security"
+    configure system security aaa local-profiles profile "administrative" entry 30 action permit
+    configure system security aaa local-profiles profile "administrative" entry 40 match "tools dump security"
+    configure system security aaa local-profiles profile "administrative" entry 40 action permit
+    configure system security aaa local-profiles profile "administrative" entry 42 match "tools dump system security"
+    configure system security aaa local-profiles profile "administrative" entry 42 action permit
+    configure system security aaa local-profiles profile "administrative" entry 50 match "admin system security"
+    configure system security aaa local-profiles profile "administrative" entry 50 action permit
+    configure system security aaa local-profiles profile "administrative" entry 100 match "configure li"
+    configure system security aaa local-profiles profile "administrative" entry 100 action deny
+    configure system security aaa local-profiles profile "administrative" entry 110 match "show li"
+    configure system security aaa local-profiles profile "administrative" entry 110 action deny
+    configure system security aaa local-profiles profile "administrative" entry 111 match "clear li"
+    configure system security aaa local-profiles profile "administrative" entry 111 action deny
+    configure system security aaa local-profiles profile "administrative" entry 112 match "tools dump li"
+    configure system security aaa local-profiles profile "administrative" entry 112 action deny
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization action true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization cancel-commit true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization close-session true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization commit true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization copy-config true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization create-subscription true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization delete-config true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization discard-changes true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization edit-config true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-config true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-data true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization get-schema true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization kill-session true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization lock true
+    configure system security aaa local-profiles profile "administrative" netconf base-op-authorization validate true
+    configure system security aaa local-profiles profile "default" entry 10 match "exec"
+    configure system security aaa local-profiles profile "default" entry 10 action permit
+    configure system security aaa local-profiles profile "default" entry 20 match "exit"
+    configure system security aaa local-profiles profile "default" entry 20 action permit
+    configure system security aaa local-profiles profile "default" entry 30 match "help"
+    configure system security aaa local-profiles profile "default" entry 30 action permit
+    configure system security aaa local-profiles profile "default" entry 40 match "logout"
+    configure system security aaa local-profiles profile "default" entry 40 action permit
+    configure system security aaa local-profiles profile "default" entry 50 match "password"
+    configure system security aaa local-profiles profile "default" entry 50 action permit
+    configure system security aaa local-profiles profile "default" entry 60 match "show config"
+    configure system security aaa local-profiles profile "default" entry 60 action deny
+    configure system security aaa local-profiles profile "default" entry 65 match "show li"
+    configure system security aaa local-profiles profile "default" entry 65 action deny
+    configure system security aaa local-profiles profile "default" entry 66 match "clear li"
+    configure system security aaa local-profiles profile "default" entry 66 action deny
+    configure system security aaa local-profiles profile "default" entry 67 match "tools dump li"
+    configure system security aaa local-profiles profile "default" entry 67 action deny
+    configure system security aaa local-profiles profile "default" entry 68 match "state li"
+    configure system security aaa local-profiles profile "default" entry 68 action deny
+    configure system security aaa local-profiles profile "default" entry 70 match "show"
+    configure system security aaa local-profiles profile "default" entry 70 action permit
+    configure system security aaa local-profiles profile "default" entry 75 match "state"
+    configure system security aaa local-profiles profile "default" entry 75 action permit
+    configure system security aaa local-profiles profile "default" entry 80 match "enable-admin"
+    configure system security aaa local-profiles profile "default" entry 80 action permit
+    configure system security aaa local-profiles profile "default" entry 90 match "enable"
+    configure system security aaa local-profiles profile "default" entry 90 action permit
+    configure system security aaa local-profiles profile "default" entry 100 match "configure li"
+    configure system security aaa local-profiles profile "default" entry 100 action deny
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization action true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization cancel-commit true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization close-session true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization commit true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization copy-config true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization create-subscription true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization delete-config true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization discard-changes true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization edit-config true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization get true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization get-config true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization get-data true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization get-schema true
+    configure system security aaa local-profiles profile "default" netconf base-op-authorization validate true
+    configure system security aaa user-template ldap-default restricted-to-home false
+    configure system security aaa user-template ldap-default save-when-restricted false
+    configure system security aaa user-template radius-default restricted-to-home false
+    configure system security aaa user-template radius-default save-when-restricted false
+    configure system security aaa user-template tacplus-default restricted-to-home false
+    configure system security aaa user-template tacplus-default save-when-restricted false
+    configure system security ssh server-cipher-list-v2 cipher 190 name aes256-ctr
+    configure system security ssh server-cipher-list-v2 cipher 192 name aes192-ctr
+    configure system security ssh server-cipher-list-v2 cipher 194 name aes128-ctr
+    configure system security ssh server-cipher-list-v2 cipher 200 name aes128-cbc
+    configure system security ssh server-cipher-list-v2 cipher 205 name 3des-cbc
+    configure system security ssh server-cipher-list-v2 cipher 225 name aes192-cbc
+    configure system security ssh server-cipher-list-v2 cipher 230 name aes256-cbc
+    configure system security ssh client-cipher-list-v2 cipher 190 name aes256-ctr
+    configure system security ssh client-cipher-list-v2 cipher 192 name aes192-ctr
+    configure system security ssh client-cipher-list-v2 cipher 194 name aes128-ctr
+    configure system security ssh client-cipher-list-v2 cipher 200 name aes128-cbc
+    configure system security ssh client-cipher-list-v2 cipher 205 name 3des-cbc
+    configure system security ssh client-cipher-list-v2 cipher 225 name aes192-cbc
+    configure system security ssh client-cipher-list-v2 cipher 230 name aes256-cbc
+    configure system security ssh server-mac-list-v2 mac 200 name hmac-sha2-512
+    configure system security ssh server-mac-list-v2 mac 210 name hmac-sha2-256
+    configure system security ssh server-mac-list-v2 mac 215 name hmac-sha1
+    configure system security ssh server-mac-list-v2 mac 220 name hmac-sha1-96
+    configure system security ssh server-mac-list-v2 mac 225 name hmac-md5
+    configure system security ssh server-mac-list-v2 mac 240 name hmac-md5-96
+    configure system security ssh client-mac-list-v2 mac 200 name hmac-sha2-512
+    configure system security ssh client-mac-list-v2 mac 210 name hmac-sha2-256
+    configure system security ssh client-mac-list-v2 mac 215 name hmac-sha1
+    configure system security ssh client-mac-list-v2 mac 220 name hmac-sha1-96
+    configure system security ssh client-mac-list-v2 mac 225 name hmac-md5
+    configure system security ssh client-mac-list-v2 mac 240 name hmac-md5-96
+    configure system security user-params local-user user "admin" password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+    configure system security user-params local-user user "admin" restricted-to-home false
+    configure system security user-params local-user user "admin" save-when-restricted false
+    configure system security user-params local-user user "admin" access console true
+    configure system security user-params local-user user "admin" access ftp true
+    configure system security user-params local-user user "admin" access snmp true
+    configure system security user-params local-user user "admin" access netconf true
+    configure system security user-params local-user user "admin" access grpc true
+    configure system security user-params local-user user "admin" access li true
+    configure system security user-params local-user user "admin" console member ["administrative"]
+    configure system time zone standard name cet
+    configure system time daylight-saving-time-zone standard name cest
+    configure system time ntp admin-state enable
+    configure { system time ntp ntp-server }
+    configure system time ntp server 10.171.8.4 router-instance "management" prefer true
+    configure { system time ntp server 10.171.8.45 router-instance "management" }
+
+# Finished 2025-04-09T23:12:53.0+02:00
+
+[/]
+A:admin@UP2#
+

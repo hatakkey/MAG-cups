@@ -1,0 +1,5 @@
+echo
+/show mobile-gateway bng session  mac 02:00:01:00:00:01
+
+/show mobile-gateway bng session  mac 02:00:01:00:00:01 charging aggregate-stats
+

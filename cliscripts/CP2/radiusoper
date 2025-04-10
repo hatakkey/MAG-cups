@@ -1,0 +1,8 @@
+echo
+echo
+echo "show  mobile-gateway pdn ref-point-peers radius"
+echo "-------------------------------------------------------------------------------"
+/show  mobile-gateway pdn ref-point-peers radius | match exp ---|Operation|Peer post-lines 1 | match Interface invert-match | match radius-group1  invert-match
+echo
+echo
+
