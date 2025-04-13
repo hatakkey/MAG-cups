@@ -47,7 +47,9 @@ success
 ## 2. **Deploy the ContainerLab Environment**:
 
  Deploy the containerized network environment using the ContainerLab configuration:
-```bash     
+
+```bash
+[root@compute-1 MAG-cups]# export CLAB_SKIP_SROS_SSH_KEY_CONFIG=true  
 [root@compute-1 MAG-cups]# clab dep -t cups.clab.yml
 15:35:44 INFO Containerlab started version=0.67.0
 15:35:44 INFO Parsing & checking topology file=cups.clab.yml
