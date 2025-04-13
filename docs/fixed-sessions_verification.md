@@ -7,7 +7,7 @@ Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session m
 ./start_dhcp_red.sh
 ```
 
-![dhcp_red](../images/dhcp-red.png)
+![dhcp_red](../snaps/dhcp-red.png)
 
 The 10 IPOEs sessions are established on UP2 and UP1 with hot-standby,can be verified following the below show commands:
 
@@ -1958,7 +1958,7 @@ The radius debug can be checked from the log directory radiusd.log file
 ./start_dhcp.sh
 ```
 
-![dhcp_red](../images/dhcp.png)
+![dhcp_red](../snaps/dhcp.png)
   
 The 10 sessions are created on UP2
   
@@ -3149,7 +3149,7 @@ Another example for PPPoE sessions,the below predefined script can be used to es
 ```bash
 ./start_pppoe.sh
 ```
-![pppoe](../images/pppoe.png)
+![pppoe](../snaps/pppoe.png)
 
 PPPoE session are created on UP-1
 ```bash 
