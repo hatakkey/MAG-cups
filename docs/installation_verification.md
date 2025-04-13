@@ -469,3 +469,18 @@ MG Group : 1    Geo Redundancy : Hot         0%           100%
 ===============================================================================
 ```  
 
+###4. **Downloadin the CLIscripts**
+ 
+Via using the below pre-defined scripts,the cliscripts can be download to the nodes
+
+```bash  
+[root@compute-3 scripts]# ./upload-cliscripts.sh
+cups-UP1 is up, starting SFTP upload...
+Upload complete for cups-UP1.
+cups-UP2 is up, starting SFTP upload...
+Upload complete for cups-UP2.
+cups-CP1 is up, starting SFTP upload...
+Upload complete for cups-CP1.
+cups-CP2 is up, starting SFTP upload...
+Upload complete for cups-CP2.
+```
