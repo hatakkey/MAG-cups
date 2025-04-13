@@ -11,7 +11,7 @@
         "__comment__": "DHCP Client 1",
         "interface": "eth1",
         "type": "ipoe",
-        "ipv6": "false",
+        "ipv6": true,
         "vlan-mode": "1:1",
         "outer-vlan-min": 102,
         "outer-vlan-max": 102,
