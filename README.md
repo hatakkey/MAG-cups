@@ -78,7 +78,7 @@ To use them, first run the below script
 ```bash
 [root@compute-1 scripts]# ./upload-cliscripts.sh
 ```
-To download and upload the predefined scripts from /root/MAG-cups/cliscripts/ to cf1:\scripts-md on cp-1, cp-2, up-1, up-2 and and TRA-cups. Before uploading, ensure the directory is created by running the command: file md cf1:\scripts-md on cp-1, cp-2,up-1, up-2 and TRA-cups.
+To download and upload the predefined scripts from /root/MAG-cups/cliscripts/ to cf1:\scripts-md on cp-1, cp-2, up-1, up-2 and and TRA-cups
 
 ## Start sessions
 
