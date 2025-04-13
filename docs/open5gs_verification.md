@@ -2,8 +2,8 @@
 You can check the logs for the open5GS and UERANSIM
 ```bash
 [root@compute-1 logs]# ls
-amf.log   bsf.log  nrf.log   pcf.log   udm.log  ue1.log
-ausf.log  gnb.log  nssf.log  pcrf.log  udr.log
+amf.log   bsf.log  nrf.log   pcf.log      udm.log  ue1.log
+ausf.log  gnb.log  nssf.log  radiusd.log  udr.log
 ```
 The below are the logs for 1 IMSI connected
 ###1.1. **checking the NRF** 

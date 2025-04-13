@@ -15,6 +15,6 @@
 #echo
 /show subscriber-mgmt statistics sub-profiles
 #echo
-/show subscriber-mgmt statistics subscriber system | match "Subscriber Statistics" invert
+/show subscriber-mgmt statistics subscriber system | match "Subscriber Statistics" invert-match
 #echo
 #echo

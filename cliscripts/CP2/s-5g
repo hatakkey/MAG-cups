@@ -4,7 +4,9 @@ echo
 #
 /show mobile-gateway pdn pdn-context
 echo
-/show mobile-gateway pdn pdn-context imsi 206010000000001
+/show mobile-gateway pdn pdn-context imsi 206010000000001 detail
+echo
+/show mobile-gateway pdn pdn-context imsi 206010000000011 detail
 #
 /show  mobile-gateway pdn statistics
 echo
@@ -20,10 +22,12 @@ echo
 echo
 /show mobile-gateway bng session imsi 206010000000001
 echo
+/show mobile-gateway bng session imsi 206010000000011
+echo
 /show mobile-gateway bng session imsi 206010000000001 charging aggregate-stats
 echo
+/show mobile-gateway bng session imsi 206010000000011 charging aggregate-stats
 echo
 echo "command :"
 echo "clear mobile-gateway pdn  1 bearer-context imsi 206010000000001"
 echo
-
