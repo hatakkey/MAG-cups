@@ -1,16 +1,17 @@
 ## 1.   **Start PPPoE/IPoE Session using BNGBlaste**
 ----
-Start the broadband session using BNGBlaster to simulate PPPoE or IPoE session management
-### 1.1. **Start dhcp redundncy session**
-10 dhcp sessions are established using the BNGBlaster
+Start PPPoE/IPoE Session using BNGBlaster to simulate PPPoE or IPoE sessions
+
+### 1.1. **Start dhcp redundant sessions (IPoE session)**
+10 dhcp sessions are established using the BNGBlaster application
 ```bash
 ./start_dhcp_red.sh
 ```
 
 ![dhcp_red](../snaps/dhcp-red.png)
 
-The 10 IPOEs sessions are established on UP2 and UP1 with hot-standby,can be verified following the below show commands:
-
+The 10 IPoEs sessions are established on UP2 and UP1 using a 1:1 hot-standby redundancy model.
+These can be verified with the following predfined script
    
 ```bash 
 *A:CP1# exec s-ipoe_red
@@ -131,7 +132,6 @@ Charging Profile 1             : mybngcharging
 -------------------------------------------------------------------------------
 Number of sessions shown : 1
 ===============================================================================
-
 ===============================================================================
 BNG session aggregate statistics
 ===============================================================================
@@ -153,6 +153,7 @@ Executed 4 lines in 0.0 seconds from file cf1:\magc\s-ipoe_red
 ```
 
 The 10 sessions are created on the two UPs using UPF Resiliency Type hot-standby
+
 ```bash
 *A:CP1# exec fsg
 Pre-processing configuration file (V0v0)...
@@ -162,7 +163,7 @@ Completed processing 12 lines in 0.0 seconds
 Up Table
 ===============================================================================
 Gw UpId
-        L2-Access-Id           S-Vlan    C-Vlan    Up-Group       Fsg     Role
+        L2-Access-Id           S-Vlan    C-Vlan    UPGroup       Fsg     Role
 -------------------------------------------------------------------------------
 1 up1.nokia.com (1.1.1.101)
         1/1/c2/1               1003      1-1000    HOT1-UP1-UP2-  1       Act
@@ -174,11 +175,8 @@ Gw UpId
 -------------------------------------------------------------------------------
 No. of UPs : 2
 ===============================================================================
-
-
-
 ===============================================================================
-Up-Group 'HOT1-UP1-UP2-VPLS-A/A'
+UPGroup 'HOT1-UP1-UP2-VPLS-A/A'
 ===============================================================================
 PDN gateway                            : 1
 Description                            : (Not Specified)
@@ -208,7 +206,7 @@ No. of UPs: 2
 ===============================================================================
 Fate Sharing Group Table
 ===============================================================================
-FSG     Gw Up-Group          Active UP                               Sessions
+FSG     Gw UPGroup          Active UP                               Sessions
            Site              Standby UP
 -------------------------------------------------------------------------------
 1       1  HOT1-UP1-UP2-     up1.nokia.com                                 10
@@ -219,7 +217,12 @@ No. of Sessions  : 10
 No. of FSGs      : 1
 ===============================================================================
 ```
-The sessions can be check on the UP via the below predefined script
+
+
+
+### 1.1.1 **Check IPoE session on UP1**
+
+Check the session are also created on UP1 via the below predefined script
 
 ```bash
 A:admin@UP1# show s-ipoe_red
@@ -289,59 +292,9 @@ No. of PFCP Sessions: 1
 ===============================================================================
 Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe_red"
 ```
+### 1.1.2 **Check statistics on UP1/UP2**
 
-
-
-You can check the statistics via the below show command on UP2
-```bash
-*A:UP2#
-*A:UP2# exec sessions
-Pre-processing configuration file (V0v0)...
-Completed processing 20 lines in 0.0 seconds
-
-
-===============================================================================
-Subscriber Management Statistics for System
-===============================================================================
--------------------------------------------------------------------------------
-
--------------------------------------------------------------------------------
-Host & Protocol Statistics
--------------------------------------------------------------------------------
-IPv4   IPOE Hosts       - PFCP                  10       10 03/12/2025 11:03:12
--------------------------------------------------------------------------------
-Total  IPOE Hosts                               10       10 03/12/2025 11:03:12
-       IPv4 Hosts                               10       10 03/12/2025 11:03:12
-       PFCP Hosts                               10       10 03/12/2025 11:03:12
-       System Hosts Scale                       10       10 03/12/2025 11:03:12
--------------------------------------------------------------------------------
-===============================================================================
-<snip>
-```
-
-Check the session are also created on UP-1
-```bash
-*A:UP-1# show service active-subscribers
-===============================================================================
-Active Subscribers
-===============================================================================
--------------------------------------------------------------------------------
-Subscriber _cups_61
-           (sub-base)
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
-(1) SLA Profile Instance sap:[1/1/c2/1:1003.1] - sla:sla-base
--------------------------------------------------------------------------------
-IP Address
-              MAC Address        Session            Origin       Svc        Fwd
--------------------------------------------------------------------------------
-172.16.11.7
-              02:00:03:00:00:01  0x000000000000003e PFCP         500        Y
--------------------------------------------------------------------------------
-```
-
-
-The statistaic on UP1 also shows the 10 users
+The statistics on UP1 also show the 10 users  via the below predefined script
 ```bash
 A:admin@UP1# show sessions
 ===============================================================================
@@ -414,6 +367,32 @@ Total  Subscribers                              10       10 04/11/2025 13:40:33
 Peak values last reset at : 04/11/2025 13:40:33
 Executed 20 lines in 0.0 seconds from file "cf1:\scripts-md\sessions"
 ```
+The statistics on UP2 show the 10 users via the below predefined script
+
+```bash
+*A:UP2#
+*A:UP2# exec sessions
+Pre-processing configuration file (V0v0)...
+Completed processing 20 lines in 0.0 seconds
+===============================================================================
+Subscriber Management Statistics for System
+===============================================================================
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+Host & Protocol Statistics
+-------------------------------------------------------------------------------
+IPv4   IPOE Hosts       - PFCP                  10       10 03/12/2025 11:03:12
+-------------------------------------------------------------------------------
+Total  IPOE Hosts                               10       10 03/12/2025 11:03:12
+       IPv4 Hosts                               10       10 03/12/2025 11:03:12
+       PFCP Hosts                               10       10 03/12/2025 11:03:12
+       System Hosts Scale                       10       10 03/12/2025 11:03:12
+-------------------------------------------------------------------------------
+===============================================================================
+<snip>
+```
+### 1.1.3 **Call-trace for the session**
 
 A call trace can be used to check the session via the below predefined script:
  
@@ -459,7 +438,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     ingressing frame on interface Sx
@@ -502,7 +481,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     ingressing frame on interface Sx
@@ -557,7 +536,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
       search username:
       search username-domain:
       search vendor-class:
-      search up-ip: 1.1.1.101
+      search UPip: 1.1.1.101
       search sVlan: 1003
       search cVlan: 1
       search apn:
@@ -565,8 +544,8 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
       search imsi-mnc:
       search imei-tac:
       search derivedId:
-      search up-group: HOT1-UP1-UP2-VPLS-A/A
-      search up-node-id: up1.nokia.com
+      search UPgroup: HOT1-UP1-UP2-VPLS-A/A
+      search UPnode-id: up1.nokia.com
       search MAC: 02:00:03:00:00:01
       search client-id:
       search source-ip-prefix: ::/128
@@ -605,9 +584,9 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
    - Alc-ToServer-Dhcp6-Options: 0x0008000200000001000a00030001020003000001000e0
 0000003000c01000000000000000000000000190029020000000000000000000000001a001900000
 000000000000000000000000000000000000000000000000600020017
-   - Alc-UP-Id: "up1.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.101
-   - Alc-UP-Group: "HOT1-UP1-UP2-VPLS-A/A"
+   - Alc-UPId: "up1.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.101
+   - Alc-UPGroup: "HOT1-UP1-UP2-VPLS-A/A"
 "
 
 5 2025/04/11 13:54:36.687 CEST MINOR: CALLTRACE #2003 N/A CALL-TRACE
@@ -639,7 +618,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
       search username:
       search username-domain:
       search vendor-class:
-      search up-ip: 1.1.1.101
+      search UPip: 1.1.1.101
       search sVlan: 1003
       search cVlan: 1
       search apn:
@@ -647,8 +626,8 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
       search imsi-mnc:
       search imei-tac:
       search derivedId:
-      search up-group: HOT1-UP1-UP2-VPLS-A/A
-      search up-node-id: up1.nokia.com
+      search UPgroup: HOT1-UP1-UP2-VPLS-A/A
+      search UPnode-id: up1.nokia.com
       search MAC: 02:00:03:00:00:01
       search client-id:
       search source-ip-prefix: ::/128
@@ -690,7 +669,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
 
    Info:     egressing frame on interface Sx
              from application Connectivity-management
@@ -980,7 +959,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     ingressing frame on interface Sx
@@ -1016,7 +995,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     ingressing frame on interface Sx
@@ -1052,7 +1031,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
 
    Info:     ingressing frame on interface Sx
              to application Connectivity-management
@@ -1119,7 +1098,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     egressing frame on interface Sx
@@ -1154,7 +1133,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     egressing frame on interface Sx
@@ -1226,7 +1205,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
 
    Info:     egressing frame on interface Sx
              from application Connectivity-management
@@ -1557,18 +1536,18 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
    - Alc-Subsc-Prof-Str: "sub-base"
    - Alc-SLA-Prof-Str: "sla-base"
    - Alc-Client-Hardware-Addr: "02:00:03:00:00:01"
-   - Alc-UP-Id: "up1.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.101
-   - Alc-UP-Subscriber-Id: 111
+   - Alc-UPId: "up1.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.101
+   - Alc-UPSubscriber-Id: 111
    - Alc-Active-Addresses: na_pd (12)
-   - Alc-UP-Group: "HOT1-UP1-UP2-VPLS-A/A"
+   - Alc-UPGroup: "HOT1-UP1-UP2-VPLS-A/A"
 "
 
 23 2025/04/11 13:54:36.786 CEST MINOR: CALLTRACE #2003 N/A CALL-TRACE
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     egressing frame on interface Sx
@@ -1600,7 +1579,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
 
    Info:     ingressing frame on interface Sx
              to application Connectivity-management
@@ -1667,7 +1646,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     ingressing frame on interface Sx
@@ -1705,7 +1684,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     ingressing frame on interface Sx
@@ -1742,7 +1721,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:03:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     ingressing frame on interface Sx
@@ -1782,7 +1761,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
    MAC-address:   02:00:03:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 1:1
    Remote-id:     7750bng-sub.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     egressing frame on interface Sx
@@ -1819,7 +1798,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
    MAC-address:   02:00:03:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 1:1
    Remote-id:     7750bng-sub.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     ingressing frame on interface Sx
@@ -1892,11 +1871,11 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
    - Alc-SLA-Prof-Str: "sla-base"
    - Alc-Client-Hardware-Addr: "02:00:03:00:00:01"
    - Alc-Acct-Triggered-Reason: Framed-IP-Address-up (4)
-   - Alc-UP-Id: "up1.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.101
-   - Alc-UP-Subscriber-Id: 111
+   - Alc-UPId: "up1.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.101
+   - Alc-UPSubscriber-Id: 111
    - Alc-Active-Addresses: na_pd_v4 (13)
-   - Alc-UP-Group: "HOT1-UP1-UP2-VPLS-A/A"
+   - Alc-UPGroup: "HOT1-UP1-UP2-VPLS-A/A"
 "
 
 34 2025/04/11 13:54:36.947 CEST MINOR: CALLTRACE #2003 N/A CALL-TRACE
@@ -1918,7 +1897,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
    MAC-address:   02:00:03:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 1:1
    Remote-id:     7750bng-sub.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:1003.1
 
    Info:     egressing frame on interface Sx
@@ -1950,7 +1929,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 The radius debug can be checked from the log directory radiusd.log file
 
 
-### 1.2. **start dhcp session no redundancy**
+### 1.2. **Start dhcp session (no redundancy)**
   
  Another example with 10 DHCP sessions without redundancy
  
@@ -1974,7 +1953,7 @@ The 10 sessions are created on UP2
                             exit
                         exit
                         match
-                            up-ip 1.1.1.102
+                            UPip 1.1.1.102
                             vlan
                                 s-vlan start 102 end 102
                             exit
@@ -1983,14 +1962,13 @@ The 10 sessions are created on UP2
 ----------------------------------------------
 ```
 
-The session can be verified using the below predefined script
+### 1.2.1 **Check the sessions on CP**
+The session on CP can be verified using the below predefined script
 
 ```bash
 *A:CP1# exec s-ipoe
 Pre-processing configuration file (V0v0)...
 Completed processing 5 lines in 0.0 seconds
-
-
 ===============================================================================
 BNG Sessions
 ===============================================================================
@@ -2112,6 +2090,7 @@ No. of sessions: 1
 Executed 5 lines in 0.0 seconds from file cf1:\magc\s-ipoe
 ```
 
+### 1.2.2 **Check the sessions on UP2**
 
 On UP2,the sessions can be checked via the below predefined script 
 
@@ -2182,7 +2161,7 @@ No. of PFCP Sessions: 1
 Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe"
 [/]
 ```
-
+### 1.2.3 **Call-trace for the session**
 A call-trace can be started to check the operation on CP and UP
 ```bash
 *A:CP1# exec ct-ipoe
@@ -2214,7 +2193,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:02:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:102.1
 
    Info:     ingressing frame on interface Sx
@@ -2269,7 +2248,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
       search username:
       search username-domain:
       search vendor-class:
-      search up-ip: 1.1.1.102
+      search UPip: 1.1.1.102
       search sVlan: 102
       search cVlan: 1
       search apn:
@@ -2277,8 +2256,8 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
       search imsi-mnc:
       search imei-tac:
       search derivedId:
-      search up-group:
-      search up-node-id: up2.nokia.com
+      search UPgroup:
+      search UPnode-id: up2.nokia.com
       search MAC: 02:00:02:00:00:01
       search client-id:
       search source-ip-prefix: ::/128
@@ -2317,8 +2296,8 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
    - Alc-ToServer-Dhcp6-Options: 0x0008000200000001000a00030001020002000001000e0
 0000003000c01000000000000000000000000190029020000000000000000000000001a001900000
 000000000000000000000000000000000000000000000000600020017
-   - Alc-UP-Id: "up2.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.102
+   - Alc-UPId: "up2.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.102
 "
 
 4 2025/04/13 12:41:25.267 CEST MINOR: CALLTRACE #2003 N/A CALL-TRACE
@@ -2350,7 +2329,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
       search username:
       search username-domain:
       search vendor-class:
-      search up-ip: 1.1.1.102
+      search UPip: 1.1.1.102
       search sVlan: 102
       search cVlan: 1
       search apn:
@@ -2358,8 +2337,8 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
       search imsi-mnc:
       search imei-tac:
       search derivedId:
-      search up-group:
-      search up-node-id: up2.nokia.com
+      search UPgroup:
+      search UPnode-id: up2.nokia.com
       search MAC: 02:00:02:00:00:01
       search client-id:
       search source-ip-prefix: ::/128
@@ -2401,7 +2380,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:02:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
 
    Info:     egressing frame on interface Sx
              from application Connectivity-management
@@ -2688,7 +2667,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:02:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:102.1
 
    Info:     ingressing frame on interface Sx
@@ -2724,7 +2703,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:02:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
 
    Info:     ingressing frame on interface Sx
              to application Connectivity-management
@@ -2791,7 +2770,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:02:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:102.1
 
    Info:     egressing frame on interface Sx
@@ -2826,7 +2805,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:02:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:102.1
 
    Info:     egressing frame on interface Sx
@@ -2916,9 +2895,9 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
    - Alc-Subsc-Prof-Str: "sub-base"
    - Alc-SLA-Prof-Str: "sla-base"
    - Alc-Client-Hardware-Addr: "02:00:02:00:00:01"
-   - Alc-UP-Id: "up2.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.102
-   - Alc-UP-Subscriber-Id: 121
+   - Alc-UPId: "up2.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.102
+   - Alc-UPSubscriber-Id: 121
    - Alc-Active-Addresses: na_pd (12)
 "
 
@@ -2939,7 +2918,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:02:00:00:01
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:102.1
 
    Info:     ingressing frame on interface Sx
@@ -2979,7 +2958,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
    MAC-address:   02:00:02:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 1:1
    Remote-id:     7750bng-sub.1
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:102.1
 
    Info:     egressing frame on interface Sx
@@ -3063,9 +3042,9 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
    - Alc-SLA-Prof-Str: "sla-base"
    - Alc-Client-Hardware-Addr: "02:00:02:00:00:01"
    - Alc-Acct-Triggered-Reason: Framed-IP-Address-up (4)
-   - Alc-UP-Id: "up2.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.102
-   - Alc-UP-Subscriber-Id: 121
+   - Alc-UPId: "up2.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.102
+   - Alc-UPSubscriber-Id: 121
    - Alc-Active-Addresses: na_pd_v4 (13)
 "
 
@@ -3075,7 +3054,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
    MAC-address:   02:00:02:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 1:1
    Remote-id:     7750bng-sub.1
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:102.1
 
    Info:     ingressing frame on interface Sx
@@ -3114,7 +3093,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
    MAC-address:   02:00:02:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 1:1
    Remote-id:     7750bng-sub.1
-   UP-node-id:    1.1.1.102
+   UPnode-id:    1.1.1.102
    L2-circuit-id: 1/1/c2/1:102.1
 
    Info:     egressing frame on interface Sx
@@ -3151,15 +3130,15 @@ Another example for PPPoE sessions,the below predefined script can be used to es
 ```
 ![pppoe](../snaps/pppoe.png)
 
-PPPoE session are created on UP-1
+PPPoE session are created on UP1
 ```bash 
 *A:CP1# configure mobile-gateway profile bng entry-point "e1"
 *A:CP1>config>mobile>profile>bng>ep# info
 ----------------------------------------------
-                    match 1 attribute up-group
+                    match 1 attribute UPgroup
                         optional
                     exit
-                    match 2 attribute up-ip
+                    match 2 attribute UPip
                         optional
                     exit
                     match 3 attribute s-vlan
@@ -3174,7 +3153,7 @@ PPPoE session are created on UP-1
                             exit
                         exit
                         match
-                            up-ip 1.1.1.102
+                            UPip 1.1.1.102
                             vlan
                                 s-vlan start 102 end 102
                             exit
@@ -3184,9 +3163,9 @@ PPPoE session are created on UP-1
                     no shutdown
 ```                    
 
-The sessions can be checked via the below predefined scripts on CP and UP    
+### 1.3.1. **Checking the session on CP**
+The sessions can be checked via the below predefined scripts on CP 
 
-On CP 
 ```bash
 *A:CP1# exec s-pppoe
 Pre-processing configuration file (V0v0)...
@@ -3316,7 +3295,9 @@ No. of sessions: 1
 ===============================================================================
 Executed 5 lines in 0.0 seconds from file cf1:\magc\s-pppoe
 ```
-On UP
+### 1.3.2. ** Checking the session on UP**
+
+The sessions can be checked on UP using the below predefined script
 
 ```bash
 A:admin@UP1# show s-pppoe
@@ -3391,8 +3372,8 @@ Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 [/]
 ```
 
-
-A call trace can be started vi the predefined script to check the operation
+### 1.3.3. ** Call-trace for the session**
+A call trace can be started via the predefined script to check the operation
 
 ```bash
 *A:CP1# exec ct-pppoe
@@ -3404,7 +3385,6 @@ From Debug to Sesion
 
 debug mobile-gateway call-insight bng profile debug-output mac-address 02:00:01:00:00:01
 show mobile-gateway call-insight bng
-
 ===============================================================================
 Call-insight BNG
 ===============================================================================
@@ -3427,7 +3407,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -3482,7 +3462,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:01:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
 
    Info:     egressing frame on interface Sx
              from application Connectivity-management
@@ -3640,7 +3620,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:01:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
 
    Info:     ingressing frame on interface Sx
              to application Connectivity-management
@@ -3709,7 +3689,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -3741,7 +3721,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -3777,7 +3757,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -3806,7 +3786,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -3842,7 +3822,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -3877,7 +3857,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -3912,7 +3892,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -3948,7 +3928,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -3985,7 +3965,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -4030,7 +4010,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
       search username: nokia
       search username-domain:
       search vendor-class:
-      search up-ip: 1.1.1.101
+      search UPip: 1.1.1.101
       search sVlan: 101
       search cVlan: 1
       search apn:
@@ -4038,8 +4018,8 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
       search imsi-mnc:
       search imei-tac:
       search derivedId:
-      search up-group:
-      search up-node-id: up1.nokia.com
+      search UPgroup:
+      search UPnode-id: up1.nokia.com
       search MAC: 02:00:01:00:00:01
       search client-id:
       search source-ip-prefix: ::/128
@@ -4083,8 +4063,8 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    - Actual-Data-Rate-Upstream: 1024
    - Actual-Data-Rate-Downstream: 16384
    - Alc-Client-Hardware-Addr: "02:00:01:00:00:01"
-   - Alc-UP-Id: "up1.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.101
+   - Alc-UPId: "up1.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.101
 "
 
 497 2025/04/13 13:17:48.147 CEST MINOR: CALLTRACE #2003 N/A CALL-TRACE
@@ -4121,7 +4101,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
       search username: nokia
       search username-domain:
       search vendor-class:
-      search up-ip: 1.1.1.101
+      search UPip: 1.1.1.101
       search sVlan: 101
       search cVlan: 1
       search apn:
@@ -4129,8 +4109,8 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
       search imsi-mnc:
       search imei-tac:
       search derivedId:
-      search up-group:
-      search up-node-id: up1.nokia.com
+      search UPgroup:
+      search UPnode-id: up1.nokia.com
       search MAC: 02:00:01:00:00:01
       search client-id:
       search source-ip-prefix: ::/128
@@ -4172,7 +4152,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:01:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
 
    Info:     egressing frame on interface Sx
              from application Connectivity-management
@@ -4418,7 +4398,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
 "CALL-TRACE: msgType 2 slot 2 mda 1
    Profile:       debug-output
    MAC-address:   02:00:01:00:00:01
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
 
    Info:     ingressing frame on interface Sx
              to application Connectivity-management
@@ -4476,7 +4456,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -4509,7 +4489,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -4543,7 +4523,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -4577,7 +4557,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -4612,7 +4592,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -4647,7 +4627,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -4681,7 +4661,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -4715,7 +4695,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -4749,7 +4729,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -4829,9 +4809,9 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    - Alc-Subsc-Prof-Str: "sub-default"
    - Alc-SLA-Prof-Str: "sla-default"
    - Alc-Client-Hardware-Addr: "02:00:01:00:00:01"
-   - Alc-UP-Id: "up1.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.101
-   - Alc-UP-Subscriber-Id: 172
+   - Alc-UPId: "up1.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.101
+   - Alc-UPSubscriber-Id: 172
    - Alc-Active-Addresses: slaac (2)
 "
 
@@ -4841,7 +4821,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -4876,7 +4856,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -4911,7 +4891,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -5001,9 +4981,9 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    - Alc-SLA-Prof-Str: "sla-default"
    - Alc-Client-Hardware-Addr: "02:00:01:00:00:01"
    - Alc-Acct-Triggered-Reason: Framed-IP-Address-up (4)
-   - Alc-UP-Id: "up1.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.101
-   - Alc-UP-Subscriber-Id: 172
+   - Alc-UPId: "up1.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.101
+   - Alc-UPSubscriber-Id: 172
    - Alc-Active-Addresses: slaac_v4 (3)
 "
 
@@ -5026,7 +5006,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -5088,7 +5068,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     ingressing frame on interface Sx
@@ -5144,7 +5124,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    MAC-address:   02:00:01:00:00:01
    Circuit-id:    0.0.0.0/0.0.0.0 eth 101:1
    Remote-id:     nokia.1
-   UP-node-id:    1.1.1.101
+   UPnode-id:    1.1.1.101
    L2-circuit-id: 1/1/c2/1:101.1
 
    Info:     egressing frame on interface Sx
@@ -5253,9 +5233,9 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-pppoe
    - Alc-SLA-Prof-Str: "sla-default"
    - Alc-Client-Hardware-Addr: "02:00:01:00:00:01"
    - Alc-Acct-Triggered-Reason: Delegated-IPv6-Prefix-up (8)
-   - Alc-UP-Id: "up1.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.101
-   - Alc-UP-Subscriber-Id: 172
+   - Alc-UPId: "up1.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.101
+   - Alc-UPSubscriber-Id: 172
    - Alc-Active-Addresses: pd_slaac_v4 (7)
 "
 

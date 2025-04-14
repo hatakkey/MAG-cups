@@ -1,5 +1,5 @@
 ##1. **Register the 5G Subscribers**:
-You can subscriber the needed imsi using the below predefined script,it contains the IMSI,APN ,Slice info....etc
+Register the IMSIs used in this MAG-CUPS CLAB using the predefined script below, which includes the IMSI, APN, slice information, and other relevant details.
 ```bash
 [root@compute-1 scripts]# ./register_subscriber.sh
 <snip>
@@ -30,8 +30,9 @@ Start the open5GS core elements via the below predefined script:
 cd scripts
 ./start_open5gs.sh  
 ```
-### 3. **check that CP is register to the open5GS NRF**:
-The CP registeration to the NRF can be checked via the below predefined script:
+### 2.1 **CP registration with the NRF**:
+
+The CP registration to the NRF can be verifed via the below predefined script:
 
 ```bash
 *A:CP1>file cf1:\magc\ # exec sba-stats
@@ -121,9 +122,13 @@ NfServices (1)          :
                           Allowed Nssais List (0)       :  
 ```                               
 
-### 4. **start the 5G session**:
-You can start 1 session or 10 sessions via the scripts
-**start 1 session**
+## 3. **Start the 5G session**:
+You can start single session or 10 sessions via the scripts
+
+### 3.1 **Start single session**
+
+The below predefined script can be used to start the single 5G session
+
 ```bash
 [root@compute-1 scripts]# ./start_5g_cups.sh
 Waiting for uesimtun0 to be ready...
@@ -699,7 +704,7 @@ clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
 
 Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
-### 4.1 **session call trace**
+#### 3.1.1 **Session call trace**
 A call-trace can be started via predefined scrip to check the estblishment in case of any issue:
 ```bash
 *A:CP1# configure log log-id 77
@@ -851,7 +856,7 @@ F"},"dnn":"demo.nokia.mnc001.mcc206.gprs"}"
       search username:
       search username-domain:
       search vendor-class:
-      search up-ip: ::
+      search UPip: ::
       search sVlan: 0
       search cVlan: 0
       search apn: demo.nokia.mnc001.mcc206.gprs
@@ -859,8 +864,8 @@ F"},"dnn":"demo.nokia.mnc001.mcc206.gprs"}"
       search imsi-mnc: 01
       search imei-tac:
       search derivedId:
-      search up-group:
-      search up-node-id:
+      search UPgroup:
+      search UPnode-id:
       search MAC: 00:00:00:00:00:00
       search client-id:
       search source-ip-prefix: ::/0
@@ -1639,9 +1644,9 @@ P1
    - Alc-Subsc-ID-Str: "206010000000011"
    - Alc-Subsc-Prof-Str: "sub-fwa"
    - Alc-SLA-Prof-Str: "sla-fwa"
-   - Alc-UP-Id: "up2.nokia.com"
-   - Alc-UP-Ip-Address: 1.1.1.102
-   - Alc-UP-Subscriber-Id: 536871059
+   - Alc-UPId: "up2.nokia.com"
+   - Alc-UPIp-Address: 1.1.1.102
+   - Alc-UPSubscriber-Id: 536871059
    - Alc-Active-Addresses: v4 (1)
    - 3GPP-IMSI: "206010000000011"
    - 3GPP-RAT-Type: 51
@@ -1677,8 +1682,8 @@ content-type: application/json
 "
 ```
 
-### 5. checking the UP
-The session is created on UP-1 and can be verifed via the below predefined script:
+#### 3.1.2 checking the UP
+The session is created on UP1 and can be verifed via the below predefined script:
 
 ```bash
 A:admin@UP1# show s-5g
@@ -1768,7 +1773,7 @@ Executed 8 lines in 0.0 seconds from file "cf1:\scripts-md\s-5g"
 
 ```
 
-### 6. checking the UE 
+#### 3.1.3 Checking the 5G FWA home-user
 You can check the UE VM that uesimtun0 is created with the UE IP address 43.0.64.1/32.
 
 
@@ -1800,9 +1805,9 @@ ue1>ip a
 
     
 ```
-## 7. **checking the dataplane**
+#### 3.1.4. **checking the dataplane**
 
-The UE can reach the UP via the uesimtun0
+The 5G FWA home-user can reach the UP via the uesimtun0
 
 ```bash
 [root@compute-1 scripts]# docker exec -it cups-ue1 bash
@@ -1823,7 +1828,7 @@ PING 1.1.1.101 (1.1.1.101): 56 data bytes
 
 
 
-## 8. **Testing 10 IMSI 5G sessions**
+## 4.1 **Testing 10 IMSI 5G sessions**
 Start the sesssion using the below  prededined script:
 
 ```bash
@@ -1832,7 +1837,7 @@ Waiting for uesimtun interfaces to appear...
 All uesimtun interfaces are ready. Adding routes...
 Routes added successfully: ip route add 1.1.1.0/24 nexthop dev uesimtun0 nexthop dev uesimtun1 nexthop dev uesimtun2 nexthop dev uesimtun3 nexthop dev uesimtun4 nexthop dev uesimtun5 nexthop dev uesimtun6 nexthop dev uesimtun7 nexthop dev uesimtun8 nexthop dev uesimtun9
 ```
-### 8.1. CP session check
+### 4.1.1 CP session check
 The session are created on CP1 and CP2 via the below predefined script
 ```bash
 *A:CP1# exec s-5g
@@ -2426,9 +2431,9 @@ clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
 
 Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
-### 8.2 **Checking the UE IP setting **
+### 4.1.2 **Checking the 5G FWA home-user IP setting **
 
-Check the UE to verify that 10 IMSI are attached i.e.uesimtun0 to uesimtun9 are created
+Check the 5G FWA home-user to verify that 10 IMSI are attached i.e.uesimtun0 to uesimtun9 are created
 
 ```bash
 ue1>ip a
@@ -2511,7 +2516,7 @@ ue1>ip a
     inet6 fe80::a8c1:abff:fe15:43d7/64 scope link
        valid_lft forever preferred_lft forever
 ```
-### 8.3. **Sessions load balancing**
+### 4.1.3 **Sessions load balancing**
 
 The 10 IMSIs are load balanced over the 2 UPs
 There are 6 PFCP sessions i.e. 5 IMSIs + default PCFP session between the CP and UP 
@@ -3092,7 +3097,7 @@ A:admin@UP2#
 
 
 
-### 8.4. **checking the data-plane 
+### 4.1.3 **Checking the data-plane 
 
 The UPs are reached via the uesimtunx
 
@@ -3158,7 +3163,7 @@ round-trip min/avg/max = 5.052/5.154/5.256 ms
 
 
 
-### 8.5. **General show commands**
+### 5. **General show commands**
 Some general show commands to check the  CP communciation with other elements i.e. UDM,AMF and NRF via the below predefined script
 
 ```bash
@@ -3546,8 +3551,8 @@ command:
 Executed 76 lines in 0.1 seconds from file cf1:\magc\sba-stats
 ```
 
-#### 8.6 **Stopping the session** 
-You can stop the 5G session using the below predefined script
+#### 6. **Stopping the session** 
+You can stop the 5G session (single session or 10 sessions) using the below predefined script
 
 ```bash
 [root@compute-1 scripts]# ./stop_5g_cups.sh
@@ -3561,7 +3566,7 @@ PID   USER     TIME  COMMAND
   
 ```
 
-Also a clear command from CP can be used via the predefined script:
+Also a clear command from CP can be used via the predefined script to clear the single session or 10 session
 as the call trace was still running you will the debug for the clear session
 
 ```bash

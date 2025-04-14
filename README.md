@@ -8,11 +8,12 @@
 - The entire network is containerized and simulated using **[ContainerLab](https://containerlab.dev/)** for providing a flexible and scalable platform for testing, experimentation, and deployment of 5G CUPS networks. 
 
 ## **Topology setup**
-The topology of the setup is illustrated in the diagram below:
-The FWA setup:
+To simplify the different functions for fixed and fixed wireless sessions, the deployed MAG-CUPS topology is illustrated in two parts.
 
+The FWA part from the MAG-CUPS topology is illustrated in the diagram below :
 ![drawing View](snaps/MAG-cups-fwa.png)
-The fixed setup:
+
+The fixed part from the MAG-CUPS topology is illustrated in the diagram below :
  
 ![drawing View](snaps/MAG-cups-fixed.png) 
 
@@ -20,12 +21,13 @@ The fixed setup:
 ### **1. MAG-C (Control Plane)**
 - MAG-C (Multi-Access Gateway – Control Plane) is responsible for session control, mobility management, and policy enforcement for both mobile (4G/5G) and fixed broadband (PPPoE/IPoE) sessions.
   - This lab initiates 10 dual-stack PPPoE or 10 redundant/non redundant IPoE sessions using predefined scripts that trigger the BNG Blaster application, including ./start_dhcp.sh , ./start_pppoe.sh and ./start_dhcp_red.sh
-  - This lab initiates a single or 10 dual-stack 5G FWA session using predefined scripts that trigger the ueransim application, including  ./start_5g_cups_10IMSI.sh , ./start_5g_cups.sh  and ./stop_5g_cups.sh  
+  - This lab initiates 10 or a single 5G FWA session(single-stack ipv4) using predefined scripts that trigger the ueransim application, including ./start_5g_cups_10IMSI.sh , ./start_5g_cups.sh and ./stop_5g_cups.sh
+  - This lab also includes a set of predefined CLI scripts (show commands) designed to streamline session monitoring and management during lab upskilling, eliminating the need for manually searching for specific commands.
 - It works alongside MAG-U (User Plane) to implement CUPS for improved scalability, network efficiency, latency and flexibility
 
 ### **2. FreeRADIUS**
 - **FreeRADIUS** is an open-source RADIUS server that provides Authentication, Authorization, and Accounting (AAA), supporting EAP, PAP, and CHAP while integrating with MySQL, PostgreSQL, and LDAP.
-  - This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server. 
+  - This LAB uses FreeRADIUS to authenticate PPPoE (chap), IPoE and FWA sessions and is used as offline accounting-server.  
 
 ### **3. BNGBlaster**
 - **BNG Blaster** simulates fixed sessions, such as PPPoE and IPoE, for broadband access testing while also supporting data traffic generation
@@ -58,6 +60,9 @@ git clone https://github.com/hatakkey/mag-cups.git
 cd mag-cups
 ```
 ### **2. Create Network Bridges**
+
+We have two examples for creating the bridges one for CentOS and another one for Ubuntu 
+
 For **CentOS** (example):
 ```bash
 [root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -78,7 +83,7 @@ To use them, first run the below script
 ```bash
 [root@compute-1 scripts]# ./upload-cliscripts.sh
 ```
-To download and upload the predefined scripts from /root/MAG-cups/cliscripts/ to cf1:\scripts-md on cp-1, cp-2, up-1, up-2 and and TRA-cups
+To download and upload the predefined scripts from /root/mag-cups/cliscripts/ to cf1:\magc on CP1,CP2 and cf1:\scripts-md on UP1, UP2 and and TRA-cups
 
 ## Start sessions
 
@@ -110,6 +115,9 @@ cd scripts
 start_5g_cups.sh  ## to start 1x5G session
 start_5g_cups_10IMSI.sh  ## to start 10x5G sessions
 ```
+Note that the sessions created using any of the two scripts (start_5g_cups.sh and start_5g_cups_10IMSI.sh) can be terminated from the home-user using the predefined script /stop_5g_cups.sh
+or from the CP using the predefined script exec clear-5g.
+
 Follow the **[documentation](docs/5G_session_verification.md)** for detailed information/checking .
 
 ### **4. Start the PPPoE or IPoE fixed sessions** 
@@ -121,6 +129,8 @@ cd scripts
 ./start_pppoe.sh
 ./start_dhcp_red.sh
 ```
+Bngblaster properly terminates the sessions by using Control-C
+
 ![pppoe](snaps/pppoe.png)
 
 Follow the **[documentation](docs/fixed-sessions_verification.md)** for detailed information/checking .

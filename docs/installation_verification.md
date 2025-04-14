@@ -43,6 +43,12 @@ success
 success
 success														
 ```
+## 1.4. **install lftp**:
+ lftp needs to be installed to run the  upload-cliscripts.sh script
+	centos example
+	```bash
+	yum install lftp
+```
 ---------------------------------------------------  
 ## 2. **Deploy the ContainerLab Environment**:
 
@@ -248,7 +254,7 @@ ssh admin@cups-CP2         ## password=admin
 ```  
 
 ## 3. **check the MAG-C ,DB and UP**:
-check the multi-chassis redundancy between the CP , the communcation with the DB and the sx satus with UP1 and UP2
+Check the multi-chassis redundancy between the CP , the communcation with the DB and the sx satus with UP1 and UP2
 
 ### 3.1 **Check the PFCP Reference Point Peers**:
 ```bash          
@@ -294,7 +300,10 @@ Executed 9 lines in 0.0 seconds from file cf1:\magc\pfcp-peers
 ```
    
  
-### 3.2 **check the database communication with the CP,it should be in HOT satus**:
+### 3.2 **Check the database communication with the CP**
+
+The communcation between the CP abd DB should be in HOT satus
+
 ```bash 
 *A:CP1# exec clouddb
 Pre-processing configuration file (V0v0)...
@@ -327,7 +336,9 @@ Thu Apr 10 21:30:40 CEST 2025
 Executed 8 lines in 0.0 seconds from file cf1:\magc\clouddb
 ```
     
-### 3.3 **check the two CP sync with each other i.e.CP-1 is master , CP-2 is standby and Geo-Redundancy State: Hot**:
+### 3.3 **Verify MAG-C redundancy status**:
+Verify that the two control planes are synchronized, with CP1 as the master and CP2 as the standby. 
+Ensure the Geo-Redundancy state is set to 'Hot'
 ```bash 
 *A:CP1# exec icr1
 Pre-processing configuration file (V0v0)...
@@ -409,8 +420,7 @@ Last Oper Role Change    : 04/09/2025 12:28:38
 Executed 30 lines in 0.0 seconds from file cf1:\magc\icr1
 ```
 
-### 3.4 **CP-2 started as secodnary and slave ,you can change that to be secondary master if needed**:
-via the script
+Also you can you can swicth master/backup state via the below predefined script
 ```bash 
 *A:CP1# exec icr1-switch
 ```
@@ -471,7 +481,7 @@ MG Group : 1    Geo Redundancy : Hot         0%           100%
 
 ###4. **Downloadin the CLIscripts**
  
-Via using the below pre-defined scripts,the cliscripts can be download to the nodes
+Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
 
 ```bash  
 [root@compute-3 scripts]# ./upload-cliscripts.sh
