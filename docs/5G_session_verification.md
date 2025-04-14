@@ -1,4 +1,4 @@
-##1. **Register the 5G Subscribers**:
+## 1. **Register the 5G Subscribers**:
 Register the IMSIs used in this MAG-CUPS CLAB using the predefined script below, which includes the IMSI, APN, slice information, and other relevant details.
 ```bash
 [root@compute-1 scripts]# ./register_subscriber.sh
