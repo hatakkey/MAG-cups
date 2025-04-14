@@ -2,10 +2,10 @@
 
 # List of hosts with their respective details (host, local directory)
 hosts=(
-    "cups-UP1:/root/MAG-cups/cliscripts/UP1"
-    "cups-UP2:/root/MAG-cups/cliscripts/UP2"
-    "cups-CP1:/root/MAG-cups/cliscripts/CP1"
-    "cups-CP2:/root/MAG-cups/cliscripts/CP2"
+    "cups-UP1:/root/mag-cups/cliscripts/UP1"
+    "cups-UP2:/root/mag-cups/cliscripts/UP2"
+    "cups-CP1:/root/mag-cups/cliscripts/CP1"
+    "cups-CP2:/root/mag-cups/cliscripts/CP2"
 )
 
 USER="admin"
