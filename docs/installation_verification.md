@@ -487,7 +487,7 @@ MG Group : 1    Geo Redundancy : Hot         0%           100%
 ===============================================================================
 ```  
 
-##4. **Transferring CLI Scripts to Nodes via SFTP**
+## 4. **Transferring CLI Scripts to Nodes via SFTP**
  
 Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
 
