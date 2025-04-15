@@ -1,4 +1,4 @@
-## 1. **checking the logs**:    
+## 1. **Checking the logs**:    
 You can check the logs for the open5GS and UERANSIM
 ```bash
 [root@compute-1 logs]# ls
@@ -6,7 +6,7 @@ amf.log   bsf.log  nrf.log   pcf.log      udm.log  ue1.log
 ausf.log  gnb.log  nssf.log  radiusd.log  udr.log
 ```
 The below are the logs for 1 IMSI connected
-### 1.1. **checking the NRF** 
+### 1.1. **Checking the NRF** 
 The NRF showing that elements are registered to it i.e. MAG-C,AMF,UDM.....
 ```bash
 [root@compute-1 logs]# more nrf.log
@@ -48,7 +48,7 @@ l 2025-03-11T18:11:23.351190+00:00 [validity_duration:86400] (../src/nrf/nnrf-ha
 l 2025-03-11T18:11:23.351313+00:00 [validity_duration:86400] (../src/nrf/nnrf-handler.c:446)
 ```
 
-### 1.2. **checking the GNB logs**
+### 1.2. **Checking the GNB logs**
 The GNB log showing that NGAP is ok with the AMF and NGAP is done successfully
 ```bash
 [root@compute-1 logs]# more gnb.log
@@ -65,7 +65,7 @@ UERANSIM v3.2.6
 [2025-03-10 18:25:20.245] [ngap] [debug] Initial Context Setup Request received
 [2025-03-10 18:25:22.069] [ngap] [info] PDU session resource(s) setup for UE[1] count[1]
 ```
-### 1.3. **checking the UE logs**
+### 1.3. **Checking the UE logs**
 
 UE1 log showing that the session is created with uesimtun0 and IP 43.0.32.1
 ```bash
@@ -102,7 +102,7 @@ UERANSIM v3.2.6
 [2025-03-10 18:25:22.395] [app] [info] Connection setup for PDU session[1] is successful, TUN in
 terface[uesimtun0, 43.0.32.1] is up.
 ```
-### 2.4. **checking the AMF logs**
+### 2.4. **Checking the AMF logs**
 AMF log showing that the session is created
 ```bash
 [root@compute-1 logs]# more amf.log
@@ -173,18 +173,18 @@ l 2025-03-11T18:11:23.076345+00:00 [duration:86400,validity:86399.996139,patch:4
 03/10 18:25:22.412: [amf] INFO: [imsi-206010000000002:1:11][0:0:NULL] /nsmf-pdusession/v1/sm-contexts/{smContextRef}/modify (../src/amf/nsmf-handler.c:915)
 ```    
     
-### 2.5. **clearing the logs**
+### 2.5. **Clearing the logs**
 
 clear the logs before starting 10 IMSIs
 ```bash
 [root@compute-1 scripts]# ./clear_logs.sh
 ```
 
-### 3.4. **checking the logs**
+### 3.4. **Checking the logs**
 
 The below are the logs for 10 IMSIs attachement
 
-### 3.4.1 **checking the GNB logs**
+### 3.4.1. **Checking the GNB logs**
 the GNB log shows that NGAP is up and new signal detcted fro the 10 IMSIs
 ```bash
 [root@compute-1 logs]# more gnb.log
@@ -248,7 +248,7 @@ UERANSIM v3.2.6
 ```
 
 
-### 3.4.2 **checking the UE logs**
+### 3.4.2. **Checking the UE logs**
 
 The UE logs shows the 10 IMSIs are attached
 
@@ -526,7 +526,7 @@ UERANSIM v3.2.6
 [2025-03-10 18:50:40.672] [206010000000009|app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun8, 43.0.96.4] is up.
 [2025-03-10 18:50:40.710] [206010000000013|app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun9, 43.0.32.10] is up.
 ```
-### 3.4.3 **checking the AMF logs**
+### 3.4.3. **Checking the AMF logs**
 
 The AMF log for the 10 IMSIs
 
