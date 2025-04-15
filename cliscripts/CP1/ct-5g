@@ -1,5 +1,5 @@
 echo
-echo "From Debug to Sesion"
+echo "From Debug to Session"
 echo "---------------------"
 echo
 /debug mobile-gateway call-insight ue imsi 206010000000001 profile debug-output

@@ -139,7 +139,7 @@ A call-trace can be initiated using the below predefined script to verify sessio
 Pre-processing configuration file (V0v0)...
 Completed processing 13 lines in 0.0 seconds
 
-From Debug to Sesion
+From Debug to Session
 ---------------------
 =============================================================
 Call-insight UEs
