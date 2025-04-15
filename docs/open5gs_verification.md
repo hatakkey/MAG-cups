@@ -533,7 +533,6 @@ The AMF log for the 10 IMSIs
 
 ```bash
 [root@compute-1 logs]# more amf.log
-[root@compute-1 logs]# more amf.log
 03/10 19:35:09.192: [amf] INFO: gNB-N2 accepted[10.50.1.10]:39844 in ng-path module (../src/amf/ngap-sctp.c:113)
 03/10 19:35:09.192: [amf] INFO: gNB-N2 accepted[10.50.1.10] in master_sm module (../src/amf/amf-sm.c:757)
 03/10 19:35:09.201: [amf] INFO: [Added] Number of gNBs is now 1 (../src/amf/context.c:1236)
