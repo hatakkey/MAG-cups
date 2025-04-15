@@ -41,6 +41,8 @@ The fixed part from the MAG-CUPS topology is illustrated in the diagram below :
 - UERANSIM simulates the gNB (5G base station) and UE (User Equipment), enabling the simulation of the 5G Radio Access Network (RAN).
   - This LAB initiates a single or 10 dual-stack 5G FWA session(s) using pre-defined scripts ./start_5g_cups_10IMSI.sh or ./start_5g_cups.sh and ./stop_5g_cups.sh
 
+**All scripts for initializing, starting, and stopping sessions are located in ../mag-cups/scripts and should be executed from within that directory**
+
 ### LAB Prerequisites
 
 Ensure the following dependencies are installed:
@@ -65,7 +67,8 @@ We have two examples for creating the bridges one for CentOS and another one for
 
 For **CentOS** (example):
 ```bash
-[root@compute-1 mag-cups]#./scripts/create_bridges-centos.sh
+[root@compute-1 mag-cups]#cd scripts
+[root@compute-1 scripts]#./create_bridges-centos.sh
 ```
 
 ### **3. Deploy the ContainerLab**
@@ -76,14 +79,15 @@ Run the following command to deploy the simulated network:
 ### **4. Download cliscripts**
 The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific commands, these scripts provide a convenient way to execute them. 
 ```bash
-[[root@compute-1 magc]# pwd
+[root@compute-1 cliscripts]# pwd
 /[root/MAG-cups/cliscripts/
 ```
 To use them, first run the below script 
 ```bash
-[root@compute-1 mag-cups]#./scripts/upload-cliscripts.sh
+[root@compute-1 mag-cups]# cd scripts
+[root@compute-1 scripts]]#./upload-cliscripts.sh
 ```
-To download and upload the predefined scripts from /[root/mag-cups/cliscripts/ to cf1:\magc on CP1,CP2 and cf1:\scripts-md on UP1, UP2 and TRA-cups
+To download and upload the predefined scripts from ../cliscripts/ directory to cf1:\magc on CP1,CP2 and cf1:\scripts-md on UP1, UP2 and TRA-cups
 
 ## Start sessions
 
@@ -102,8 +106,8 @@ You can verify the registered subscriber records using the Web GUI:
 ### **2. Start the Open5GS Core Network**
 
 Start the 5G Core (AMF, NRF, UDM, UDR, AUSF, NSSF, BSF and PCF) using the pre-defined script.
-```bash 
-[root@compute-1 mag-cups]#./scripts/start_open5gs.sh
+```bash
+[root@compute-1 scripts]#./start_open5gs.sh
 ```
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
@@ -111,9 +115,8 @@ Follow the **[documentation](docs/open5gs_verification.md)** for detailed inform
 Start the 5G session using the pre-defined script
 
 ```bash
-cd scripts
-[root@compute-1 mag-cups]#./scripts/start_5g_cups.sh         ## to start 1x5G session
-[root@compute-1 mag-cups]#./scripts/start_5g_cups_10IMSI.sh  ## to start 10x5G sessions
+[root@compute-1 scripts]#./start_5g_cups.sh         ## to start 1x5G session
+[root@compute-1 scripts]#./start_5g_cups_10IMSI.sh  ## to start 10x5G sessions
 ```
 Note that the sessions created using any of the two scripts (start_5g_cups.sh and start_5g_cups_10IMSI.sh) can be terminated from the home-user using the predefined script /stop_5g_cups.sh
 or from the CP using the predefined script exec clear-5g.
@@ -124,9 +127,9 @@ Follow the **[documentation](docs/5G_session_verification.md)** for detailed inf
 Start the broadband session using the pre-defined script:
 
 ```bash
-[root@compute-1 mag-cups]#./scripts/start_dhcp_red.sh 
-[root@compute-1 mag-cups]#./scripts/start_dhcp.sh 
-[root@compute-1 mag-cups]#./scripts/start_pppoe.sh 
+[root@compute-1 scripts]#./start_dhcp_red.sh 
+[root@compute-1 scripts]#./start_dhcp.sh 
+[root@compute-1 scripts]#./start_pppoe.sh 
 ```
 Bngblaster properly terminates the sessions by using Control-C
 

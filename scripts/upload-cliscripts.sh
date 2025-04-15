@@ -34,6 +34,7 @@ for host_info in "${hosts[@]}"; do
 
     # Use lftp for scripting SFTP with password
     lftp -u "$USER","$PASS" sftp://$HOST <<EOF
+set sftp:connect-program "ssh -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa"
 cd cf1:/ 
 mkdir -p $REMOTE_DIR  
 cd $REMOTE_DIR  
