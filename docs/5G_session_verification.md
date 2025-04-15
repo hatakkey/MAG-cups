@@ -1827,7 +1827,7 @@ PING 1.1.1.101 (1.1.1.101): 56 data bytes
 ```
 
 ## 4.2. **Testing 10 IMSI 5G sessions**
-Start the sesssion using the below  prededined script:
+Start the session using the below  predefined script:
 
 ```bash
 [root@compute-1 scripts]# ./start_5g_cups_10IMSI.sh
