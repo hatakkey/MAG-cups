@@ -30,7 +30,7 @@ Start the open5GS core elements via the below predefined script:
 cd scripts
 ./start_open5gs.sh  
 ```
-### 2.1 **CP registration with the NRF**
+### 2.1. **CP registration with the NRF**
 
 The CP registration to the NRF can be verified via the below predefined script:
 
