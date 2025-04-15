@@ -1685,7 +1685,7 @@ content-type: application/json
 "
 ```
 
-#### 4.1.3. **Checking the UP**
+### 4.1.3. **Checking the UP**
 The session is created on UP1 and can be verified via the below predefined script:
 
 ```bash
@@ -1776,7 +1776,7 @@ Executed 8 lines in 0.0 seconds from file "cf1:\scripts-md\s-5g"
 
 ```
 
-#### 4.1.4. **Checking the 5G FWA home-user**
+### 4.1.4. **Checking the 5G FWA home-user**
 
 You can check the UE VM that uesimtun0 is created with the UE IP address 43.0.64.1/32.
 
@@ -1809,7 +1809,7 @@ ue1>ip a
 
     
 ```
-#### 4.1.5. **checking the dataplane**
+### 4.1.5. **checking the dataplane**
 
 The 5G FWA home-user can reach the UP via the uesimtun0
 
@@ -3167,7 +3167,7 @@ round-trip min/avg/max = 5.052/5.154/5.256 ms
 
 
 
-### 5. **General show commands**
+## 5. **General show commands**
 Some general show commands to check the  CP communciation with other elements i.e. UDM,AMF and NRF via the below predefined script
 
 ```bash
@@ -3545,7 +3545,7 @@ command:
 Executed 76 lines in 0.1 seconds from file cf1:\magc\sba-stats
 ```
 
-#### 6. **Stopping the session** 
+## 6. **Stopping the session** 
 You can stop the 5G session (single session or 10 sessions) using the below predefined script
 
 ```bash
