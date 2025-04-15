@@ -175,17 +175,18 @@ l 2025-03-11T18:11:23.076345+00:00 [duration:86400,validity:86399.996139,patch:4
     
 ### 2.5. **Clearing the logs**
 
-clear the logs before starting 10 IMSIs
+Clear the logs before starting 10 IMSIs
 ```bash
 [root@compute-1 scripts]# ./clear_logs.sh
 ```
 
 ### 3.4. **Checking the logs**
 
-The below are the logs for 10 IMSIs attachement
+Below are the logs related to the attachment process for 10 IMSIs
 
 ### 3.4.1. **Checking the GNB logs**
-the GNB log shows that NGAP is up and new signal detcted fro the 10 IMSIs
+The GNB log indicates that NGAP is active and a new signal has been detected for 10 IMSIs.
+
 ```bash
 [root@compute-1 logs]# more gnb.log
 UERANSIM v3.2.6
@@ -250,7 +251,7 @@ UERANSIM v3.2.6
 
 ### 3.4.2. **Checking the UE logs**
 
-The UE logs shows the 10 IMSIs are attached
+The UE logs indicate that all 10 IMSIs have successfully attached
 
 ```bash
 [root@compute-1 logs]# more ue1.log
