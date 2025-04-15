@@ -121,7 +121,7 @@ NfServices (1)          :
                           Allowed PLMN IDs List Elements (0):
                           Allowed Nssais List (0)       :  
 ```                               
-#### 3. **Start call-trace for the session**
+## 3. **Start call-trace for the session**
 
 A call-trace can be initiated using the below predefined script to verify session establishment in case of any issues
 
