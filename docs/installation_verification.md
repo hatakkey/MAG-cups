@@ -308,7 +308,7 @@ Executed 9 lines in 0.0 seconds from file cf1:\magc\pfcp-peers
  
 ### 3.2. **Check the database communication with the CP**
 
-The communication between the CP and DB should be in status = HOT and can be check via the below predefined script
+The communication between the CP and DB should be in status = HOT and can be checked via the below predefined script
 
 ```bash 
 *A:CP1# exec clouddb
