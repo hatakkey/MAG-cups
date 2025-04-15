@@ -3162,7 +3162,7 @@ round-trip min/avg/max = 5.052/5.154/5.256 ms
 
 
 ## 5. **General show commands**
-Some general show commands to check the  CP communciation with other elements i.e. UDM,AMF and NRF via the below predefined script
+Some general show commands to check the CP communication with other elements i.e. UDM,AMF and NRF via the below predefined script
 
 ```bash
 *A:CP1# exec sba-stats
