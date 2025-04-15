@@ -220,7 +220,7 @@ No. of FSGs      : 1
 
 
 
-### 1.1.1 **Check IPoE session on UP1**
+### 1.1.1. **Check IPoE session on UP1**
 
 Check the session are also created on UP1 via the below predefined script
 
@@ -292,7 +292,7 @@ No. of PFCP Sessions: 1
 ===============================================================================
 Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe_red"
 ```
-### 1.1.2 **Check statistics on UP1/UP2**
+### 1.1.2. **Check statistics on UP1/UP2**
 
 The statistics on UP1 also show the 10 users  via the below predefined script
 ```bash
@@ -392,7 +392,7 @@ Total  IPOE Hosts                               10       10 03/12/2025 11:03:12
 ===============================================================================
 <snip>
 ```
-### 1.1.3 **Call-trace for the session**
+### 1.1.3. **Call-trace for the session**
 
 A call trace can be used to check the session via the below predefined script:
  
@@ -1962,7 +1962,7 @@ The 10 sessions are created on UP2
 ----------------------------------------------
 ```
 
-### 1.2.1 **Check the sessions on CP**
+### 1.2.1. **Check the sessions on CP**
 The session on CP can be verified using the below predefined script
 
 ```bash
@@ -2090,7 +2090,7 @@ No. of sessions: 1
 Executed 5 lines in 0.0 seconds from file cf1:\magc\s-ipoe
 ```
 
-### 1.2.2 **Check the sessions on UP2**
+### 1.2.2. **Check the sessions on UP2**
 
 On UP2,the sessions can be checked via the below predefined script 
 
@@ -2161,7 +2161,7 @@ No. of PFCP Sessions: 1
 Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe"
 [/]
 ```
-### 1.2.3 **Call-trace for the session**
+### 1.2.3. **Call-trace for the session**
 A call-trace can be started to check the operation on CP and UP
 ```bash
 *A:CP1# exec ct-ipoe

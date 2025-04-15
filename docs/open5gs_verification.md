@@ -6,7 +6,7 @@ amf.log   bsf.log  nrf.log   pcf.log      udm.log  ue1.log
 ausf.log  gnb.log  nssf.log  radiusd.log  udr.log
 ```
 The below are the logs for 1 IMSI connected
-###1.1. **checking the NRF** 
+### 1.1. **checking the NRF** 
 The NRF showing that elements are registered to it i.e. MAG-C,AMF,UDM.....
 ```bash
 [root@compute-1 logs]# more nrf.log
