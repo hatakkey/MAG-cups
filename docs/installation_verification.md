@@ -50,7 +50,7 @@ lftp needs to be installed to run the  upload-cliscripts.sh script
 CentOS example:
 
 ```bash
-	yum install lftp
+yum install lftp
 ```
 ---------------------------------------------------  
 ## 2. **Deploy the ContainerLab Environment**
