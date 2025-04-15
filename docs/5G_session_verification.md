@@ -1780,7 +1780,7 @@ Executed 8 lines in 0.0 seconds from file "cf1:\scripts-md\s-5g"
 
 You can check the UE VM that uesimtun0 is created with the UE IP address 43.0.64.1/32.
 
-
+```bash
 ue1>ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -1805,9 +1805,7 @@ ue1>ip a
     inet 10.90.1.2/24 scope global eth1
        valid_lft forever preferred_lft forever
     inet6 fe80::a8c1:abff:fe15:43d7/64 scope link
-       valid_lft forever preferred_lft forever
-
-    
+       valid_lft forever preferred_lft forever    
 ```
 ### 4.1.5. **Checking the dataplane**
 
