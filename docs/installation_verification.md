@@ -1,6 +1,6 @@
 ## 1. Pre-requirements for CLAB Setup
 ------
-### 1.1. SELinux Configuration
+### 1.1. **SELinux Configuration**
 
 Before starting the setup, **SELinux** should be disabled on your server for this CLAB to function properly. Check the current status of SELinux:
 
@@ -15,7 +15,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 ```
 
-### 1.2. firewalld configuration 
+### 1.2. **Firewalld configuration** 
 The firewall should be enabled ,If the firewall is not enabled or inactive, start the firewalld service:
 ```bash
 [root@compute-1 MAG-cups]# systemctl status firewalld
@@ -31,8 +31,10 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
  ```   
 
 
-## 1.3. **create the needed bridges**:
-create the brideges
+### 1.3. **Create the needed bridges**
+
+Create the brideges
+
 ```bash   
 root@compute-1 scripts]# ./create_bridges-centos.sh
 ./create_bridges-centos.sh
@@ -43,16 +45,17 @@ success
 success
 success														
 ```
-## 1.4. **install lftp**:
- lftp needs to be installed to run the  upload-cliscripts.sh script
-	centos example
-	```bash
+### 1.4. **install lftp**
+lftp needs to be installed to run the  upload-cliscripts.sh script
+CentOS example:
+
+```bash
 	yum install lftp
 ```
 ---------------------------------------------------  
-## 2. **Deploy the ContainerLab Environment**:
+## 2. **Deploy the ContainerLab Environment**
 
- Deploy the containerized network environment using the ContainerLab configuration:
+Deploy the containerized network environment using the ContainerLab configuration:
 
 ```bash
 [root@compute-1 MAG-cups]# export CLAB_SKIP_SROS_SSH_KEY_CONFIG=true  
@@ -229,7 +232,7 @@ success
 │                 │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
 ╰─────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
 ```
- ### 2.1 **access the container nodes**
+### 2.1 **access the container nodes**
 	
 The nodes are accessable via the IP address or the node name   
 ```bash  
@@ -253,10 +256,13 @@ ssh admin@cups-CP1         ## password=admin
 ssh admin@cups-CP2         ## password=admin
 ```  
 
-## 3. **check the MAG-C ,DB and UP**:
-Check the multi-chassis redundancy between the CP , the communcation with the DB and the sx satus with UP1 and UP2
+## 3. **Check the MAG-C ,DB and UP**
+
+Check the multi-chassis redundancy between the CP , the communication with the DB and the SX status with UP1 and UP2
 
 ### 3.1 **Check the PFCP Reference Point Peers**:
+The communication with UPs can be checked via the below predefined script
+
 ```bash          
 *A:CP1>file cf1:\magc\ #
 *A:CP1# exec pfcp-peers
@@ -302,7 +308,7 @@ Executed 9 lines in 0.0 seconds from file cf1:\magc\pfcp-peers
  
 ### 3.2 **Check the database communication with the CP**
 
-The communcation between the CP abd DB should be in HOT satus
+The communication between the CP and DB should be in status = HOT and can be check via the below predefined script
 
 ```bash 
 *A:CP1# exec clouddb
@@ -420,7 +426,9 @@ Last Oper Role Change    : 04/09/2025 12:28:38
 Executed 30 lines in 0.0 seconds from file cf1:\magc\icr1
 ```
 
-Also you can you can swicth master/backup state via the below predefined script
+
+You can toggle master/backup state using a script executed on the master CP node (e.g. exec icr1-switch when CP1 is master or exec icr2-switch when CP2 is master)
+
 ```bash 
 *A:CP1# exec icr1-switch
 ```
@@ -479,7 +487,7 @@ MG Group : 1    Geo Redundancy : Hot         0%           100%
 ===============================================================================
 ```  
 
-###4. **Downloadin the CLIscripts**
+###4. **Transferring CLI Scripts to Nodes via SFTP**
  
 Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
 
