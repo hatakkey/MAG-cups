@@ -1809,7 +1809,7 @@ ue1>ip a
 
     
 ```
-### 4.1.5. **checking the dataplane**
+### 4.1.5. **Checking the dataplane**
 
 The 5G FWA home-user can reach the UP via the uesimtun0
 
@@ -1821,16 +1821,12 @@ default via 192.168.40.1 dev eth0
 10.90.1.0/24 dev eth1 proto kernel scope link src 10.90.1.2
 192.168.40.0/24 dev eth0 proto kernel scope link src 192.168.40.67
 
-
-```bash
 ue1>ping 1.1.1.101
 PING 1.1.1.101 (1.1.1.101): 56 data bytes
 64 bytes from 1.1.1.101: seq=0 ttl=64 time=10.692 ms
 64 bytes from 1.1.1.101: seq=1 ttl=64 time=6.130 ms
 64 bytes from 1.1.1.101: seq=2 ttl=64 time=7.301 ms
 ```
-
-
 
 ## 4.2. **Testing 10 IMSI 5G sessions**
 Start the sesssion using the below  prededined script:
