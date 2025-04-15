@@ -161,7 +161,7 @@ Executed 13 lines in 2.0 seconds from file cf1:\magc\ct-5g
 ## 4. **Start the 5G session**:
 You can start a single session or 10 sessions via prededined scripts
 
-### 4.1 **Start single session**
+### 4.1. **Start single session**
 
 The below predefined script can be used to start a single 5G session
 
@@ -172,7 +172,7 @@ Waiting for uesimtun0 to be ready...
 IP route added successfully.
 ```
 
-### 4.1.1 **Single Session Verification**
+### 4.1.1. **Single Session Verification**
 
 The below predefined script can be used to verify the operation:
 ```bash
@@ -411,8 +411,6 @@ Paging drops               : 0
 Number of VMs : 1
 ===============================================================================
 * indicates that the corresponding row element may have been truncated.
-
-
 ===============================================================================
 PDN gateway session attach failure statistics
 ===============================================================================
@@ -742,7 +740,7 @@ clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
 
 Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
-### 4.1.2 **Call-trace session output**
+### 4.1.2. **Call-trace session output**
 
 The call-trace was enabled before the session is started ,below you can check the session call-trace debug output
 
