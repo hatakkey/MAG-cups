@@ -84,7 +84,6 @@ The delivered exec CLI scripts are a set of standard show commands designed to s
 ```
 To use them, first run the below script 
 ```bash
-[root@compute-1 mag-cups]# cd scripts
 [root@compute-1 scripts]]#./upload-cliscripts.sh
 ```
 To download and upload the predefined scripts from ../cliscripts/ directory to cf1:\magc on CP1,CP2 and cf1:\scripts-md on UP1, UP2 and TRA-cups
@@ -95,7 +94,7 @@ To download and upload the predefined scripts from ../cliscripts/ directory to c
 Register a 5G subscriber with specific IMSI, APN, OPC, Key, SST, and SD values using the script:
 
 ```bash
-[root@compute-1 mag-cups]#./scripts/register_subscriber.sh 
+[root@compute-1 scripts]#/register_subscriber.sh 
 ```
 You can verify the registered subscriber records using the Web GUI:
 📌 URL: http://x.x.x.x:10000/' 📌 **Username/Password**: admin/1423'
