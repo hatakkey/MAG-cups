@@ -232,7 +232,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │                 │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
 ╰─────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
 ```
-### 2.1 **Access the container nodes**
+### 2.1. **Access the container nodes**
 	
 The nodes are accessable via the IP address or the node name   
 ```bash  
@@ -260,7 +260,7 @@ ssh admin@cups-CP2         ## password=admin
 
 Check the multi-chassis redundancy between the CP , the communication with the DB and the SX status with UP1 and UP2
 
-### 3.1 **Check the PFCP Reference Point Peers**
+### 3.1. **Check the PFCP Reference Point Peers**
 The communication with UPs can be checked via the below predefined script
 
 ```bash          
@@ -306,7 +306,7 @@ Executed 9 lines in 0.0 seconds from file cf1:\magc\pfcp-peers
 ```
    
  
-### 3.2 **Check the database communication with the CP**
+### 3.2. **Check the database communication with the CP**
 
 The communication between the CP and DB should be in status = HOT and can be check via the below predefined script
 
@@ -342,7 +342,7 @@ Thu Apr 10 21:30:40 CEST 2025
 Executed 8 lines in 0.0 seconds from file cf1:\magc\clouddb
 ```
     
-### 3.3 **Verify MAG-C redundancy status**
+### 3.3. **Verify MAG-C redundancy status**
 Verify that the two control planes are synchronized, with CP1 as the master and CP2 as the standby. 
 Ensure the Geo-Redundancy state is set to 'Hot'
 ```bash 
@@ -487,7 +487,7 @@ MG Group : 1    Geo Redundancy : Hot         0%           100%
 ===============================================================================
 ```  
 
-###4. **Transferring CLI Scripts to Nodes via SFTP**
+##4. **Transferring CLI Scripts to Nodes via SFTP**
  
 Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
 
