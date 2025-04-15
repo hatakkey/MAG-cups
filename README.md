@@ -83,7 +83,7 @@ To use them, first run the below script
 ```bash
 [root@compute-1 mag-cups]#./scripts/upload-cliscripts.sh
 ```
-To download and upload the predefined scripts from /[root/mag-cups/cliscripts/ to cf1:\magc on CP1,CP2 and cf1:\scripts-md on UP1, UP2 and and TRA-cups
+To download and upload the predefined scripts from /[root/mag-cups/cliscripts/ to cf1:\magc on CP1,CP2 and cf1:\scripts-md on UP1, UP2 and TRA-cups
 
 ## Start sessions
 

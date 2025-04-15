@@ -1,4 +1,4 @@
-## 1. **Register the 5G Subscribers**:
+## 1. **Register the 5G Subscribers**
 Register the IMSIs used in this MAG-CUPS CLAB using the predefined script below, which includes the IMSI, APN, slice information, and other relevant details.
 ```bash
 [root@compute-1 scripts]# ./register_subscriber.sh
@@ -22,7 +22,7 @@ All subscribers added successfully!
 ```
  
  
-## 2. **Start the Open5GS Core Network (AMF,NRF...)**:
+## 2. **Start the Open5GS Core Network (AMF,NRF...)**
 
 Start the open5GS core elements via the below predefined script:
 
@@ -30,9 +30,9 @@ Start the open5GS core elements via the below predefined script:
 cd scripts
 ./start_open5gs.sh  
 ```
-### 2.1 **CP registration with the NRF**:
+### 2.1 **CP registration with the NRF**
 
-The CP registration to the NRF can be verifed via the below predefined script:
+The CP registration to the NRF can be verified via the below predefined script:
 
 ```bash
 *A:CP1>file cf1:\magc\ # exec sba-stats
@@ -121,13 +121,49 @@ NfServices (1)          :
                           Allowed PLMN IDs List Elements (0):
                           Allowed Nssais List (0)       :  
 ```                               
+#### 3. **Start call-trace for the session**
 
-## 3. **Start the 5G session**:
-You can start single session or 10 sessions via the scripts
+A call-trace can be initiated using the below predefined script to verify session establishment in case of any issues
 
-### 3.1 **Start single session**
+```bash
+*A:CP1# configure log log-id 77
+*A:CP1>config>log>log-id# info
+----------------------------------------------
+            from debug-trace
+            to session
+            no shutdown
+----------------------------------------------
+*A:CP1>config>log>log-id#
 
-The below predefined script can be used to start the single 5G session
+*A:CP1# exec ct-5g
+Pre-processing configuration file (V0v0)...
+Completed processing 13 lines in 0.0 seconds
+
+From Debug to Sesion
+---------------------
+=============================================================
+Call-insight UEs
+=============================================================
+Match    Value              Mask-name         Status    Msgs
+-------------------------------------------------------------
+imsi     206010000000001    N/A               running   0
+imsi     206010000000011    N/A               running   0
+-------------------------------------------------------------
+Number of call-insight debug jobs: 2
+=============================================================
+
+Command:
+debug mobile-gateway call-insight  no ue all
+
+Executed 13 lines in 2.0 seconds from file cf1:\magc\ct-5g
+*A:CP1#
+```
+## 4. **Start the 5G session**:
+You can start a single session or 10 sessions via prededined scripts
+
+### 4.1 **Start single session**
+
+The below predefined script can be used to start a single 5G session
 
 ```bash
 [root@compute-1 scripts]# ./start_5g_cups.sh
@@ -136,7 +172,9 @@ Waiting for uesimtun0 to be ready...
 IP route added successfully.
 ```
 
-The below predefined script can be used to check the operaion:
+### 4.1.1 **Single Session Verification**
+
+The below predefined script can be used to verify the operation:
 ```bash
 *A:CP1# exec s-5g
 *A:CP1# exec s-5g
@@ -704,41 +742,10 @@ clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
 
 Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
-#### 3.1.1 **Session call trace**
-A call-trace can be started via predefined scrip to check the estblishment in case of any issue:
-```bash
-*A:CP1# configure log log-id 77
-*A:CP1>config>log>log-id# info
-----------------------------------------------
-            from debug-trace
-            to session
-            no shutdown
-----------------------------------------------
-*A:CP1>config>log>log-id#
+### 4.1.2 **Call-trace session output**
 
-*A:CP1# exec ct-5g
-Pre-processing configuration file (V0v0)...
-Completed processing 13 lines in 0.0 seconds
+The call-trace was enabled before the session is started ,below you can check the session call-trace debug output
 
-From Debug to Sesion
----------------------
-=============================================================
-Call-insight UEs
-=============================================================
-Match    Value              Mask-name         Status    Msgs
--------------------------------------------------------------
-imsi     206010000000001    N/A               running   0
-imsi     206010000000011    N/A               running   0
--------------------------------------------------------------
-Number of call-insight debug jobs: 2
-=============================================================
-
-Command:
-debug mobile-gateway call-insight  no ue all
-
-Executed 13 lines in 2.0 seconds from file cf1:\magc\ct-5g
-*A:CP1#
-```
 
 ```bash
 *A:CP1#
@@ -1473,9 +1480,7 @@ Content-Type: application/json
 Content-Id: ngap-sm
 Content-Type: application/vnd.3gpp.ngap
 
-03e0
-P1
-000309
+03e0P1000309
 --=-WDPlHcXr25kavwFu+WPNqA==--
 "
 
@@ -1682,8 +1687,8 @@ content-type: application/json
 "
 ```
 
-#### 3.1.2 checking the UP
-The session is created on UP1 and can be verifed via the below predefined script:
+#### 4.1.3. **Checking the UP**
+The session is created on UP1 and can be verified via the below predefined script:
 
 ```bash
 A:admin@UP1# show s-5g
@@ -1773,7 +1778,8 @@ Executed 8 lines in 0.0 seconds from file "cf1:\scripts-md\s-5g"
 
 ```
 
-#### 3.1.3 Checking the 5G FWA home-user
+#### 4.1.4. **Checking the 5G FWA home-user**
+
 You can check the UE VM that uesimtun0 is created with the UE IP address 43.0.64.1/32.
 
 
@@ -1805,7 +1811,7 @@ ue1>ip a
 
     
 ```
-#### 3.1.4. **checking the dataplane**
+#### 4.1.5. **checking the dataplane**
 
 The 5G FWA home-user can reach the UP via the uesimtun0
 
@@ -1828,7 +1834,7 @@ PING 1.1.1.101 (1.1.1.101): 56 data bytes
 
 
 
-## 4.1 **Testing 10 IMSI 5G sessions**
+## 4.2. **Testing 10 IMSI 5G sessions**
 Start the sesssion using the below  prededined script:
 
 ```bash
@@ -1837,7 +1843,7 @@ Waiting for uesimtun interfaces to appear...
 All uesimtun interfaces are ready. Adding routes...
 Routes added successfully: ip route add 1.1.1.0/24 nexthop dev uesimtun0 nexthop dev uesimtun1 nexthop dev uesimtun2 nexthop dev uesimtun3 nexthop dev uesimtun4 nexthop dev uesimtun5 nexthop dev uesimtun6 nexthop dev uesimtun7 nexthop dev uesimtun8 nexthop dev uesimtun9
 ```
-### 4.1.1 CP session check
+### 4.2.1. **CP session check**
 The session are created on CP1 and CP2 via the below predefined script
 ```bash
 *A:CP1# exec s-5g
@@ -2431,7 +2437,7 @@ clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
 
 Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
-### 4.1.2 **Checking the 5G FWA home-user IP setting **
+### 4.2.2. **Checking the 5G FWA home-user IP setting **
 
 Check the 5G FWA home-user to verify that 10 IMSI are attached i.e.uesimtun0 to uesimtun9 are created
 
@@ -2516,7 +2522,7 @@ ue1>ip a
     inet6 fe80::a8c1:abff:fe15:43d7/64 scope link
        valid_lft forever preferred_lft forever
 ```
-### 4.1.3 **Sessions load balancing**
+### 4.2.3. **Sessions load balancing**
 
 The 10 IMSIs are load balanced over the 2 UPs
 There are 6 PFCP sessions i.e. 5 IMSIs + default PCFP session between the CP and UP 
@@ -3097,7 +3103,7 @@ A:admin@UP2#
 
 
 
-### 4.1.3 **Checking the data-plane 
+### 4.2.4. **Checking the data-plane** 
 
 The UPs are reached via the uesimtunx
 
@@ -3180,10 +3186,6 @@ PCF peer service statistics per peer instance
 ===============================================================================
 No Matching Entries
 ===============================================================================
-
-
-
-
 ===============================================================================
           nf-type nrf
 ===============================================================================
@@ -3262,9 +3264,6 @@ CHF Discovery Failures : 0
 -------------------------------------------------------------------------------
 Number of instances    : 1
 ===============================================================================
-
-
-
 ===============================================================================
           nf-type amf
 ===============================================================================
@@ -3443,9 +3442,6 @@ Number Of Sessions     : 10
 -------------------------------------------------------------------------------
 Number of instances    : 2
 ===============================================================================
-
-
-
 ===============================================================================
           nf-type udm
 ===============================================================================
