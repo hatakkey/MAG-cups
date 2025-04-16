@@ -43,14 +43,14 @@ The fixed part from the MAG-CUPS topology is illustrated in the diagram below :
 
 **All scripts for initializing, starting, and stopping sessions are located in ../mag-cups/scripts and should be executed from within that directory**
 
-### LAB Prerequisites
+### **LAB Prerequisites**
 
 Ensure the following dependencies are installed:
 - **Docker**: Required for running containerized components.
 - **ContainerLab**: For managing container-based network simulations.
 - **Git**: For cloning this repository.
 
-## Installation Steps
+## **Installation Steps**
 
 Follow the **[documentation](docs/installation_verification.md)** for detailed setup instructions
 
@@ -72,23 +72,22 @@ For **CentOS** (example):
 ```
 
 ### **3. Deploy the ContainerLab**
+
 Run the following command to deploy the simulated network:
 ```bash    
-[root@compute-1 mag-cups]# clab dep -t cups.clab.yml
+[root@compute-1 mag-cups]# clab deploy -t cups.clab.yml
 ```
-### **4. Download cliscripts**
-The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific commands, these scripts provide a convenient way to execute them. 
-```bash
-[root@compute-1 cliscripts]# pwd
-/[root/MAG-cups/cliscripts/
-```
-To use them, first run the below script 
-```bash
-[root@compute-1 scripts]]#./upload-cliscripts.sh
-```
-To download and upload the predefined scripts from ../cliscripts/ directory to cf1:\magc on CP1,CP2 and cf1:\scripts-md on UP1, UP2 and TRA-cups
+### 4. **Download cliscripts**
 
-## Start sessions
+The delivered exec CLI scripts are a set of standard show commands designed to simplify session monitoring and management during lab upskilling. Rather than manually searching for specific CLI commands, these scripts provide a convenient way to execute them. All scripts are in the below directory.
+```bash 
+[root@compute-1 cliscripts]# pwd
+/root/MAG-cups/cliscripts/
+```
+To use the CLI scripts, wait **a few minutes** for the CLAB nodes to fully initialize. Then, run the script below to transfer all CLI scripts from the ../cliscripts/ directory to cf1:\magc on CP1, CP2 and cf1:\scripts-md on UP1, UP2, and the TRA-cups node. Once the SFTP transfer is successfully completed, you can run all CLI scripts directly on each node. 
+
+
+## **Start Sessions**
 
 ### **1. Register IMSI in database**
 Register a 5G subscriber with specific IMSI, APN, OPC, Key, SST, and SD values using the script:

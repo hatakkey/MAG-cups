@@ -35,7 +35,8 @@ cd scripts
 The CP registration to the NRF can be verified via the below predefined script:
 
 ```bash
-*A:CP1>file cf1:\magc\ # exec sba-stats
+*A:CP1# file cd cf1:\magc
+*A:CP1# exec sba-stats
 Pre-processing configuration file (V0v0)...
 Completed processing 76 lines in 0.0 seconds
 ===============================================================================
