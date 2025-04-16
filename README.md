@@ -45,10 +45,12 @@ The fixed part from the MAG-CUPS topology is illustrated in the diagram below :
 
 ### **LAB Prerequisites**
 
-Ensure the following dependencies are installed:
+Ensure the following requirements are installed or fulfilled:
 - **Docker**: Required for running containerized components.
 - **ContainerLab**: For managing container-based network simulations.
 - **Git**: For cloning this repository.
+- Convert the QCOW2 images for SR OS and MAG-C (SR AG) into Docker images using **[vrnetlab] https://containerlab.dev/manual/vrnetlab/#vrnetlab)**
+- Requesting the needed NOKIA license for SR OS and MAG-C (SR AG)
 
 ## **Installation Steps**
 
@@ -86,6 +88,10 @@ The delivered exec CLI scripts are a set of standard show commands designed to s
 ```
 To use the CLI scripts, wait **a few minutes** for the CLAB nodes to fully initialize. Then, run the script below to transfer all CLI scripts from the ../cliscripts/ directory to cf1:\magc on CP1, CP2 and cf1:\scripts-md on UP1, UP2, and the TRA-cups node. Once the SFTP transfer is successfully completed, you can run all CLI scripts directly on each node. 
 
+```bash 
+[root@compute-1 scripts]#./upload-cliscripts.sh
+```
+
 
 ## **Start Sessions**
 
@@ -96,7 +102,7 @@ Register a 5G subscriber with specific IMSI, APN, OPC, Key, SST, and SD values u
 [root@compute-1 scripts]#/register_subscriber.sh 
 ```
 You can verify the registered subscriber records using the Web GUI:
-📌 URL: http://x.x.x.x:10000/' 📌 **Username/Password**: admin/1423'
+📌 URL: http://x.x.x.x:10000/' 📌 **Username/Password**: admin/1423
 
 ![Database View](snaps/database.png) 
 
@@ -110,6 +116,8 @@ Start the 5G Core (AMF, NRF, UDM, UDR, AUSF, NSSF, BSF and PCF) using the pre-de
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
 ### **3. Start the 5G FWA session**
+The scripts ./start_5g_cups.sh and ./start_5g_cups_10IMSI.sh initiate the respective session setups. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, allowing you to monitor session activity in real time. 
+All details are described in the documentation link below
 Start the 5G session using the pre-defined script
 
 ```bash
@@ -121,7 +129,8 @@ or from the CP using the predefined script exec clear-5g.
 
 Follow the **[documentation](docs/5G_session_verification.md)** for detailed information/checking .
 
-### **4. Start the PPPoE or IPoE fixed sessions** 
+### **4. Start the PPPoE or IPoE fixed sessions**
+The scripts ./start_dhcp_red.sh, ./start_dhcp.sh, and ./start_pppoe.sh initiate the corresponding session setups. We recommend connecting to the individual nodes — cp1 and cp2 — beforehand to start a call trace, so you can monitor session activity in real time. All details are described in the documentation link below. 
 Start the broadband session using the pre-defined script:
 
 ```bash
