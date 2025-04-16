@@ -116,9 +116,8 @@ Start the 5G Core (AMF, NRF, UDM, UDR, AUSF, NSSF, BSF and PCF) using the pre-de
 Follow the **[documentation](docs/open5gs_verification.md)** for detailed information/checking .
 
 ### **3. Start the 5G FWA session**
-The scripts ./start_5g_cups.sh and ./start_5g_cups_10IMSI.sh initiate the respective session setups. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, allowing you to monitor session activity in real time. 
-All details are described in the documentation link below
-Start the 5G session using the pre-defined script
+- The scripts ./start_5g_cups.sh and ./start_5g_cups_10IMSI.sh initiate the respective session setups. We recommend connecting to the individual nodes — MAG1 and MAG2 — beforehand to start a call trace, allowing you to monitor session activity in real time. All details are described in the documentation link below
+- Start the 5G session using the pre-defined script
 
 ```bash
 [root@compute-1 scripts]#./start_5g_cups.sh         ## to start 1x5G session
@@ -130,8 +129,8 @@ or from the CP using the predefined script exec clear-5g.
 Follow the **[documentation](docs/5G_session_verification.md)** for detailed information/checking .
 
 ### **4. Start the PPPoE or IPoE fixed sessions**
-The scripts ./start_dhcp_red.sh, ./start_dhcp.sh, and ./start_pppoe.sh initiate the corresponding session setups. We recommend connecting to the individual nodes — cp1 and cp2 — beforehand to start a call trace, so you can monitor session activity in real time. All details are described in the documentation link below. 
-Start the broadband session using the pre-defined script:
+- The scripts ./start_dhcp_red.sh, ./start_dhcp.sh, and ./start_pppoe.sh initiate the corresponding session setups. We recommend connecting to the individual nodes — cp1 and cp2 — beforehand to start a call trace, so you can monitor session activity in real time. All details are described in the documentation link below. 
+- Start the broadband session using the pre-defined script:
 
 ```bash
 [root@compute-1 scripts]#./start_dhcp_red.sh 
