@@ -100,7 +100,7 @@ To use the CLI scripts, wait **a few minutes** for the CLAB nodes to fully initi
 Register a 5G subscriber with specific IMSI, APN, OPC, Key, SST, and SD values using the script:
 
 ```bash
-[root@compute-1 scripts]#/register_subscriber.sh 
+[root@compute-1 scripts]#./register_subscriber.sh 
 ```
 You can verify the registered subscriber records using the Web GUI:
 📌 URL: http://x.x.x.x:10000/' 📌 **Username/Password**: admin/1423
