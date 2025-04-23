@@ -16,7 +16,7 @@ SELINUXTYPE=targeted
 ```
 
 ### 1.2. **Firewalld configuration** 
-The firewall should be enabled ,If the firewall is not enabled or inactive, start the firewalld service:
+The firewall should be enabled, If the firewall is not enabled or inactive, start the firewalld service:
 ```bash
 [root@compute-1 MAG-cups]# systemctl status firewalld
 ● firewalld.service - firewalld - dynamic firewall daemon
@@ -33,7 +33,7 @@ The firewall should be enabled ,If the firewall is not enabled or inactive, star
 
 ### 1.3. **Create the needed bridges**
 
-Create the brideges
+Create the brideges.
 
 ```bash   
 root@compute-1 scripts]# ./create_bridges-centos.sh
@@ -46,7 +46,7 @@ success
 success														
 ```
 ### 1.4. **Install lftp**
-lftp needs to be installed to run the  upload-cliscripts.sh script
+lftp needs to be installed to run the `upload-cliscripts.sh` script.
 CentOS example:
 
 ```bash
@@ -234,7 +234,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 ```
 ### 2.1. **Access the container nodes**
 	
-The nodes are accessable via the IP address or the node name   
+The nodes are accessable via the IP address or the node name.   
 ```bash  
 docker exec -it cups-amf        bash
 docker exec -it cups-ausf       bash
@@ -258,10 +258,10 @@ ssh admin@cups-CP2         ## password=admin
 
 ## 3. **Check the MAG-C ,DB and UP**
 
-Check the multi-chassis redundancy between the CP , the communication with the DB and the SX status with UP1 and UP2
+Check the multi-chassis redundancy between the CP, the communication with the DB and the SX status with UP1 and UP2.
 
 ### 3.1. **Check the PFCP Reference Point Peers**
-The communication with UPs can be checked via the below predefined script
+The communication with UPs can be checked via the below predefined script.
 
 ```bash          
 *A:CP1>file cf1:\magc\ #
@@ -308,7 +308,7 @@ Executed 9 lines in 0.0 seconds from file cf1:\magc\pfcp-peers
  
 ### 3.2. **Check the database communication with the CP**
 
-The communication between the CP and DB should be in status = HOT and can be checked via the below predefined script
+The communication between the CP and DB should be in `status = HOT` and can be checked via the below predefined script.
 
 ```bash 
 *A:CP1# exec clouddb
@@ -344,7 +344,7 @@ Executed 8 lines in 0.0 seconds from file cf1:\magc\clouddb
     
 ### 3.3. **Verify MAG-C redundancy status**
 Verify that the two control planes are synchronized, with CP1 as the master and CP2 as the standby. 
-Ensure the Geo-Redundancy state is set to 'Hot'
+Ensure the Geo-Redundancy state is set to 'Hot'.
 ```bash 
 *A:CP1# exec icr1
 Pre-processing configuration file (V0v0)...
@@ -427,7 +427,7 @@ Executed 30 lines in 0.0 seconds from file cf1:\magc\icr1
 ```
 
 
-You can toggle master/backup state using a script executed on the master CP node (e.g. exec icr1-switch when CP1 is master or exec icr2-switch when CP2 is master)
+You can toggle master/backup state using a script executed on the master CP node (e.g. exec icr1-switch when CP1 is master or exec icr2-switch when CP2 is master).
 
 ```bash 
 *A:CP1# exec icr1-switch
@@ -489,7 +489,7 @@ MG Group : 1    Geo Redundancy : Hot         0%           100%
 
 ## 4. **Transferring CLI Scripts to Nodes via SFTP**
  
-Use the ./upload-cliscripts.sh script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly
+Use the `./upload-cliscripts.sh` script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly.
 
 ```bash  
 [root@compute-3 scripts]# ./upload-cliscripts.sh
