@@ -1,13 +1,13 @@
 ## 1. **Checking the logs**:    
-You can check the logs for the open5GS and UERANSIM
+You can check the logs for the open5GS and UERANSIM.
 ```bash
 [root@compute-1 logs]# ls
 amf.log   bsf.log  nrf.log   pcf.log      udm.log  ue1.log
 ausf.log  gnb.log  nssf.log  radiusd.log  udr.log
 ```
-The below are the logs for 1 IMSI connected
+The below are the logs for 1 IMSI connected.
 ### 1.1. **Checking the NRF** 
-The NRF showing that elements are registered to it i.e. MAG-C,AMF,UDM.....
+The NRF showing that elements are registered to it i.e. MAG-C, AMF, UDM.....
 ```bash
 [root@compute-1 logs]# more nrf.log
 Open5GS daemon v2.7.1
@@ -49,7 +49,7 @@ l 2025-03-11T18:11:23.351313+00:00 [validity_duration:86400] (../src/nrf/nnrf-ha
 ```
 
 ### 1.2. **Checking the GNB logs**
-The GNB log showing that NGAP is ok with the AMF and NGAP is done successfully
+The GNB log showing that NGAP is ok with the AMF and NGAP is done successfully.
 ```bash
 [root@compute-1 logs]# more gnb.log
 UERANSIM v3.2.6
@@ -67,7 +67,7 @@ UERANSIM v3.2.6
 ```
 ### 1.3. **Checking the UE logs**
 
-UE1 log showing that the session is created with uesimtun0 and IP 43.0.32.1
+UE1 log showing that the session is created with uesimtun0 and IP 43.0.32.1 .
 ```bash
 [root@compute-1 logs]# more ue1.log
 UERANSIM v3.2.6
@@ -103,7 +103,7 @@ UERANSIM v3.2.6
 terface[uesimtun0, 43.0.32.1] is up.
 ```
 ### 2.4. **Checking the AMF logs**
-AMF log showing that the session is created
+AMF log showing that the session is created.
 ```bash
 [root@compute-1 logs]# more amf.log
 Open5GS daemon v2.7.1
@@ -175,14 +175,14 @@ l 2025-03-11T18:11:23.076345+00:00 [duration:86400,validity:86399.996139,patch:4
     
 ### 2.5. **Clearing the logs**
 
-Clear the logs before starting 10 IMSIs
+Clear the logs before starting 10 IMSIs.
 ```bash
 [root@compute-1 scripts]# ./clear_logs.sh
 ```
 
 ### 3.4. **Checking the logs**
 
-Below are the logs related to the attachment process for 10 IMSIs
+Below are the logs related to the attachment process for 10 IMSIs.
 
 ### 3.4.1. **Checking the GNB logs**
 The GNB log indicates that NGAP is active and a new signal has been detected for 10 IMSIs.
@@ -251,7 +251,7 @@ UERANSIM v3.2.6
 
 ### 3.4.2. **Checking the UE logs**
 
-The UE logs indicate that all 10 IMSIs have successfully attached
+The UE logs indicate that all 10 IMSIs have successfully attached.
 
 ```bash
 [root@compute-1 logs]# more ue1.log
