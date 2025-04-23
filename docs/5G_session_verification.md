@@ -76,7 +76,7 @@ NF Heartbeat           : 5
 NF Heartbeat Failures  : 0
 ```
 
-Also can be checked via the below command :
+Also can be checked via the below command:
  
 ```bash
 *A:CP1# tools dump mobile-gateway 1 nf-profile
@@ -124,7 +124,7 @@ NfServices (1)          :
 ```                               
 ## 3. **Start call-trace for the session**
 
-A call-trace can be initiated using the below predefined script to verify session establishment in case of any issues
+A call-trace can be initiated using the below predefined script to verify session establishment in case of any issues.
 
 ```bash
 *A:CP1# configure log log-id 77
@@ -160,11 +160,11 @@ Executed 13 lines in 2.0 seconds from file cf1:\magc\ct-5g
 *A:CP1#
 ```
 ## 4. **Start the 5G session**:
-You can start a single session or 10 sessions via prededined scripts
+You can start a single session or 10 sessions via prededined scripts.
 
 ### 4.1. **Start single session**
 
-The below predefined script can be used to start a single 5G session
+The below predefined script can be used to start a single 5G session.
 
 ```bash
 [root@compute-1 scripts]# ./start_5g_cups.sh
@@ -743,7 +743,7 @@ Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
 ### 4.1.2. **Call-trace session output**
 
-The call-trace was enabled before the session is started ,below you can check the session call-trace debug output
+The call-trace was enabled before the session is started, below you can check the session call-trace debug output.
 
 
 ```bash
@@ -1810,7 +1810,7 @@ ue1>ip a
 ```
 ### 4.1.5. **Checking the dataplane**
 
-The 5G FWA home-user can reach the UP via the uesimtun0
+The 5G FWA home-user can reach the UP via the uesimtun0.
 
 ```bash
 [root@compute-1 scripts]# docker exec -it cups-ue1 bash
@@ -1828,7 +1828,7 @@ PING 1.1.1.101 (1.1.1.101): 56 data bytes
 ```
 
 ## 4.2. **Testing 10 IMSI 5G sessions**
-Start the session using the below  predefined script:
+Start the session using the below predefined script:
 
 ```bash
 [root@compute-1 scripts]# ./start_5g_cups_10IMSI.sh
@@ -1837,7 +1837,7 @@ All uesimtun interfaces are ready. Adding routes...
 Routes added successfully: ip route add 1.1.1.0/24 nexthop dev uesimtun0 nexthop dev uesimtun1 nexthop dev uesimtun2 nexthop dev uesimtun3 nexthop dev uesimtun4 nexthop dev uesimtun5 nexthop dev uesimtun6 nexthop dev uesimtun7 nexthop dev uesimtun8 nexthop dev uesimtun9
 ```
 ### 4.2.1. **CP session check**
-The session are created on CP1 and CP2 via the below predefined script
+The session are created on CP1 and CP2 via the below predefined script.
 ```bash
 *A:CP1# exec s-5g
 Pre-processing configuration file (V0v0)...
@@ -2432,7 +2432,7 @@ Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
 ### 4.2.2. **Checking the 5G FWA home-user IP setting **
 
-Check the 5G FWA home-user to verify that 10 IMSI are attached i.e.uesimtun0 to uesimtun9 are created
+Check the 5G FWA home-user to verify that 10 IMSI are attached i.e.uesimtun0 to uesimtun9 are created.
 
 ```bash
 ue1>ip a
@@ -2517,8 +2517,8 @@ ue1>ip a
 ```
 ### 4.2.3. **Sessions load balancing**
 
-The 10 IMSIs are load balanced over the 2 UPs
-There are 6 PFCP sessions i.e. 5 IMSIs + default PCFP session between the CP and UP 
+The 10 IMSIs are load balanced over the 2 UPs.
+There are 6 PFCP sessions i.e. 5 IMSIs + default PCFP session between the CP and UP.
 
 ```bash
 A:admin@UP1# show s-5g
@@ -2804,7 +2804,7 @@ Executed 8 lines in 0.0 seconds from file "cf1:\scripts-md\s-5g"
 
 ```
 
-The other 5 IMSIs are created on UP2
+The other 5 IMSIs are created on UP2.
 
 ```bash
 A:admin@UP2# show s-5g
@@ -3098,7 +3098,7 @@ A:admin@UP2#
 
 ### 4.2.4. **Checking the data-plane** 
 
-The UPs are reached via the uesimtunx
+The UPs are reached via the uesimtunx.
 
 ```bash
 ue1>ip r
@@ -3163,7 +3163,7 @@ round-trip min/avg/max = 5.052/5.154/5.256 ms
 
 
 ## 5. **General show commands**
-Some general show commands to check the CP communication with other elements i.e. UDM,AMF and NRF via the below predefined script
+Some general show commands to check the CP communication with other elements i.e. UDM,AMF and NRF via the below predefined script.
 
 ```bash
 *A:CP1# exec sba-stats
@@ -3541,7 +3541,7 @@ Executed 76 lines in 0.1 seconds from file cf1:\magc\sba-stats
 ```
 
 ## 6. **Stopping the session** 
-You can stop the 5G session (single session or 10 sessions) using the below predefined script
+You can stop the 5G session (single session or 10 sessions) using the below predefined script.
 
 ```bash
 [root@compute-1 scripts]# ./stop_5g_cups.sh
@@ -3555,8 +3555,8 @@ PID   USER     TIME  COMMAND
   
 ```
 
-Also a clear command from CP can be used via the predefined script to clear the single session or 10 session
-as the call trace was still running you will the debug for the clear session
+Also a clear command from CP can be used via the predefined script to clear the single session or 10 session.
+as the call trace was still running you will the debug for the clear session.
 
 ```bash
 *A:CP1# exec clear-5g
