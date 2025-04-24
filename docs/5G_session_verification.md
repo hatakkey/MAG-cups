@@ -30,7 +30,7 @@ Start the open5GS core elements via the below predefined script:
 cd scripts
 ./start_open5gs.sh  
 ```
-### 2.1. **CP registration with the NRF**
+### 2.1 **CP registration with the NRF**
 
 The CP registration to the NRF can be verified via the below predefined script:
 
@@ -162,7 +162,7 @@ Executed 13 lines in 2.0 seconds from file cf1:\magc\ct-5g
 ## 4. **Start the 5G session**:
 You can start a single session or 10 sessions via prededined scripts.
 
-### 4.1. **Start single session**
+### 4.1 **Start single session**
 
 The below predefined script can be used to start a single 5G session.
 
@@ -173,7 +173,7 @@ Waiting for uesimtun0 to be ready...
 IP route added successfully.
 ```
 
-### 4.1.1. **Single Session Verification**
+### 4.1.1 **Single Session Verification**
 
 The below predefined script can be used to verify the operation:
 ```bash
@@ -741,7 +741,7 @@ clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
 
 Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
-### 4.1.2. **Call-trace session output**
+### 4.1.2 **Call-trace session output**
 
 The call-trace was enabled before the session is started, below you can check the session call-trace debug output.
 
@@ -1686,7 +1686,7 @@ content-type: application/json
 "
 ```
 
-### 4.1.3. **Checking the UP**
+### 4.1.3 **Checking the UP**
 The session is created on UP1 and can be verified via the below predefined script:
 
 ```bash
@@ -1777,7 +1777,7 @@ Executed 8 lines in 0.0 seconds from file "cf1:\scripts-md\s-5g"
 
 ```
 
-### 4.1.4. **Checking the 5G FWA home-user**
+### 4.1.4 **Checking the 5G FWA home-user**
 
 You can check the UE VM that uesimtun0 is created with the UE IP address 43.0.64.1/32.
 
@@ -1808,7 +1808,7 @@ ue1>ip a
     inet6 fe80::a8c1:abff:fe15:43d7/64 scope link
        valid_lft forever preferred_lft forever    
 ```
-### 4.1.5. **Checking the dataplane**
+### 4.1.5 **Checking the dataplane**
 
 The 5G FWA home-user can reach the UP via the uesimtun0.
 
@@ -1827,7 +1827,7 @@ PING 1.1.1.101 (1.1.1.101): 56 data bytes
 64 bytes from 1.1.1.101: seq=2 ttl=64 time=7.301 ms
 ```
 
-## 4.2. **Testing 10 IMSI 5G sessions**
+## 4.2 **Testing 10 IMSI 5G sessions**
 Start the session using the below predefined script:
 
 ```bash
@@ -1836,7 +1836,7 @@ Waiting for uesimtun interfaces to appear...
 All uesimtun interfaces are ready. Adding routes...
 Routes added successfully: ip route add 1.1.1.0/24 nexthop dev uesimtun0 nexthop dev uesimtun1 nexthop dev uesimtun2 nexthop dev uesimtun3 nexthop dev uesimtun4 nexthop dev uesimtun5 nexthop dev uesimtun6 nexthop dev uesimtun7 nexthop dev uesimtun8 nexthop dev uesimtun9
 ```
-### 4.2.1. **CP session check**
+### 4.2.1 **CP session check**
 The session are created on CP1 and CP2 via the below predefined script.
 ```bash
 *A:CP1# exec s-5g
@@ -2430,7 +2430,7 @@ clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
 
 Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
-### 4.2.2. **Checking the 5G FWA home-user IP setting **
+### 4.2.2 **Checking the 5G FWA home-user IP setting **
 
 Check the 5G FWA home-user to verify that 10 IMSI are attached i.e.uesimtun0 to uesimtun9 are created.
 
@@ -2515,7 +2515,7 @@ ue1>ip a
     inet6 fe80::a8c1:abff:fe15:43d7/64 scope link
        valid_lft forever preferred_lft forever
 ```
-### 4.2.3. **Sessions load balancing**
+### 4.2.3 **Sessions load balancing**
 
 The 10 IMSIs are load balanced over the 2 UPs.
 There are 6 PFCP sessions i.e. 5 IMSIs + default PCFP session between the CP and UP.
@@ -3096,7 +3096,7 @@ A:admin@UP2#
 
 
 
-### 4.2.4. **Checking the data-plane** 
+### 4.2.4 **Checking the data-plane** 
 
 The UPs are reached via the uesimtunx.
 
