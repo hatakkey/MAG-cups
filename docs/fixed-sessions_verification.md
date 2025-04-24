@@ -2,7 +2,7 @@
 ----
 Start PPPoE/IPoE Session using BNGBlaster to simulate PPPoE or IPoE sessions.
 
-### 1.1. **Start dhcp redundant sessions (IPoE session)**
+### 1.1 **Start dhcp redundant sessions (IPoE session)**
 10 dhcp sessions are established using the BNGBlaster application.
 ```bash
 ./start_dhcp_red.sh
@@ -220,7 +220,7 @@ No. of FSGs      : 1
 
 
 
-### 1.1.1. **Check IPoE session on UP1**
+### 1.1.1 **Check IPoE session on UP1**
 
 Check the sessions are also created on UP1 via the below predefined script.
 
@@ -292,7 +292,7 @@ No. of PFCP Sessions: 1
 ===============================================================================
 Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe_red"
 ```
-### 1.1.2. **Check statistics on UP1/UP2**
+### 1.1.2 **Check statistics on UP1/UP2**
 
 The statistics on UP1 also show the 10 users via the below predefined script.
 ```bash
@@ -392,7 +392,7 @@ Total  IPOE Hosts                               10       10 03/12/2025 11:03:12
 ===============================================================================
 <snip>
 ```
-### 1.1.3. **Call-trace for the session**
+### 1.1.3 **Call-trace for the session**
 
 A call trace can be used to check the session via the below predefined script:
  
@@ -1929,7 +1929,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe_red
 The radius debug can be checked from the log directory `radiusd.log` file.
 
 
-### 1.2. **Start dhcp session (no redundancy)**
+### 1.2 **Start dhcp session (no redundancy)**
   
  Another example with 10 DHCP sessions without redundancy.
  
@@ -1962,7 +1962,7 @@ The 10 sessions are created on UP2
 ----------------------------------------------
 ```
 
-### 1.2.1. **Check the sessions on CP**
+### 1.2.1 **Check the sessions on CP**
 The session on CP can be verified using the below predefined script.
 
 ```bash
@@ -2090,7 +2090,7 @@ No. of sessions: 1
 Executed 5 lines in 0.0 seconds from file cf1:\magc\s-ipoe
 ```
 
-### 1.2.2. **Check the sessions on UP2**
+### 1.2.2 **Check the sessions on UP2**
 
 On UP2, the sessions can be checked via the below predefined script.
 
@@ -2161,7 +2161,7 @@ No. of PFCP Sessions: 1
 Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-ipoe"
 [/]
 ```
-### 1.2.3. **Call-trace for the session**
+### 1.2.3 **Call-trace for the session**
 A call-trace can be started to check the operation on CP and UP.
 ```bash
 *A:CP1# exec ct-ipoe
@@ -3122,7 +3122,7 @@ Executed 14 lines in 1.0 seconds from file cf1:\magc\ct-ipoe
 "
 ```
 
-### 1.3. **Start PPPoE session**
+### 1.3 **Start PPPoE session**
 
 Another example for PPPoE sessions, the below predefined script can be used to establish 10 PPPoE sessions. 
 ```bash
@@ -3163,7 +3163,7 @@ PPPoE session are created on UP1
                     no shutdown
 ```                    
 
-### 1.3.1. **Checking the session on CP**
+### 1.3.1 **Checking the session on CP**
 The sessions can be checked via the below predefined scripts on CP. 
 
 ```bash
@@ -3295,7 +3295,7 @@ No. of sessions: 1
 ===============================================================================
 Executed 5 lines in 0.0 seconds from file cf1:\magc\s-pppoe
 ```
-### 1.3.2. ** Checking the session on UP**
+### 1.3.2 ** Checking the session on UP**
 
 The sessions can be checked on UP using the below predefined script.
 
@@ -3372,7 +3372,7 @@ Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 [/]
 ```
 
-### 1.3.3. ** Call-trace for the session**
+### 1.3.3 ** Call-trace for the session**
 A call trace can be started via the predefined script to check the operation.
 
 ```bash
