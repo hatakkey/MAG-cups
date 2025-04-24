@@ -1,6 +1,6 @@
 ## 1. **Pre-requirements for CLAB Setup**
 ------
-### 1.1. **SELinux Configuration**
+### 1.1 **SELinux Configuration**
 
 Before starting the setup, **SELinux** should be disabled on your server for this CLAB to function properly. Check the current status of SELinux:
 
@@ -15,7 +15,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 ```
 
-### 1.2. **Firewalld configuration** 
+### 1.2 **Firewalld configuration** 
 The firewall should be enabled, If the firewall is not enabled or inactive, start the firewalld service:
 ```bash
 [root@compute-1 MAG-cups]# systemctl status firewalld
@@ -31,7 +31,7 @@ The firewall should be enabled, If the firewall is not enabled or inactive, star
  ```   
 
 
-### 1.3. **Create the needed bridges**
+### 1.3 **Create the needed bridges**
 
 Create the brideges.
 
@@ -45,7 +45,7 @@ success
 success
 success														
 ```
-### 1.4. **Install lftp**
+### 1.4 **Install lftp**
 lftp needs to be installed to run the `upload-cliscripts.sh` script.
 CentOS example:
 
@@ -232,7 +232,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │                 │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
 ╰─────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
 ```
-### 2.1. **Access the container nodes**
+### 2.1 **Access the container nodes**
 	
 The nodes are accessable via the IP address or the node name.   
 ```bash  
@@ -260,7 +260,7 @@ ssh admin@cups-CP2         ## password=admin
 
 Check the multi-chassis redundancy between the CP, the communication with the DB and the SX status with UP1 and UP2.
 
-### 3.1. **Check the PFCP Reference Point Peers**
+### 3.1 **Check the PFCP Reference Point Peers**
 The communication with UPs can be checked via the below predefined script.
 
 ```bash          
@@ -306,7 +306,7 @@ Executed 9 lines in 0.0 seconds from file cf1:\magc\pfcp-peers
 ```
    
  
-### 3.2. **Check the database communication with the CP**
+### 3.2 **Check the database communication with the CP**
 
 The communication between the CP and DB should be in `status = HOT` and can be checked via the below predefined script.
 
@@ -342,7 +342,7 @@ Thu Apr 10 21:30:40 CEST 2025
 Executed 8 lines in 0.0 seconds from file cf1:\magc\clouddb
 ```
     
-### 3.3. **Verify MAG-C redundancy status**
+### 3.3 **Verify MAG-C redundancy status**
 Verify that the two control planes are synchronized, with CP1 as the master and CP2 as the standby. 
 Ensure the Geo-Redundancy state is set to 'Hot'.
 ```bash 
