@@ -3295,7 +3295,7 @@ No. of sessions: 1
 ===============================================================================
 Executed 5 lines in 0.0 seconds from file cf1:\magc\s-pppoe
 ```
-### 1.3.2 ** Checking the session on UP**
+### 1.3.2 **Checking the session on UP**
 
 The sessions can be checked on UP using the below predefined script.
 
@@ -3372,7 +3372,7 @@ Executed 5 lines in 0.0 seconds from file "cf1:\scripts-md\s-pppoe"
 [/]
 ```
 
-### 1.3.3 ** Call-trace for the session**
+### 1.3.3 **Call-trace for the session**
 A call trace can be started via the predefined script to check the operation.
 
 ```bash
