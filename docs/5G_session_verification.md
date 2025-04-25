@@ -2430,7 +2430,7 @@ clear mobile-gateway pdn  1 bearer-context imsi 206010000000001
 
 Executed 33 lines in 0.2 seconds from file cf1:\magc\s-5g
 ```
-### 4.2.2 **Checking the 5G FWA home-user IP setting **
+### 4.2.2 **Checking the 5G FWA home-user IP setting**
 
 Check the 5G FWA home-user to verify that 10 IMSI are attached i.e.uesimtun0 to uesimtun9 are created.
 
