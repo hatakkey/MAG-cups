@@ -24,7 +24,7 @@ topology:
 
   nodes:
     CP1:
-      kind: vr-sros
+      kind: nokia_sros
       image: registry.srlinux.dev/pub/mag-c:25.3.R1
       type: "cp: cpu=4 min_ram=16 chassis=vsr slot=A card=cpm-v cfabric/1=1:1 ___
         lc: cpu=4 min_ram=16 max_nics=4 chassis=vsr slot=1 card=iom-v mda/1=m20-v cfabric/1=1:1 ofabric/1=2:2 ___
@@ -37,7 +37,7 @@ topology:
 
     
     CP2:
-      kind: vr-sros
+      kind: nokia_sros
       image: registry.srlinux.dev/pub/mag-c:25.3.R1
       type: "cp: cpu=4 min_ram=16 chassis=vsr slot=A card=cpm-v cfabric/1=1:1 ___
         lc: cpu=4 min_ram=16 max_nics=4 chassis=vsr slot=1 card=iom-v mda/1=m20-v cfabric/1=1:1 ofabric/1=2:2 ___
@@ -85,8 +85,8 @@ topology:
       mgmt-ipv4: 192.168.40.15
 
     UP1:
-      kind: vr-sros
-      image: registry.srlinux.dev/pub/vr-sros:25.3.R1
+      kind: nokia_sros
+      image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
       startup-config: configs/nodes/UP1_config.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
@@ -94,8 +94,8 @@ topology:
       mgmt-ipv4: 192.168.40.11
 
     UP2:
-      kind: vr-sros
-      image: registry.srlinux.dev/pub/vr-sros:25.3.R1
+      kind: nokia_sros
+      image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
       startup-config: configs/nodes/UP2_config.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
@@ -104,8 +104,8 @@ topology:
 
  
     TRA-cups:
-      kind: vr-sros
-      image: registry.srlinux.dev/pub/vr-sros:25.3.R1
+      kind: nokia_sros
+      image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
       startup-config: configs/nodes/TRA-cups_config.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
