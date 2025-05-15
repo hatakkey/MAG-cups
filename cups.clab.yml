@@ -16,7 +16,7 @@ topology:
       env:
         PS1: \H>
 
-    vr-sros:
+    nokia_sros:
       license: license.lic
       env:
        CF1: 1G
@@ -115,8 +115,6 @@ topology:
     bngblaster:
       kind: linux
       image: htakkey/bngblaster:0.9.17
-      #image: ghcr.io/asadarafat/bngblaster:main
-      entrypoint: /bin/bash
       mgmt-ipv4: 192.168.40.21
       binds:
        - ./configs/bngblaster/:/opt/bngblaster
@@ -159,7 +157,6 @@ topology:
     amf:
       kind: linux
       mgmt-ipv4: 192.168.40.54
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -175,7 +172,6 @@ topology:
     nrf:
       kind: linux
       mgmt-ipv4: 192.168.40.57
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -186,7 +182,6 @@ topology:
     ausf:
       kind: linux
       mgmt-ipv4: 192.168.40.58
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -196,7 +191,6 @@ topology:
     udm:
       kind: linux
       mgmt-ipv4: 192.168.40.59
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -208,7 +202,6 @@ topology:
     pcf:
       kind: linux
       mgmt-ipv4: 192.168.40.60
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -220,7 +213,6 @@ topology:
     nssf:
       kind: linux
       mgmt-ipv4: 192.168.40.61
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -230,7 +222,6 @@ topology:
     bsf:
       kind: linux
       mgmt-ipv4: 192.168.40.62
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
@@ -240,7 +231,6 @@ topology:
     udr:
       kind: linux
       mgmt-ipv4: 192.168.40.63
-      entrypoint: /bin/bash
       env-files:
         - ./configs/env-files/open5gs-env
       binds:
