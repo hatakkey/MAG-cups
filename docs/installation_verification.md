@@ -82,7 +82,8 @@ SCTP supported
 [root@compute-1]# dnf install kernel-modules-extra
 [root@compute-1]# rm /etc/modprobe.d/sctp-blacklist.conf
 [root@compute-1]# rm /etc/modprobe.d/sctp_diag-blacklist.conf
-[root
+[root@compute-1]# dnf install lksctp-tools-1.0.18-3.el8.x86_64
+```
 ---------------------------------------------------  
 ## 3. **Deploy the ContainerLab Environment**
 
