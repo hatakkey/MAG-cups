@@ -114,7 +114,7 @@ topology:
 
     bngblaster:
       kind: linux
-      image: htakkey/bngblaster:0.9.17
+      image: htakkey/bngblaster:0.9.18
       mgmt-ipv4: 192.168.40.21
       binds:
        - ./configs/bngblaster/:/opt/bngblaster
