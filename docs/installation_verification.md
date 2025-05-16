@@ -36,8 +36,8 @@ The firewall should be enabled, If the firewall is not enabled or inactive, star
 Create the brideges.
 
 ```bash   
-root@compute-1 scripts]# ./create_bridges-centos.sh
-./create_bridges-centos.sh
+root@compute-1 scripts]# ./create_bridges.sh
+Detected OS: centos
 success
 success
 success
@@ -53,7 +53,38 @@ CentOS example:
 yum install lftp
 ```
 ---------------------------------------------------  
-## 2. **Deploy the ContainerLab Environment**
+## 2. **SCTP is supported on host machine**
+
+- Check if SCTP is supported on your host machine as the communication between AMF and gNB is via SCTP over the NGAP interface. and needs to be enabled on your host machine. 
+- If you don’t have SCTP enabled, then a 5G session will fail with error and you need to install SCTP.
+In AMF.log:
+```bash
+[sock] ERROR: ogs_sock_socket(family:2 type:1) failed (93:Protocol not supported) (../lib/sctp/ogs-lksctp.c:42)
+[sock] ERROR: sctp_server() [10.50.1.2]:38412 failed (93:Protocol not supported) (../lib/sctp/ogs-lksctp.c:112)
+[sctp] ERROR: Failed to initialize AMF (../src/amf/app.c:30)
+[app] FATAL: Open5GS initialization failed. Aborted (../src/main.c:219
+```
+- If command checksctp ---> "STCP supported" then skip (2) install SCTP (ubuntu ---> supported by default).
+- If command checksctp ---> "not found" then install the needed package "lksctp-tools"
+
+```bash
+[root@compute-2 ~]# checksctp
+bash: checksctp: command not found...
+Install package 'lksctp-tools' to provide command 'checksctp'? [N/y] y
+```
+
+```bash
+[root@compute-1 MAG-cups]# checksctp
+SCTP supported
+```
+- install sctp as below if not enabled.
+```bash
+[root@compute-1]# dnf install kernel-modules-extra
+[root@compute-1]# rm /etc/modprobe.d/sctp-blacklist.conf
+[root@compute-1]# rm /etc/modprobe.d/sctp_diag-blacklist.conf
+[root
+---------------------------------------------------  
+## 3. **Deploy the ContainerLab Environment**
 
 Deploy the containerized network environment using the ContainerLab configuration:
 
@@ -187,7 +218,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │                 │ gradiant/open5gs:2.7.1                    │         │ N/A            │
 ├─────────────────┼───────────────────────────────────────────┼─────────┼────────────────┤
 │ cups-bngblaster │ linux                                     │ running │ 192.168.40.21  │
-│                 │ htakkey/bngblaster:0.9.17                 │         │ N/A            │
+│                 │ htakkey/bngblaster:0.9.18                 │         │ N/A            │
 ├─────────────────┼───────────────────────────────────────────┼─────────┼────────────────┤
 │ cups-bsf        │ linux                                     │ running │ 192.168.40.62  │
 │                 │ gradiant/open5gs:2.7.1                    │         │ N/A            │
@@ -232,7 +263,7 @@ Deploy the containerized network environment using the ContainerLab configuratio
 │                 │ gradiant/open5gs-webui:2.7.1              │         │ N/A            │
 ╰─────────────────┴───────────────────────────────────────────┴─────────┴────────────────╯
 ```
-### 2.1 **Access the container nodes**
+### 3.1 **Access the container nodes**
 	
 The nodes are accessable via the IP address or the node name.   
 ```bash  
@@ -256,11 +287,11 @@ ssh admin@cups-CP1         ## password=admin
 ssh admin@cups-CP2         ## password=admin
 ```  
 
-## 3. **Check the MAG-C ,DB and UP**
+## 4. **Check the MAG-C ,DB and UP**
 
 Check the multi-chassis redundancy between the CP, the communication with the DB and the SX status with UP1 and UP2.
 
-### 3.1 **Check the PFCP Reference Point Peers**
+### 4.1 **Check the PFCP Reference Point Peers**
 The communication with UPs can be checked via the below predefined script.
 
 ```bash          
@@ -306,7 +337,7 @@ Executed 9 lines in 0.0 seconds from file cf1:\magc\pfcp-peers
 ```
    
  
-### 3.2 **Check the database communication with the CP**
+### 4.2 **Check the database communication with the CP**
 
 The communication between the CP and DB should be in `status = HOT` and can be checked via the below predefined script.
 
@@ -342,7 +373,7 @@ Thu Apr 10 21:30:40 CEST 2025
 Executed 8 lines in 0.0 seconds from file cf1:\magc\clouddb
 ```
     
-### 3.3 **Verify MAG-C redundancy status**
+### 4.3 **Verify MAG-C redundancy status**
 Verify that the two control planes are synchronized, with CP1 as the master and CP2 as the standby. 
 Ensure the Geo-Redundancy state is set to 'Hot'.
 ```bash 
@@ -487,7 +518,7 @@ MG Group : 1    Geo Redundancy : Hot         0%           100%
 ===============================================================================
 ```  
 
-## 4. **Transferring CLI Scripts to Nodes via SFTP**
+## 5. **Transferring CLI Scripts to Nodes via SFTP**
  
 Use the `./upload-cliscripts.sh` script to download the predefined CLI scripts to the CF (Compact Flash) of the nodes directly.
 
