@@ -66,12 +66,11 @@ cd mag-cups
 ```
 ### 6.2 **Create Network Bridges**
 
-We have two examples for creating the bridges one for CentOS and another one for Ubuntu,
+We have a script that detects the operating system and automatically executes the appropriate commands to create the required network bridges based on the OS.
 
-For **CentOS** (example):
 ```bash
 [root@compute-1 mag-cups]#cd scripts
-[root@compute-1 scripts]#./create_bridges-centos.sh
+[root@compute-1 scripts]#./create_bridges.sh
 ```
 
 ### 6.3 **Deploy the ContainerLab**
