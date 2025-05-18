@@ -9,3 +9,78 @@ Apr 13 10:41:25.183389 ALL SESSIONS ESTABLISHED
 Apr 13 11:06:07.818268 Received signal Interrupt (2), initiating teardown
 Apr 13 11:06:07.818379 Teardown request (1)
 Apr 13 11:06:11.014491 ALL SESSIONS TERMINATED
+Apr 14 09:19:31.078256 Warning: Interfaces must not have an IP address configured in the host OS!
+Apr 14 09:19:31.078278 Warning: IP address fe80::a8c1:abff:fe55:560 on interface eth1 is conflicting!
+Apr 14 09:19:31.141944 Warning: IP address fe80::a8c1:abff:fe12:b05c on interface eth2 is conflicting!
+Apr 14 09:19:31.175577 Total PPS of all streams: 200.00
+Apr 14 09:19:32.175654 Resolve network interfaces
+Apr 14 09:19:32.175718 All network interfaces resolved
+Apr 14 09:19:33.342011 ALL SESSIONS ESTABLISHED
+Apr 14 09:19:33.389942 ALL STREAM TRAFFIC FLOWS VERIFIED
+Apr 14 09:19:42.023780 Received signal Interrupt (2), initiating teardown
+Apr 14 09:19:42.023834 Teardown request (1)
+Apr 14 09:19:45.176784 ALL SESSIONS TERMINATED
+May 13 08:42:47.568733 Warning: Interfaces must not have an IP address configured in the host OS!
+May 13 08:42:47.568756 Warning: IP address fe80::a8c1:abff:fe55:560 on interface eth1 is conflicting!
+May 13 08:42:47.599964 Warning: IP address fe80::a8c1:abff:fe12:b05c on interface eth2 is conflicting!
+May 13 08:42:47.636772 Total PPS of all streams: 200.00
+May 13 08:42:48.636844 Resolve network interfaces
+May 13 08:42:48.636886 All network interfaces resolved
+May 13 08:42:49.778232 ALL SESSIONS ESTABLISHED
+May 13 08:42:49.851129 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 13 13:03:48.301577 Received signal Interrupt (2), initiating teardown
+May 13 13:03:48.301633 Teardown request (1)
+May 13 13:03:51.397077 ALL SESSIONS TERMINATED
+May 18 10:17:32.934610 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 10:17:32.934635 Warning: IP address fe80::a8c1:abff:fec1:bbda on interface eth1 is conflicting!
+May 18 10:17:32.962822 Warning: IP address fe80::a8c1:abff:fe6e:88 on interface eth2 is conflicting!
+May 18 10:17:32.994661 Total PPS of all streams: 200.00
+May 18 10:17:33.994742 Resolve network interfaces
+May 18 10:17:33.994784 All network interfaces resolved
+May 18 10:17:35.209030 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 10:17:35.237163 ALL SESSIONS ESTABLISHED
+May 18 10:17:38.022525 Received signal Interrupt (2), initiating teardown
+May 18 10:17:38.022559 Teardown request (1)
+May 18 10:17:38.289880 Received signal Interrupt (2), initiating teardown
+May 18 10:17:38.289922 Teardown request (2)
+May 18 10:17:38.571425 Received signal Interrupt (2), initiating teardown
+May 18 10:17:38.571450 Teardown request (3)
+May 18 10:17:38.817864 Received signal Interrupt (2), initiating teardown
+May 18 10:17:38.817883 Teardown request (4)
+May 18 10:17:39.066102 Received signal Interrupt (2), initiating teardown
+May 18 10:17:39.066145 Teardown request (5)
+May 18 10:17:39.294888 Received signal Interrupt (2), initiating teardown
+May 18 10:17:39.294929 Teardown request (6)
+May 18 10:17:39.506601 Received signal Interrupt (2), initiating teardown
+May 18 10:17:39.506621 Teardown request (7)
+May 18 10:17:39.708134 Received signal Interrupt (2), initiating teardown
+May 18 10:17:39.708153 Teardown request (8)
+May 18 10:17:39.910627 Received signal Interrupt (2), initiating teardown
+May 18 10:17:39.910658 Teardown request (9)
+May 18 10:17:40.129349 Received signal Interrupt (2), initiating teardown
+May 18 10:17:40.129501 Teardown request (10)
+May 18 15:28:27.570868 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 15:28:27.570893 Warning: IP address fe80::a8c1:abff:fe61:d41b on interface eth1 is conflicting!
+May 18 15:28:27.611170 Warning: IP address fe80::a8c1:abff:fea6:dc94 on interface eth2 is conflicting!
+May 18 15:28:27.649537 Total PPS of all streams: 200.00
+May 18 15:28:28.649617 Resolve network interfaces
+May 18 15:28:28.649747 All network interfaces resolved
+May 18 15:28:29.863858 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 15:28:29.888163 ALL SESSIONS ESTABLISHED
+May 18 15:31:42.511087 Received signal Interrupt (2), initiating teardown
+May 18 15:31:42.511220 Teardown request (1)
+May 18 15:31:43.392897 Received signal Interrupt (2), initiating teardown
+May 18 15:31:43.393005 Teardown request (2)
+May 18 15:31:44.123618 Received signal Interrupt (2), initiating teardown
+May 18 15:31:44.123711 Teardown request (3)
+May 18 15:31:44.522635 Received signal Interrupt (2), initiating teardown
+May 18 15:31:44.522724 Teardown request (4)
+May 18 15:31:46.031201 Received signal Interrupt (2), initiating teardown
+May 18 15:31:46.031317 Teardown request (5)
+May 18 15:31:46.433886 Received signal Interrupt (2), initiating teardown
+May 18 15:31:46.433990 Teardown request (6)
+May 18 15:31:47.254606 Received signal Interrupt (2), initiating teardown
+May 18 15:31:47.254697 Teardown request (7)
+May 18 15:31:47.486542 Received signal Interrupt (2), initiating teardown
+May 18 15:31:47.486730 Teardown request (8)
+May 18 15:31:47.659507 ALL SESSIONS TERMINATED

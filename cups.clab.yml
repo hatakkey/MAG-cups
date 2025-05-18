@@ -32,7 +32,7 @@ topology:
         lc: cpu=8 min_ram=32 max_nics=1 chassis=vsr slot=3 card=iom-v-mg mda/1=isa-ms-v cfabric/1=1:1 ofabric/1=2:2"
       binds:
        - configs/nodes/post-boot-exec-CP.cfg:/tftpboot/post-boot-exec.cfg
-      startup-config: configs/nodes/CP1_config.txt
+      #startup-config: configs/nodes/magc1_myconfig.txt
       mgmt-ipv4: 192.168.40.2
 
     
@@ -45,7 +45,7 @@ topology:
         lc: cpu=8 min_ram=32 max_nics=1 chassis=vsr slot=3 card=iom-v-mg mda/1=isa-ms-v cfabric/1=1:1 ofabric/1=2:2"
       binds:
         - configs/nodes/post-boot-exec-CP.cfg:/tftpboot/post-boot-exec.cfg
-      startup-config: configs/nodes/CP2_config.txt
+      #startup-config: configs/nodes/magc2_myconfig.txt
       mgmt-ipv4: 192.168.40.3
   
     radius:
@@ -86,8 +86,8 @@ topology:
 
     UP1:
       kind: nokia_sros
-      image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
-      startup-config: configs/nodes/UP1_config.txt
+      image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
+      #startup-config: configs/nodes/up1_myconfig.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
       type: "chassis=sr-1 slot=A card=cpm-1 slot=1 mda/1=me6-100gb-qsfp28"
@@ -95,8 +95,8 @@ topology:
 
     UP2:
       kind: nokia_sros
-      image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
-      startup-config: configs/nodes/UP2_config.txt
+      image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
+      #startup-config: configs/nodes/up2_myconfig.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
       type: "chassis=sr-1 slot=A card=cpm-1 slot=1 mda/1=me6-100gb-qsfp28"
@@ -105,16 +105,17 @@ topology:
  
     TRA-cups:
       kind: nokia_sros
-      image: registry.srlinux.dev/pub/nokia_sros:25.3.R1
-      startup-config: configs/nodes/TRA-cups_config.txt
+      image: registry.srlinux.dev/pub/nokia_sros:25.3.R2
+      #startup-config: configs/nodes/tra_myconfig.txt
       binds:
        - configs/nodes/post-boot-exec.cfg:/tftpboot/post-boot-exec.cfg
       type: "cpu=4 min_ram=16 chassis=sr-1s slot=A card=xcm-1s mda/1=s36-100gb-qsfp28"
       mgmt-ipv4: 192.168.40.20
-
+    
     bngblaster:
       kind: linux
       image: htakkey/bngblaster:0.9.18
+      entrypoint: /bin/bash
       mgmt-ipv4: 192.168.40.21
       binds:
        - ./configs/bngblaster/:/opt/bngblaster
@@ -338,27 +339,30 @@ topology:
    #  bng access side
    - endpoints: ["TRA-cups:eth9", "UP1:eth2"]
    - endpoints: ["TRA-cups:eth10", "UP2:eth2"]
-   - endpoints: ["TRA-cups:eth11",  "bngblaster:eth1"]
+   - endpoints: ["TRA-cups:eth11",  "bngblaster:eth1"]  # dhcp-sessions
+   - endpoints: ["TRA-cups:eth12",  "bngblaster:eth3"]  # pppoe-sessions
 
   #  bng network side
-   - endpoints: ["TRA-cups:eth12", "bngblaster:eth2"]
+   - endpoints: ["TRA-cups:eth13", "bngblaster:eth2"]  # dhcp-sessions
+   - endpoints: ["TRA-cups:eth14", "bngblaster:eth4"]  # pppoe-sessions
+
    
 
     # multi-homing links
-   - endpoints: ["CP1:eth4","TRA-cups:eth13"]
-   - endpoints: ["CP2:eth4", "TRA-cups:eth14"]  
+   - endpoints: ["CP1:eth4","TRA-cups:eth15"]
+   - endpoints: ["CP2:eth4", "TRA-cups:eth16"]  
 
    #db comm  links
-   - endpoints: ["CP1:eth3", "TRA-cups:eth15"]
-   - endpoints: ["CP2:eth3", "TRA-cups:eth16"]
-   - endpoints: ["db-1:eth1", "TRA-cups:eth17"]
-   - endpoints: ["db-2:eth1", "TRA-cups:eth18"]
+   - endpoints: ["CP1:eth3", "TRA-cups:eth17"]
+   - endpoints: ["CP2:eth3", "TRA-cups:eth18"]
+   - endpoints: ["db-1:eth1", "TRA-cups:eth19"]
+   - endpoints: ["db-2:eth1", "TRA-cups:eth20"]
 
   # br-gnb - UEs
    - endpoints: ["gnb:eth3", "ue1:eth1"]
   
   # Radius
-   - endpoints: ["radius:eth1","TRA-cups:eth19"] 
+   - endpoints: ["radius:eth1","TRA-cups:eth21"] 
   # N11
-   - endpoints: ["amf:eth4", "TRA-cups:eth20"]
+   - endpoints: ["amf:eth4", "TRA-cups:eth22"]
 

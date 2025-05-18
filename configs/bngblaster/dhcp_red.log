@@ -1,0 +1,74 @@
+Apr 24 09:54:45.789685 Warning: Interfaces must not have an IP address configured in the host OS!
+Apr 24 09:54:45.789708 Warning: IP address fe80::a8c1:abff:fe55:560 on interface eth1 is conflicting!
+Apr 24 09:54:45.831009 Warning: IP address fe80::a8c1:abff:fe12:b05c on interface eth2 is conflicting!
+Apr 24 09:54:45.865571 Total PPS of all streams: 200.00
+Apr 24 09:54:46.865631 Resolve network interfaces
+Apr 24 09:54:46.865680 All network interfaces resolved
+Apr 24 09:54:47.995635 ALL SESSIONS ESTABLISHED
+Apr 24 09:54:48.079941 ALL STREAM TRAFFIC FLOWS VERIFIED
+Apr 24 09:56:50.833888 Received signal Interrupt (2), initiating teardown
+Apr 24 09:56:50.833939 Teardown request (1)
+Apr 24 09:56:53.872021 ALL SESSIONS TERMINATED
+May 13 08:42:00.793150 Warning: Interfaces must not have an IP address configured in the host OS!
+May 13 08:42:00.793171 Warning: IP address fe80::a8c1:abff:fe55:560 on interface eth1 is conflicting!
+May 13 08:42:00.824933 Warning: IP address fe80::a8c1:abff:fe12:b05c on interface eth2 is conflicting!
+May 13 08:42:00.856725 Total PPS of all streams: 200.00
+May 13 08:42:01.856806 Resolve network interfaces
+May 13 08:42:01.856857 All network interfaces resolved
+May 13 08:42:03.071095 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 13 08:42:03.077948 ALL SESSIONS ESTABLISHED
+May 13 08:42:40.744878 Received signal Interrupt (2), initiating teardown
+May 13 08:42:40.744947 Teardown request (1)
+May 13 08:42:43.859219 ALL SESSIONS TERMINATED
+May 18 10:18:05.252651 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 10:18:05.252674 Warning: IP address fe80::a8c1:abff:fec1:bbda on interface eth1 is conflicting!
+May 18 10:18:05.286056 Warning: IP address fe80::a8c1:abff:fe6e:88 on interface eth2 is conflicting!
+May 18 10:18:05.318732 Total PPS of all streams: 200.00
+May 18 10:18:06.318784 Resolve network interfaces
+May 18 10:18:06.318829 All network interfaces resolved
+May 18 10:18:07.533104 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 10:18:07.537010 ALL SESSIONS ESTABLISHED
+May 18 10:18:11.880912 Received signal Interrupt (2), initiating teardown
+May 18 10:18:11.880950 Teardown request (1)
+May 18 10:18:12.271779 Received signal Interrupt (2), initiating teardown
+May 18 10:18:12.271826 Teardown request (2)
+May 18 10:18:12.491843 Received signal Interrupt (2), initiating teardown
+May 18 10:18:12.491883 Teardown request (3)
+May 18 10:18:12.702414 Received signal Interrupt (2), initiating teardown
+May 18 10:18:12.702458 Teardown request (4)
+May 18 10:18:12.910036 Received signal Interrupt (2), initiating teardown
+May 18 10:18:12.910075 Teardown request (5)
+May 18 10:18:13.116271 Received signal Interrupt (2), initiating teardown
+May 18 10:18:13.116316 Teardown request (6)
+May 18 10:18:13.303080 Received signal Interrupt (2), initiating teardown
+May 18 10:18:13.303122 Teardown request (7)
+May 18 10:18:13.536615 Received signal Interrupt (2), initiating teardown
+May 18 10:18:13.536663 Teardown request (8)
+May 18 10:18:13.743538 Received signal Interrupt (2), initiating teardown
+May 18 10:18:13.743560 Teardown request (9)
+May 18 10:18:13.963490 Received signal Interrupt (2), initiating teardown
+May 18 10:18:13.963675 Teardown request (10)
+May 18 13:51:51.335680 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 13:51:51.335710 Warning: IP address fe80::a8c1:abff:fec1:bbda on interface eth1 is conflicting!
+May 18 13:51:51.377106 Warning: IP address fe80::a8c1:abff:fe6e:88 on interface eth2 is conflicting!
+May 18 13:51:51.416679 Total PPS of all streams: 200.00
+May 18 13:51:52.416758 Resolve network interfaces
+May 18 13:51:52.416875 All network interfaces resolved
+May 18 13:51:53.550388 ALL SESSIONS ESTABLISHED
+May 18 13:51:53.631045 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 13:57:01.753371 Received signal Interrupt (2), initiating teardown
+May 18 13:57:01.753486 Teardown request (1)
+May 18 13:57:03.086235 Received signal Interrupt (2), initiating teardown
+May 18 13:57:03.086342 Teardown request (2)
+May 18 13:57:06.431841 ALL SESSIONS TERMINATED
+May 18 15:31:51.857596 Warning: Interfaces must not have an IP address configured in the host OS!
+May 18 15:31:51.857618 Warning: IP address fe80::a8c1:abff:fe61:d41b on interface eth1 is conflicting!
+May 18 15:31:51.893200 Warning: IP address fe80::a8c1:abff:fea6:dc94 on interface eth2 is conflicting!
+May 18 15:31:51.950701 Total PPS of all streams: 200.00
+May 18 15:31:52.950785 Resolve network interfaces
+May 18 15:31:52.950904 All network interfaces resolved
+May 18 15:31:54.165073 ALL STREAM TRAFFIC FLOWS VERIFIED
+May 18 15:31:54.276106 ALL SESSIONS ESTABLISHED
+May 18 15:47:45.325568 Received signal Interrupt (2), initiating teardown
+May 18 15:47:45.325708 Teardown request (1)
+May 18 15:47:48.993280 ALL SESSIONS TERMINATED

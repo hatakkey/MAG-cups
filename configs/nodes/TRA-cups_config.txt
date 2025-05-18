@@ -18,11 +18,6 @@ configure {
     log log-id "100" filter "1001"
     log log-id "100" source main true
     log log-id "100" destination memory max-entries 500
-    multicast-management chassis-level per-mcast-plane-capacity total-capacity dynamic
-    multicast-management chassis-level per-mcast-plane-capacity mcast-capacity primary-percentage 87.5
-    multicast-management chassis-level per-mcast-plane-capacity mcast-capacity secondary-percentage 87.5
-    multicast-management chassis-level per-mcast-plane-capacity redundant-mcast-capacity primary-percentage 87.5
-    multicast-management chassis-level per-mcast-plane-capacity redundant-mcast-capacity secondary-percentage 87.5
     port 1/1/c1 admin-state enable
     port 1/1/c1 connector breakout c1-10g
     port 1/1/c1/1 admin-state enable
@@ -73,7 +68,8 @@ configure {
     port 1/1/c12 admin-state enable
     port 1/1/c12 connector breakout c1-10g
     port 1/1/c12/1 admin-state enable
-    port 1/1/c12/1 ethernet mode access
+    port 1/1/c12/1 ethernet mode hybrid
+    port 1/1/c12/1 ethernet encap-type qinq
     port 1/1/c13 admin-state enable
     port 1/1/c13 connector breakout c1-10g
     port 1/1/c13/1 admin-state enable
@@ -183,10 +179,10 @@ configure {
     router "Base" interface "to-UPF2" port 1/1/c8/1:0
     router "Base" interface "to-UPF2" ipv4 primary address 172.16.115.13
     router "Base" interface "to-UPF2" ipv4 primary prefix-length 30
-    router "Base" interface "to-magc1" port 1/1/c13/1:0
+    router "Base" interface "to-magc1" port 1/1/c15/1:0
     router "Base" interface "to-magc1" ipv4 primary address 192.0.43.1
     router "Base" interface "to-magc1" ipv4 primary prefix-length 30
-    router "Base" interface "to-magc2" port 1/1/c14/1:0
+    router "Base" interface "to-magc2" port 1/1/c16/1:0
     router "Base" interface "to-magc2" ipv4 primary address 192.1.43.1
     router "Base" interface "to-magc2" ipv4 primary prefix-length 30
     router "Base" bgp min-route-advertisement 1
@@ -234,6 +230,7 @@ configure {
     service vpls "100" sap 1/1/c9/1:*.* description "to-UP1"
     service vpls "100" sap 1/1/c10/1:*.* description "to-UP2"
     service vpls "100" sap 1/1/c11/1:*.* description "to-bngblaster"
+    service vpls "100" sap 1/1/c12/1:*.* description "to-bngblaster2"
     service vprn "500" admin-state enable
     service vprn "500" customer "1"
     service vprn "500" bgp-ipvpn mpls admin-state enable
@@ -243,23 +240,24 @@ configure {
     service vprn "500" bgp-ipvpn mpls auto-bind-tunnel resolution-filter ldp true
     service vprn "500" interface "internet" ipv4 primary address 10.0.0.2
     service vprn "500" interface "internet" ipv4 primary prefix-length 24
-    service { vprn "500" interface "internet" sap 1/1/c12/1 }
+    service { vprn "500" interface "internet" sap 1/1/c13/1:0 }
+    service vprn "500" interface "internet-2" ipv4 primary address 11.0.0.2
+    service vprn "500" interface "internet-2" ipv4 primary prefix-length 24
+    service { vprn "500" interface "internet-2" sap 1/1/c14/1:0 }
     service vprn "500" interface "loopback" loopback true
     service vprn "500" interface "loopback" ipv4 primary address 1.1.1.201
     service vprn "500" interface "loopback" ipv4 primary prefix-length 32
-    service vprn "500" static-routes route 10.60.0.0/24 route-type unicast next-hop "10.99.99.1" admin-state enable
-    service vprn "500" static-routes route 10.60.0.0/24 route-type unicast next-hop "10.99.99.1" description "vls-data"
     service vprn "1151" admin-state enable
     service vprn "1151" description "db2"
     service vprn "1151" customer "1"
     service vprn "1151" interface "to-cdb-2" ip-mtu 9000
     service vprn "1151" interface "to-cdb-2" ipv4 primary address 192.168.1.1
     service vprn "1151" interface "to-cdb-2" ipv4 primary prefix-length 24
-    service { vprn "1151" interface "to-cdb-2" sap 1/1/c18/1:0 }
+    service { vprn "1151" interface "to-cdb-2" sap 1/1/c20/1:0 }
     service vprn "1151" interface "to-magc-2" ip-mtu 9000
     service vprn "1151" interface "to-magc-2" ipv4 primary address 10.40.43.1
     service vprn "1151" interface "to-magc-2" ipv4 primary prefix-length 31
-    service { vprn "1151" interface "to-magc-2" sap 1/1/c16/1:0 }
+    service { vprn "1151" interface "to-magc-2" sap 1/1/c18/1:0 }
     service vprn "1151" static-routes route 1.1.1.1/32 route-type unicast next-hop "10.40.43.0" admin-state enable
     service vprn "2043" admin-state enable
     service vprn "2043" customer "1"
@@ -291,7 +289,7 @@ configure {
     service { vprn "2043" interface "to-AMF-N2" sap 1/1/c3/1:0 }
     service vprn "2043" interface "to-amf" ipv4 primary address 10.100.1.1
     service vprn "2043" interface "to-amf" ipv4 primary prefix-length 24
-    service { vprn "2043" interface "to-amf" sap 1/1/c20/1:0 }
+    service { vprn "2043" interface "to-amf" sap 1/1/c22/1:0 }
     service vprn "2043" interface "to-gnb" ipv4 primary address 10.80.1.1
     service vprn "2043" interface "to-gnb" ipv4 primary prefix-length 24
     service { vprn "2043" interface "to-gnb" sap 1/1/c1/1:0 }
@@ -309,18 +307,18 @@ configure {
     service { vprn "2043" interface "to-nrf" sap 1/1/c4/1:0 }
     service vprn "2043" interface "to-radius" ipv4 primary address 100.0.0.1
     service vprn "2043" interface "to-radius" ipv4 primary prefix-length 24
-    service { vprn "2043" interface "to-radius" sap 1/1/c19/1 }
+    service { vprn "2043" interface "to-radius" sap 1/1/c21/1:0 }
     service vprn "ToDatabase" admin-state enable
     service vprn "ToDatabase" service-id 151
     service vprn "ToDatabase" customer "1"
     service vprn "ToDatabase" interface "to-cdb-1" ip-mtu 9000
     service vprn "ToDatabase" interface "to-cdb-1" ipv4 primary address 192.168.1.1
     service vprn "ToDatabase" interface "to-cdb-1" ipv4 primary prefix-length 24
-    service { vprn "ToDatabase" interface "to-cdb-1" sap 1/1/c17/1:0 }
+    service { vprn "ToDatabase" interface "to-cdb-1" sap 1/1/c19/1 }
     service vprn "ToDatabase" interface "to-magc-1" ip-mtu 9000
     service vprn "ToDatabase" interface "to-magc-1" ipv4 primary address 10.40.43.1
     service vprn "ToDatabase" interface "to-magc-1" ipv4 primary prefix-length 31
-    service { vprn "ToDatabase" interface "to-magc-1" sap 1/1/c15/1:0 }
+    service { vprn "ToDatabase" interface "to-magc-1" sap 1/1/c17/1:0 }
     service vprn "ToDatabase" static-routes route 1.1.1.1/32 route-type unicast next-hop "10.40.43.0" admin-state enable
     system name "TRA-cups"
     system boot-good-exec "tftp://172.31.255.29/post-boot-exec.cfg"
