@@ -62,7 +62,7 @@ topology:
  
     db-1:
       kind: linux
-      image: registry.srlinux.dev/pub/mag-c-db:25.3.R1
+      image: ghcr.io/hatakkey/magc-db:25.3.R1
       binds:
        - ./configs/cdb/:/etc/sysconfig/configs
        - ./configs/cdb/cmg-card.config:/etc/sysconfig/cmg-card.config
@@ -74,7 +74,7 @@ topology:
 
     db-2:
       kind: linux
-      image: registry.srlinux.dev/pub/mag-c-db:25.3.R1
+      image: ghcr.io/hatakkey/magc-db:25.3.R1
       binds:
        - ./configs/cdb/:/etc/sysconfig/configs
        - ./configs/cdb/cmg-card.config:/etc/sysconfig/cmg-card.config
@@ -114,7 +114,7 @@ topology:
     
     bngblaster:
       kind: linux
-      image: htakkey/bngblaster:0.9.18
+      image: ghcr.io/hatakkey/bngblaster:0.9.18
       entrypoint: /bin/bash
       mgmt-ipv4: 192.168.40.21
       binds:
