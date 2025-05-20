@@ -1231,9 +1231,9 @@ echo "Mobile Gateway Configuration"
                         ip
                             address-stacks
                                 ipv4 true
-                                ipv6-na true
+                                ipv6-na false
                                 ipv6-pd true
-                                ipv6-slaac false
+                                ipv6-slaac true
                             exit
                         exit
                         output-options
@@ -1276,9 +1276,9 @@ echo "Mobile Gateway Configuration"
                         ip
                             address-stacks
                                 ipv4 true
-                                ipv6-na true
+                                ipv6-na false
                                 ipv6-pd true
-                                ipv6-slaac false
+                                ipv6-slaac true
                             exit
                         exit
                         output-options
@@ -1304,9 +1304,9 @@ echo "Mobile Gateway Configuration"
                         ip
                             address-stacks
                                 ipv4 true
-                                ipv6-na true
+                                ipv6-na false
                                 ipv6-pd true
-                                ipv6-slaac false
+                                ipv6-slaac true
                             exit
                         exit
                         output-options
