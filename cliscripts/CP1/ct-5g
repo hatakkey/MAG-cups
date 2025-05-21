@@ -1,9 +1,12 @@
 echo
-echo "From Debug to Session"
+echo "From Debug to Sesion"
 echo "---------------------"
 echo
 /debug mobile-gateway call-insight ue imsi 206010000000001 profile debug-output
 /debug mobile-gateway call-insight ue imsi 206010000000011 profile debug-output
+/configure log log-id 77 from debug-trace
+/configure log log-id 77 to cli
+/tools perform log subscribe-to log-id 77
 sleep 2
 /show mobile-gateway call-insight ue
 echo

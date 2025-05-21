@@ -5,6 +5,9 @@ echo
 echo "debug mobile-gateway call-insight bng profile debug-output mac-address 02:00:01:00:00:01"
 /debug mobile-gateway call-insight bng mac-address  02:00:01:00:00:01 profile "debug-output"
 echo "show mobile-gateway call-insight bng"
+/configure log log-id 78 from debug-trace
+/configure log log-id 78 to cli
+/tools perform log subscribe-to log-id 78
 sleep 1
 /show mobile-gateway call-insight bng
 echo
