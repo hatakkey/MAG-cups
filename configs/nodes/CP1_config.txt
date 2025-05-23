@@ -1317,6 +1317,16 @@ echo "Mobile Gateway Configuration"
             exit
         exit
     exit
+#--------------------------------------------------
+echo "System Configuration Mode Configuration"
+#--------------------------------------------------
+    system
+        management-interface
+            cli
+                cli-engine classic-cli md-cli
+            exit
+        exit
+    exit
 
 exit all
 
